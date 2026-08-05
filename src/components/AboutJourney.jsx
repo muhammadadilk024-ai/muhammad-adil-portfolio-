@@ -1,320 +1,207 @@
-import { useRef } from 'react'
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const profileImage = '/images/adil-about.jpg'
+const resumeFile = '/files/adil-cv.pdf'
+const ease = [0.16, 1, 0.3, 1]
 
-const proofStats = [
-  ['4+', 'Years Experience'],
-  ['50+', 'Projects Worked On'],
-  ['20+', 'Client Projects'],
-  ['8+', 'Core Skills'],
+const journey = [
+  {
+    period: '2021 — 2022',
+    label: 'Learning by building',
+    title: 'The starting point',
+    description: 'Built my first WordPress sites and learned responsive design through real practice.',
+    accent: '#8f7fff',
+  },
+  {
+    period: '2023 — Present',
+    label: 'Independent client work',
+    title: 'From practice to real projects',
+    description: 'Building websites, online stores and custom features for businesses in different industries.',
+    accent: '#fe9d4a',
+  },
+  {
+    period: '2024 — Present',
+    label: 'Tech Joint Solution',
+    title: 'Project based web developer',
+    description: 'Delivering client websites, custom sections, technical fixes and successful launches.',
+    accent: '#8f7fff',
+  },
 ]
 
-const journeyPoints = [
-  'WordPress websites, Shopify stores, and custom development',
-  'Website fixes, redesigns, and responsive improvements',
-  'Custom features using PHP, JavaScript, React, and Node.js',
+const quickFacts = [
+  ['Based in', 'Windsor, Ontario'],
+  ['Main focus', 'Websites, stores and web apps'],
+  ['Working style', 'Clear, practical and reliable'],
 ]
 
-function RevealText({ text, className = '' }) {
-  const words = text.split(' ')
-
+function TimelineItem({ item, index, reduceMotion }) {
   return (
-    <motion.h2
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.7 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.045,
-          },
-        },
-      }}
+    <motion.li
+      initial={reduceMotion ? false : { opacity: 0, x: 24 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.55 }}
+      transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.12 + index * 0.1, ease }}
+      className="group relative pb-8 pl-7 last:pb-0"
     >
-      {words.map((word, wordIndex) => (
-        <span key={`${word}-${wordIndex}`} className="inline-block whitespace-nowrap">
-          {word.split('').map((char, charIndex) => (
-            <motion.span
-              key={`${word}-${char}-${charIndex}`}
-              className="inline-block"
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 28,
-                  rotateX: -45,
-                  filter: 'blur(6px)',
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  rotateX: 0,
-                  filter: 'blur(0px)',
-                  transition: {
-                    duration: 0.5,
-                    ease: [0.16, 1, 0.3, 1],
-                  },
-                },
-              }}
-            >
-              {char}
-            </motion.span>
-          ))}
-          <span className="inline-block">&nbsp;</span>
-        </span>
-      ))}
-    </motion.h2>
-  )
-}
-
-function StatBox({ value, label, index }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, amount: 0.45 }}
-      transition={{
-        duration: 0.55,
-        delay: 0.12 + index * 0.06,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="group relative overflow-hidden rounded-3xl border border-[#222222] bg-[#161616] p-4 transition duration-500 hover:border-[#c8f135]/40"
-    >
-      <div className="absolute inset-x-0 top-0 h-1 bg-[#2a2a2a] transition duration-500 group-hover:bg-[#c8f135]" />
-
-      <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-[#c8f135]/6 blur-2xl" />
-
-      <p className="relative text-3xl font-semibold tracking-[-0.06em] text-[#c8f135]">
-        {value}
-      </p>
-
-      <p className="relative mt-1 text-xs font-medium uppercase tracking-[0.14em] text-[#b5b5b5]">
-        {label}
-      </p>
-    </motion.div>
+      <span
+        aria-hidden="true"
+        className="absolute -left-[5px] top-1.5 h-[11px] w-[11px] rounded-full border-2 border-[#151319] transition duration-300 group-hover:scale-125"
+        style={{ backgroundColor: item.accent, boxShadow: `0 0 18px ${item.accent}88` }}
+      />
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: item.accent }}>
+          {item.period}
+        </p>
+        <span className="text-[10px] uppercase tracking-[0.12em] text-white/30">{item.label}</span>
+      </div>
+      <h3 className="mt-2 text-[17px] font-semibold tracking-[-0.025em] text-white/90">{item.title}</h3>
+      <p className="mt-2 max-w-sm text-sm leading-6 text-white/50">{item.description}</p>
+    </motion.li>
   )
 }
 
 export default function AboutJourney() {
-  const sectionRef = useRef(null)
-  const prefersReducedMotion = useReducedMotion()
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start 95%', 'end start'],
-  })
-
-  const contentY = useTransform(
-    scrollYProgress,
-    [0, 0.45, 1],
-    prefersReducedMotion ? [0, 0, 0] : [80, 0, -24]
-  )
-
-  const imageY = useTransform(
-    scrollYProgress,
-    [0, 0.45, 1],
-    prefersReducedMotion ? [0, 0, 0] : [110, 0, -35]
-  )
-
-  const glowY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? [0, 0] : [70, -70]
-  )
+  const reduceMotion = useReducedMotion()
 
   return (
     <section
       id="about"
-      ref={sectionRef}
-      className="relative -mt-px overflow-hidden bg-[#111111] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-24"
+      className="relative -mt-px overflow-hidden bg-[#151319] px-4 py-24 text-white sm:px-7 md:py-28 lg:px-10"
     >
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[#111111]" />
-
-        <motion.div
-          style={{ y: glowY }}
-          className="absolute left-[7%] top-[8%] h-[28rem] w-[28rem] rounded-full bg-[#c8f135]/5 blur-2xl"
-        />
-
-        <motion.div
-          style={{ y: glowY }}
-          className="absolute right-[8%] bottom-[6%] h-[26rem] w-[26rem] rounded-full bg-[#c8f135]/4 blur-2xl"
-        />
-
-        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(200,241,53,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(200,241,53,.16)_1px,transparent_1px)] [background-size:96px_96px]" />
-
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,transparent_0%,rgba(17,17,17,0.22)_38%,rgba(17,17,17,0.96)_100%)]" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-52 top-8 h-[34rem] w-[34rem] rounded-full bg-[#8f7fff]/8 blur-[150px]" />
+        <div className="absolute -right-52 bottom-0 h-[32rem] w-[32rem] rounded-full bg-[#fe9d4a]/7 blur-[150px]" />
+        <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_76%_65%_at_50%_42%,black,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,19,25,.15),rgba(21,19,25,.72))]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-        <motion.div style={{ y: contentY }} className="will-change-transform">
-          <motion.p
-            initial={{ opacity: 0, y: 16, letterSpacing: '0.12em' }}
-            whileInView={{ opacity: 1, y: 0, letterSpacing: '0.3em' }}
-            viewport={{ once: true, amount: 0.8 }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-5 text-xs font-semibold uppercase text-[#c8f135] sm:text-sm"
-          >
-            About Me
-          </motion.p>
-
-          <RevealText
-            text="A developer shaped by real client work"
-            className="max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-0.065em] text-[#f0f0f0] sm:text-5xl lg:text-6xl"
-          />
-
-          <motion.p
-            initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-xl text-sm leading-7 text-[#d0d0d0] sm:text-base"
-          >
-            I&apos;m Muhammad Adil, a web developer with 4+ years of hands-on
-            experience building, customizing, and improving websites for real
-            clients. My work covers WordPress, Shopify, front-end development,
-            PHP customization, React basics, and custom website features.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-4 max-w-xl text-sm leading-7 text-[#d0d0d0] sm:text-base"
-          >
-            I started learning web development at a young age and turned it into
-            real project experience. Today, I focus on creating websites that are
-            clean, responsive, easy to use, and built with proper attention to
-            detail.
-          </motion.p>
-
-          <div className="mt-7 grid grid-cols-2 gap-3">
-            {proofStats.map(([value, label], index) => (
-              <StatBox key={label} value={value} label={label} index={index} />
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 28, filter: 'blur(6px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-7 rounded-[1.6rem] border border-[#222222] bg-[#161616] p-5 shadow-[0_22px_70px_rgba(0,0,0,0.3)]"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c8f135]">
-              Current Focus
+      <div className="relative mx-auto max-w-[1400px]">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: reduceMotion ? 0 : 0.68, ease }}
+          className="flex flex-col justify-between gap-6 border-b border-white/10 pb-7 sm:flex-row sm:items-end"
+        >
+          <div>
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.27em] text-[#8f7fff]">
+              About and Experience
             </p>
-
-            <div className="mt-4 grid gap-3">
-              {journeyPoints.map((point) => (
-                <div key={point} className="flex items-start gap-3">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#c8f135]/10 text-xs text-[#c8f135]">
-                    ✓
-                  </span>
-
-                  <p className="text-sm leading-6 text-[#d0d0d0]">{point}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+            <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.052em] sm:text-5xl lg:text-6xl">
+              A short story, backed by real work.
+            </h2>
+          </div>
+          <span className="hidden pb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/28 sm:block">
+            01 — Profile
+          </span>
         </motion.div>
 
-        <motion.div
-          style={{ y: imageY }}
-          initial={{ opacity: 0, y: 50, scale: 0.96, filter: 'blur(7px)' }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto w-full max-w-[520px] will-change-transform lg:ml-auto"
-        >
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
           <motion.div
-            className="pointer-events-none absolute -right-12 -top-12 hidden h-44 w-44 opacity-70 sm:block"
-            initial={{ opacity: 0, x: 24, y: -18 }}
-            whileInView={{ opacity: 0.7, x: 0, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            animate={
-              prefersReducedMotion
-                ? {}
-                : {
-                    y: [0, -10, 0],
-                  }
-            }
+            initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: reduceMotion ? 0 : 0.76, ease }}
+            className="lg:col-span-4"
           >
-            <div className="h-full w-full [background-image:radial-gradient(circle,rgba(200,241,53,0.75)_1.5px,transparent_1.7px)] [background-size:18px_18px]" />
-          </motion.div>
-
-          <motion.div
-            className="pointer-events-none absolute -left-10 bottom-16 hidden h-28 w-28 opacity-38 sm:block"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 0.38, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            animate={
-              prefersReducedMotion
-                ? {}
-                : {
-                    y: [0, 8, 0],
-                  }
-            }
-          >
-            <div className="h-full w-full [background-image:radial-gradient(circle,rgba(240,240,240,0.35)_1.4px,transparent_1.6px)] [background-size:16px_16px]" />
-          </motion.div>
-
-          <div className="absolute -inset-5 rounded-[2.4rem] bg-[radial-gradient(circle_at_50%_25%,rgba(200,241,53,0.12),rgba(200,241,53,0.05)_40%,transparent_72%)] blur-2xl" />
-
-          <div className="group relative overflow-hidden rounded-[2rem] border border-[#222222] bg-[#161616] p-3 shadow-[0_35px_110px_rgba(0,0,0,0.45)]">
-            <div className="relative overflow-hidden rounded-[1.5rem]">
-              <img
-                src={profileImage}
-                alt="Muhammad Adil"
-                loading="lazy"
-                decoding="async"
-                className="h-[440px] w-full scale-[1.13] object-cover object-[48%_36%] grayscale-[6%] contrast-[1.06] saturate-[0.96] transition duration-700 group-hover:scale-[1.17] sm:h-[520px]"
-              />
-
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(17,17,17,0.78)_100%)]" />
-
-              <div className="absolute bottom-5 left-5 right-5 rounded-3xl border border-[#222222] bg-[#111111]/78 p-4 backdrop-blur-sm">
-                <p className="text-xl font-semibold tracking-[-0.04em] text-[#f0f0f0]">
-                  Muhammad Adil
-                </p>
-
-                <p className="mt-1 text-sm text-[#c8f135]/80">
-                  Web Developer
-                </p>
+            <div className="group relative mx-auto max-w-[440px] overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#0f0e12] p-2 shadow-[0_30px_90px_rgba(0,0,0,.34)] lg:mx-0">
+              <div className="relative overflow-hidden rounded-[1rem]">
+                <img
+                  src={profileImage}
+                  alt="Muhammad Adil"
+                  loading="lazy"
+                  decoding="async"
+                  className="h-[470px] w-full object-cover object-[50%_35%] grayscale-[5%] transition duration-700 group-hover:scale-[1.025] group-hover:grayscale-0 sm:h-[560px] lg:h-[520px] xl:h-[560px]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e12]/90 via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+                  <div>
+                    <p className="text-xl font-semibold tracking-[-0.035em]">Muhammad Adil</p>
+                    <p className="mt-1 text-xs text-white/48">Full Stack Web Developer</p>
+                  </div>
+                  <span className="rounded-full border border-[#8f7fff]/35 bg-[#8f7fff]/12 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-[#b7adff] backdrop-blur-md">
+                    Windsor, ON
+                  </span>
+                </div>
               </div>
             </div>
+          </motion.div>
+
+          <div className="lg:col-span-4 lg:pt-2">
+            <motion.p
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.08, ease }}
+              className="text-lg leading-8 tracking-[-0.02em] text-white/78"
+            >
+              I&apos;m Muhammad Adil, a self taught developer who learned by building and kept growing through real client work.
+            </motion.p>
+
+            <motion.p
+              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.16, ease }}
+              className="mt-5 text-sm leading-7 text-white/50 sm:text-[15px]"
+            >
+              I work across design, development and launch, but the goal stays simple: make something useful, clear and dependable for the client.
+            </motion.p>
+
+            <motion.dl
+              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.55 }}
+              transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.22, ease }}
+              className="mt-7 divide-y divide-white/8 border-y border-white/8"
+            >
+              {quickFacts.map(([label, value], index) => (
+                <div key={label} className="flex items-center justify-between gap-5 py-4">
+                  <dt className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/28">{label}</dt>
+                  <dd className="max-w-[66%] text-right text-sm text-white/68">{value}</dd>
+                  <span className="sr-only">{index + 1}</span>
+                </div>
+              ))}
+            </motion.dl>
+
+            <motion.div
+              id="resume"
+              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.7 }}
+              transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.28, ease }}
+              className="scroll-mt-28"
+            >
+              <a
+                href={resumeFile}
+                download="Muhammad-Adil-Resume.pdf"
+                className="group mt-7 inline-flex items-center gap-3 rounded-md border border-[#8f7fff]/45 bg-[#8f7fff]/12 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white transition duration-300 hover:border-[#8f7fff] hover:bg-[#8f7fff]/22"
+              >
+                Download resume
+                <span className="text-[#8f7fff] transition-transform group-hover:translate-y-0.5" aria-hidden="true">↓</span>
+              </a>
+            </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -26 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute -left-4 top-8 hidden rounded-2xl border border-[#c8f135]/20 bg-[#c8f135] px-4 py-3 text-sm font-semibold text-black shadow-[0_18px_60px_rgba(0,0,0,0.3)] sm:block"
-          >
-            4+ Years Experience
-          </motion.div>
+          <div className="lg:col-span-4 lg:pt-2">
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.7 }}
+              transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.08, ease }}
+              className="mb-6 flex items-center justify-between gap-4"
+            >
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#fe9d4a]">My journey</p>
+              <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/26">2021 — Today</span>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 26 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute -right-4 bottom-20 hidden rounded-2xl border border-[#222222] bg-[#161616] px-4 py-3 text-sm font-semibold text-[#c8f135] shadow-[0_18px_60px_rgba(0,0,0,0.3)] sm:block"
-          >
-            Partnered with Tech Joint Solution
-          </motion.div>
-        </motion.div>
+            <ol className="relative ml-1 border-l border-white/12">
+              {journey.map((item, index) => (
+                <TimelineItem key={`${item.period}-${item.title}`} item={item} index={index} reduceMotion={reduceMotion} />
+              ))}
+            </ol>
+          </div>
+        </div>
       </div>
     </section>
   )

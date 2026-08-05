@@ -5,7 +5,7 @@ const links = [
   { label: 'Projects', href: '#projects' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
-  { label: 'Resume', href: '#resume' },
+  { label: 'Resume', href: '/files/adil-cv.pdf', download: 'Muhammad-Adil-Resume.pdf' },
 ]
 
 function Navbar() {
@@ -43,6 +43,7 @@ function Navbar() {
             <a
               key={link.label}
               href={link.href}
+              download={link.download}
               className="group relative py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white/66 transition hover:text-white"
             >
               {link.label}
@@ -92,6 +93,7 @@ function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
+                download={link.download}
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-between border-b border-white/8 px-2 py-4 text-xl font-semibold"
               >

@@ -7,7 +7,6 @@ const ServicesOrbit = lazy(() => import('./components/ServicesOrbit'))
 const SkillsShowcase = lazy(() => import('./components/SkillsShowcase'))
 const AboutJourney = lazy(() => import('./components/AboutJourney'))
 const ProjectsShowcase = lazy(() => import('./components/ProjectsShowcase'))
-const ResumeSection = lazy(() => import('./components/ResumeSection'))
 const ContactSection = lazy(() => import('./components/ContactSection'))
 const Footer = lazy(() => import('./components/Footer'))
 
@@ -28,7 +27,6 @@ function App() {
           <ServicesOrbit />
           <SkillsShowcase />
           <AboutJourney />
-          <ResumeSection />
           <ContactSection />
           <Footer />
         </Suspense>
