@@ -18,8 +18,8 @@ const services = [
     deliverables: ['Custom websites', 'WordPress development', 'Frontend and backend'],
     icon: 'web',
     image: '/services/web-development-20260806.webp',
-    accent: '#8b7cff',
-    glow: 'rgba(139, 124, 255, 0.22)',
+    accent: '#fe9d4a',
+    glow: 'rgba(254, 157, 74, 0.2)',
   },
   {
     number: '02',
@@ -31,8 +31,8 @@ const services = [
     deliverables: ['WooCommerce', 'Payment gateways', 'Product systems'],
     icon: 'commerce',
     image: '/services/ecommerce-development-20260806.webp',
-    accent: '#ff9568',
-    glow: 'rgba(255, 149, 104, 0.2)',
+    accent: '#8f7fff',
+    glow: 'rgba(143, 127, 255, 0.22)',
   },
   {
     number: '03',
@@ -44,8 +44,8 @@ const services = [
     deliverables: ['Store setup', 'Theme customization', 'Shopify apps'],
     icon: 'shopify',
     image: '/services/shopify-development-20260806.webp',
-    accent: '#9bc45a',
-    glow: 'rgba(155, 196, 90, 0.18)',
+    accent: '#fe9d4a',
+    glow: 'rgba(254, 157, 74, 0.2)',
   },
   {
     number: '04',
@@ -57,8 +57,8 @@ const services = [
     deliverables: ['AI assistants', 'API integration', 'Workflow automation'],
     icon: 'ai',
     image: '/services/ai-integration-20260806.webp',
-    accent: '#66a8ff',
-    glow: 'rgba(102, 168, 255, 0.2)',
+    accent: '#8f7fff',
+    glow: 'rgba(143, 127, 255, 0.22)',
   },
   {
     number: '05',
@@ -70,8 +70,8 @@ const services = [
     deliverables: ['User flows', 'Wireframes', 'Interactive prototypes'],
     icon: 'design',
     image: '/services/ui-ux-design-20260806.webp',
-    accent: '#d98cff',
-    glow: 'rgba(217, 140, 255, 0.2)',
+    accent: '#fe9d4a',
+    glow: 'rgba(254, 157, 74, 0.2)',
   },
   {
     number: '06',
@@ -83,8 +83,8 @@ const services = [
     deliverables: ['React Native', 'iOS and Android', 'API connectivity'],
     icon: 'mobile',
     image: '/services/mobile-apps-20260806.webp',
-    accent: '#f1bd6a',
-    glow: 'rgba(241, 189, 106, 0.19)',
+    accent: '#8f7fff',
+    glow: 'rgba(143, 127, 255, 0.22)',
   },
 ]
 
