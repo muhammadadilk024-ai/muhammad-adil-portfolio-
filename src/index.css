@@ -153,6 +153,11 @@ canvas {
   animation: terminal-scroll-pulse 1.8s ease-in-out infinite alternate;
 }
 
+.spotlight-progress {
+  transform-origin: left center;
+  animation: spotlight-progress 6.5s linear forwards;
+}
+
 @keyframes terminal-terrain-drift {
   0% { transform: scale(1.02) translate3d(-0.25%, 0, 0); filter: saturate(1); }
   100% { transform: scale(1.055) translate3d(0.35%, -0.25%, 0); filter: saturate(1.08); }
@@ -184,6 +189,11 @@ canvas {
 @keyframes terminal-scroll-pulse {
   from { opacity: 0.28; transform: scaleX(0.7); }
   to { opacity: 0.85; transform: scaleX(1); }
+}
+
+@keyframes spotlight-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
 
 .skip-link {

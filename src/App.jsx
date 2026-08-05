@@ -24,10 +24,10 @@ function App() {
         <Hero />
 
         <Suspense fallback={null}>
+          <ProjectsShowcase />
           <ServicesOrbit />
           <SkillsShowcase />
           <AboutJourney />
-          <ProjectsShowcase />
           <ResumeSection />
           <ContactSection />
           <Footer />

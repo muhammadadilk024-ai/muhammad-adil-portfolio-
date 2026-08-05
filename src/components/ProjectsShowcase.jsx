@@ -1,424 +1,392 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-
-const categoryThemes = {
-  WordPress: {
-    accent: '#60a5fa',
-    gradient: 'from-[#1e3a5f] via-[#162033] to-[#111111]',
-  },
-  Ecommerce: {
-    accent: '#4ade80',
-    gradient: 'from-[#14532d] via-[#142018] to-[#111111]',
-  },
-  Custom: {
-    accent: '#c8f135',
-    gradient: 'from-[#3a4a12] via-[#1a1f10] to-[#111111]',
-  },
-}
 
 const projects = [
   {
-    title: 'Propexa',
-    url: 'https://propexa.ca/',
-    category: 'WordPress',
-    type: 'Business Website',
-    image: '/images/projects/propexa.jpg',
-    tags: ['WordPress', 'Business', 'Responsive'],
-  },
-  {
-    title: 'SB TraWorld',
+    id: '01',
+    name: 'SB TraWorld',
+    slug: 'sb-traworld',
     url: 'https://sb-traworld.com/',
-    category: 'WordPress',
-    type: 'Travel Agency Website',
-    image: '/images/projects/sb-traworld.jpg',
-    tags: ['Travel', 'Packages', 'WordPress'],
+    domain: 'sb-traworld.com',
+    type: 'Travel & Pilgrimage Platform',
+    platform: 'WordPress',
+    image: '/images/projects/spotlight/sb-traworld.webp',
+    accent: '#8b7cff',
+    glow: 'rgba(139, 124, 255, 0.15)',
+    description:
+      'A bilingual travel and pilgrimage platform bringing destinations, Hajj and Umrah packages, verified updates and enquiry journeys into one clear booking experience.',
+    services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Custom functionality', 'Bilingual experience', 'Deployment'],
   },
   {
-    title: 'Lavish Bath Calgary',
+    id: '02',
+    name: 'Fusion Fora',
+    slug: 'fusionfora',
+    url: 'https://fusionfora.com/',
+    domain: 'fusionfora.com',
+    type: 'AI Strategy & Consulting',
+    platform: 'WordPress',
+    image: '/images/projects/spotlight/fusionfora.webp',
+    accent: '#5a9cff',
+    glow: 'rgba(90, 156, 255, 0.14)',
+    description:
+      'An AI strategy and leadership consulting website that turns complex advisory services into a clear, credible and conversion-focused experience.',
+    services: ['Logo & brand', 'UI/UX design', 'WordPress build', 'Service architecture', 'Lead generation', 'Deployment'],
+  },
+  {
+    id: '03',
+    name: 'Paan Express',
+    slug: 'paan-express',
+    url: 'https://paanexpress.com/',
+    domain: 'paanexpress.com',
+    type: 'Restaurant & Local Commerce',
+    platform: 'WordPress',
+    image: '/images/projects/spotlight/paan-express.webp',
+    accent: '#f39a45',
+    glow: 'rgba(243, 154, 69, 0.14)',
+    description:
+      'A restaurant website built around appetite-led visuals, a structured digital menu, local discovery and direct ordering paths for Brampton customers.',
+    services: ['Logo & brand', 'UI/UX design', 'WordPress build', 'Digital menu', 'Local SEO structure', 'Deployment'],
+  },
+  {
+    id: '04',
+    name: 'Lavish Bath',
+    slug: 'lavish-bath',
     url: 'https://lavishbathcalgary.ca/',
-    category: 'Ecommerce',
-    type: 'Ecommerce Website',
-    image: '/images/projects/lavishbath.jpg',
-    tags: ['Shopify', 'Ecommerce', 'Responsive'],
+    domain: 'lavishbathcalgary.ca',
+    type: 'Bath & Kitchen Ecommerce',
+    platform: 'WordPress · WooCommerce',
+    image: '/images/projects/spotlight/lavish-bath.webp',
+    accent: '#b7a887',
+    glow: 'rgba(183, 168, 135, 0.14)',
+    description:
+      'A complete bath and kitchen ecommerce experience with product categories, detailed catalog content, discovery sections and a responsive shopping flow.',
+    services: ['UI/UX redesign', 'WordPress build', 'WooCommerce', 'Catalog architecture', 'Product content', 'Deployment'],
   },
   {
-    title: 'Mindcob',
+    id: '05',
+    name: 'MindCob',
+    slug: 'mindcob',
     url: 'https://mindcob.com/',
-    category: 'Custom',
-    type: 'Company Website',
-    image: '/images/projects/mindcob.jpg',
-    tags: ['Custom Code', 'UI Design', 'Responsive'],
+    domain: 'mindcob.com',
+    type: 'Digital Agency Platform',
+    platform: 'Custom Full-Stack',
+    image: '/images/projects/spotlight/mindcob.webp',
+    accent: '#55c8f1',
+    glow: 'rgba(85, 200, 241, 0.13)',
+    description:
+      'A custom business platform positioning a full-service digital agency through clear service architecture, location pages, case studies and lead-generation journeys.',
+    services: ['UI/UX design', 'Custom front end', 'Back-end & CMS', 'Service architecture', 'Lead generation', 'Deployment'],
   },
   {
-    title: 'MLC Immigration',
-    url: 'https://www.mlcimmigration.com/',
-    category: 'Custom',
-    type: 'Immigration Website',
-    image: '/images/projects/mlcimmigration.jpg',
-    tags: ['Custom Code', 'Consulting', 'Lead Gen'],
+    id: '06',
+    name: 'FAM Humanity',
+    slug: 'fam-humanity',
+    url: 'https://famhumanity.com/',
+    domain: 'famhumanity.com',
+    type: 'Nonprofit & Donations',
+    platform: 'WordPress',
+    image: '/images/projects/spotlight/fam-humanity.webp',
+    accent: '#9db49c',
+    glow: 'rgba(157, 180, 156, 0.14)',
+    description:
+      'A compassionate charity website helping families discover healthcare support, understand the foundation’s mission and contribute through a focused donation journey.',
+    services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Donation flow', 'Content structure', 'Deployment'],
+  },
+  {
+    id: '07',
+    name: 'Propexa',
+    slug: 'propexa',
+    url: 'https://propexa.ca/',
+    domain: 'propexa.ca',
+    type: 'Real Estate Marketplace',
+    platform: 'Custom Full-Stack',
+    image: '/images/projects/spotlight/propexa.webp',
+    accent: '#6fa3ff',
+    glow: 'rgba(111, 163, 255, 0.13)',
+    description:
+      'A custom real-estate listing platform with property search, category filters, agent and landlord areas, listing details and account-ready workflows.',
+    services: ['Brand & UI design', 'Custom full stack', 'Listings system', 'Search & filters', 'User roles', 'Deployment'],
+  },
+  {
+    id: '08',
+    name: 'HelloMoni',
+    slug: 'hellomoni',
+    url: 'https://hellomoni.de/',
+    domain: 'hellomoni.de',
+    type: 'Custom Ecommerce Storefront',
+    platform: 'Custom Full-Stack',
+    image: '/images/projects/spotlight/hellomoni.webp',
+    accent: '#db8f9b',
+    glow: 'rgba(219, 143, 155, 0.14)',
+    description:
+      'A custom ecommerce storefront created around product discovery, category browsing and a clean shopping journey with a tailored visual identity and responsive catalog.',
+    services: ['Logo & brand', 'UI/UX design', 'Custom front end', 'Back-end development', 'Product catalog', 'Deployment'],
   },
 ]
 
-const categories = ['All', 'WordPress', 'Ecommerce', 'Custom']
+const ease = [0.16, 1, 0.3, 1]
 
-const sectionVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.08,
-    },
-  },
-}
-
-const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-    filter: 'blur(4px)',
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: 'blur(0px)',
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-}
-
-function getDomain(url) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '')
-  } catch {
-    return url
-  }
-}
-
-function BrowserMockup({ project }) {
-  const domain = getDomain(project.url)
+function ArrowIcon({ direction = 'right' }) {
+  const rotate = direction === 'left' ? 'rotate-180' : ''
 
   return (
-    <div className="relative overflow-hidden rounded-[1.1rem] border border-[#2a2a2a] bg-[#0d0d0d]">
-      <div className="flex items-center gap-2 border-b border-[#222222] bg-[#161616] px-3 py-2.5">
-        <div className="flex gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        </div>
-
-        <div className="min-w-0 flex-1 rounded-md border border-[#2a2a2a] bg-[#111111] px-3 py-1">
-          <p className="truncate text-[10px] text-[#b5b5b5]">{domain}</p>
-        </div>
-      </div>
-
-      <div className="relative h-[188px] overflow-hidden bg-[#141414] sm:h-[200px]">
-        <img
-          src={project.image}
-          alt={`${project.title} website preview`}
-          loading="lazy"
-          decoding="async"
-          className="h-full w-full object-cover object-top transition duration-700 ease-out group-hover:scale-[1.03]"
-        />
-
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0)_0%,rgba(20,20,20,0.22)_100%)]" />
-
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_62%,rgba(20,20,20,0.18)_100%)]" />
-      </div>
-    </div>
-  )
-}
-function ExternalIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
-      <path
-        d="M7 17L17 7"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 7H17V15"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="0 0 20 20" className={`h-4 w-4 ${rotate}`} fill="none" aria-hidden="true">
+      <path d="M4 10H16M11 5L16 10L11 15" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
-function ProjectCard({ project, onOpen }) {
-  const prefersReducedMotion = useReducedMotion()
-  const theme = categoryThemes[project.category] || categoryThemes.WordPress
-
+function ExternalIcon() {
   return (
-    <motion.article
-      variants={fadeUp}
-      whileHover={prefersReducedMotion ? {} : { y: -6 }}
-      transition={{ duration: 0.25 }}
-      className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[#222222] bg-[#141414] shadow-[0_20px_60px_rgba(0,0,0,0.28)] transition duration-300 hover:border-[#c8f135]/25"
-    >
-      <div className="p-4 pb-0">
-        <BrowserMockup project={project} />
-      </div>
-
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <span
-              className="inline-flex rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]"
-              style={{
-                borderColor: `${theme.accent}33`,
-                backgroundColor: `${theme.accent}12`,
-                color: theme.accent,
-              }}
-            >
-              {project.category}
-            </span>
-
-            <h3 className="mt-3 text-xl font-semibold tracking-[-0.04em] text-[#f0f0f0]">
-              {project.title}
-            </h3>
-
-            <p className="mt-1 text-sm text-[#c2c2c2]">{project.type}</p>
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-[#2a2a2a] bg-[#111111] px-2.5 py-1 text-[10px] font-semibold text-[#d0d0d0]"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-5 flex flex-wrap gap-2 border-t border-[#222222] pt-4">
-          <button
-            type="button"
-            onClick={() => onOpen(project)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#c8f135] px-4 py-2 text-xs font-semibold text-black transition hover:bg-[#d8ff4d]"
-          >
-            Live Preview
-          </button>
-
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-[#2a2a2a] px-4 py-2 text-xs font-semibold text-[#dfdfdf] transition hover:border-[#c8f135]/40 hover:text-[#c8f135]"
-          >
-            Visit Site
-            <ExternalIcon />
-          </a>
-        </div>
-      </div>
-    </motion.article>
+    <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" aria-hidden="true">
+      <path d="M7 13L13.5 6.5M9 6.5H13.5V11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   )
 }
 
-function ProjectPreviewModal({ project, onClose }) {
-  const [loaded, setLoaded] = useState(false)
+function ProjectsShowcase() {
+  const [index, setIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const active = projects[index]
+
+  const go = useCallback((direction) => {
+    setIndex((current) => (current + direction + projects.length) % projects.length)
+  }, [])
 
   useEffect(() => {
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') onClose()
+    function onKeyDown(event) {
+      if (event.key === 'ArrowLeft') go(-1)
+      if (event.key === 'ArrowRight') go(1)
     }
 
-    document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [onClose])
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [go])
 
   useEffect(() => {
-    setLoaded(false)
-  }, [project])
+    if (reduceMotion || isPaused) return undefined
 
-  return (
-    <motion.div
-      className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/80 px-3 py-5 sm:px-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-      onMouseDown={onClose}
-    >
-      <motion.div
-        className="relative flex h-[88vh] w-full max-w-6xl flex-col overflow-hidden rounded-[1.7rem] border border-[#222222] bg-[#161616] shadow-[0_40px_120px_rgba(0,0,0,0.55)]"
-        initial={{ opacity: 0, y: 28, scale: 0.97 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 18, scale: 0.98 }}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        onMouseDown={(event) => event.stopPropagation()}
-      >
-        <div className="flex items-center justify-between gap-4 border-b border-[#222222] bg-[#161616] px-4 py-3 sm:px-5">
-          <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#c8f135]">
-              Website Preview
-            </p>
+    const timer = window.setInterval(() => go(1), 6500)
+    return () => window.clearInterval(timer)
+  }, [go, isPaused, reduceMotion])
 
-            <h3 className="truncate text-lg font-semibold text-[#f0f0f0] sm:text-xl">
-              {project.title}
-            </h3>
-          </div>
-
-          <div className="flex shrink-0 items-center gap-2">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden items-center gap-2 rounded-full border border-[#2a2a2a] px-4 py-2 text-xs font-semibold text-[#dfdfdf] transition hover:border-[#c8f135]/40 hover:text-[#c8f135] sm:inline-flex"
-            >
-              Open Site
-              <ExternalIcon />
-            </a>
-
-            <button
-              type="button"
-              onClick={onClose}
-              className="grid h-11 w-11 place-items-center rounded-2xl bg-[#c8f135] text-xl font-bold text-black transition-transform duration-300 hover:scale-105 hover:bg-[#d8ff4d]"
-              aria-label="Close project preview"
-            >
-              ×
-            </button>
-          </div>
-        </div>
-
-        <div className="relative flex-1 bg-white">
-          {!loaded && (
-            <div className="absolute inset-0 z-10 grid place-items-center bg-[#111111]">
-              <div className="text-center">
-                <div className="mx-auto h-10 w-10 animate-spin rounded-full border-2 border-[#2a2a2a] border-t-[#c8f135]" />
-                <p className="mt-4 text-sm font-medium text-[#d0d0d0]">
-                  Loading project preview...
-                </p>
-              </div>
-            </div>
-          )}
-
-          <iframe
-            title={`${project.title} preview`}
-            src={project.url}
-            loading="lazy"
-            onLoad={() => setLoaded(true)}
-            className="h-full w-full border-0"
-          />
-        </div>
-
-        <div className="border-t border-[#222222] bg-[#161616] px-4 py-3 text-xs leading-5 text-[#b5b5b5] sm:px-5">
-          If preview does not load, the website may block iframe embedding for security.
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
-export default function ProjectsShowcase() {
-  const [activeCategory, setActiveCategory] = useState('All')
-  const [selectedProject, setSelectedProject] = useState(null)
-
-  const filteredProjects = useMemo(() => {
-    if (activeCategory === 'All') return projects
-    return projects.filter((project) => project.category === activeCategory)
-  }, [activeCategory])
+  function handleDragEnd(_, info) {
+    if (info.offset.x < -70) go(1)
+    if (info.offset.x > 70) go(-1)
+  }
 
   return (
     <section
       id="projects"
-      className="relative -mt-px overflow-hidden bg-[#111111] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-24"
+      className="relative overflow-hidden bg-[#0b0b0f] px-5 py-24 text-[#f7f5fb] sm:px-7 md:py-32 lg:px-12"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
     >
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[#111111]" />
-        <div className="absolute left-1/2 top-0 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-[#c8f135]/5 blur-2xl" />
-        <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(200,241,53,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(200,241,53,.16)_1px,transparent_1px)] [background-size:96px_96px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,transparent_0%,rgba(17,17,17,0.2)_36%,rgba(17,17,17,0.96)_100%)]" />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[42%] top-[32%] h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-[150px] transition-colors duration-700"
+        style={{ backgroundColor: active.glow }}
+      />
+      <div aria-hidden="true" className="terminal-grid pointer-events-none absolute inset-0 opacity-20" />
 
-      <motion.div
-        className="relative z-10 mx-auto max-w-7xl"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.12 }}
-      >
-        <div className="mb-10 text-center">
-          <motion.p
-            variants={fadeUp}
-            className="mb-4 text-xs font-semibold uppercase tracking-[0.34em] text-[#c8f135] sm:text-sm"
-          >
-            My Recent Portfolio
-          </motion.p>
+      <div className="relative mx-auto max-w-[1400px]">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease }}
+          className="flex flex-col justify-between gap-8 border-b border-white/10 pb-8 sm:flex-row sm:items-end"
+        >
+          <div>
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: active.accent }}>
+              Selected work · 01—08
+            </p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
+              Built from <span className="font-serif italic text-white/62">logo</span> to launch.
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-white/50 sm:text-[15px]">
+              Eight complete digital products — designed, developed and delivered end to end by one creator.
+            </p>
+          </div>
 
-          <motion.h2
-            variants={fadeUp}
-            className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-0.065em] text-[#f0f0f0] sm:text-5xl lg:text-6xl"
-          >
-            Client websites built for real businesses
-          </motion.h2>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous project"
+              className="grid h-12 w-12 place-items-center rounded-full border border-white/14 text-white/62 transition hover:border-white/35 hover:text-white"
+            >
+              <ArrowIcon direction="left" />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next project"
+              className="grid h-12 w-12 place-items-center rounded-full border border-white/14 text-white/62 transition hover:border-white/35 hover:text-white"
+            >
+              <ArrowIcon />
+            </button>
+          </div>
+        </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#d0d0d0] sm:text-[17px] sm:leading-8"
-          >
-            WordPress builds, ecommerce stores, and custom-coded websites — shown
-            naturally with a soft, easy-on-the-eyes preview.
-          </motion.p>
-
+        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1.42fr_0.78fr] lg:gap-14">
           <motion.div
-            variants={fadeUp}
-            className="mt-6 flex flex-wrap justify-center gap-2"
+            className="cursor-grab touch-pan-y active:cursor-grabbing"
+            drag={reduceMotion ? false : 'x'}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.14}
+            onDragEnd={handleDragEnd}
           >
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`rounded-full border px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition duration-300 ${
-                  activeCategory === category
-                    ? 'border-[#c8f135] bg-[#c8f135] text-black'
-                    : 'border-[#2a2a2a] bg-transparent text-[#aaa] hover:border-[#c8f135]/60 hover:text-[#c8f135]'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+            <div className="overflow-hidden rounded-[1.2rem] border border-white/13 bg-[#121217] shadow-[0_35px_100px_rgba(0,0,0,.48)]">
+              <div className="flex h-12 items-center gap-3 border-b border-white/10 bg-white/[0.025] px-4">
+                <div className="flex gap-2" aria-hidden="true">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ff6e70]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#ffad55]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#8b7cff]" />
+                </div>
+                <div className="min-w-0 flex-1 rounded-md border border-white/8 bg-black/20 px-3 py-1.5">
+                  <AnimatePresence mode="wait">
+                    <motion.p
+                      key={active.domain}
+                      initial={reduceMotion ? false : { opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.25 }}
+                      className="truncate text-center font-mono text-[9px] text-white/38"
+                    >
+                      {active.domain}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+                <span className="hidden font-mono text-[8px] uppercase tracking-[0.15em] text-white/28 sm:block">Live build</span>
+              </div>
+
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#0e0e12]">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={active.image}
+                    src={active.image}
+                    alt={`${active.name} website desktop preview`}
+                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    initial={reduceMotion ? false : { opacity: 0, scale: 1.035, x: 22 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.985, x: -18 }}
+                    transition={{ duration: 0.7, ease }}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                  />
+                </AnimatePresence>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0b0f]/35 via-transparent to-transparent" />
+
+                <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-full border border-white/12 bg-[#0b0b0f]/75 px-3 py-2 backdrop-blur-lg sm:bottom-5 sm:left-5">
+                  <span className="font-mono text-[9px] font-semibold" style={{ color: active.accent }}>{active.id}</span>
+                  <span className="h-3 w-px bg-white/16" />
+                  <span className="text-[10px] font-semibold text-white/74 sm:text-xs">{active.name}</span>
+                </div>
+              </div>
+
+              {!reduceMotion && (
+                <div className="h-px bg-white/8">
+                  <span
+                    key={active.slug}
+                    className="spotlight-progress block h-full w-full"
+                    style={{ backgroundColor: active.accent, animationPlayState: isPaused ? 'paused' : 'running' }}
+                  />
+                </div>
+              )}
+            </div>
+            <p className="mt-3 text-center font-mono text-[8px] uppercase tracking-[0.18em] text-white/25 lg:hidden">
+              Swipe to explore
+            </p>
           </motion.div>
+
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={active.slug}
+              initial={reduceMotion ? false : { opacity: 0, x: 28 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -18 }}
+              transition={{ duration: 0.52, ease }}
+            >
+              <div className="flex flex-wrap items-center gap-3">
+                <span
+                  className="rounded-full border px-3 py-1.5 font-mono text-[9px] font-semibold uppercase tracking-[0.14em]"
+                  style={{ color: active.accent, borderColor: `${active.accent}55`, backgroundColor: `${active.accent}12` }}
+                >
+                  {active.platform}
+                </span>
+                <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/32">{active.type}</span>
+              </div>
+
+              <h3 className="mt-5 text-4xl font-medium tracking-[-0.045em] sm:text-5xl lg:text-[3.5rem]">{active.name}</h3>
+              <p className="mt-5 text-sm leading-7 text-white/56 sm:text-[15px]">{active.description}</p>
+
+              <div className="mt-7 border-y border-white/10 py-5">
+                <p className="font-mono text-[8px] font-semibold uppercase tracking-[0.2em] text-white/28">My role · 100% ownership</p>
+                <p className="mt-2 text-sm font-medium leading-6 text-white/82">
+                  Strategy, logo and branding, UI/UX, front end, back end and deployment.
+                </p>
+              </div>
+
+              <div className="mt-6">
+                <p className="font-mono text-[8px] font-semibold uppercase tracking-[0.2em] text-white/28">Delivered</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {active.services.map((service) => (
+                    <span key={service} className="rounded-md border border-white/9 bg-white/[0.035] px-2.5 py-1.5 text-[10px] text-white/52">
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href={active.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-8 inline-flex items-center gap-2 rounded-md px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] text-[#0b0b0f] transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                style={{ backgroundColor: active.accent }}
+              >
+                View live website <ExternalIcon />
+              </a>
+            </motion.article>
+          </AnimatePresence>
         </div>
 
-        <motion.div
-          key={activeCategory}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              onOpen={setSelectedProject}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
+        <div className="mt-12 overflow-x-auto pb-3 [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,.18)_transparent]">
+          <div className="flex min-w-max gap-3">
+            {projects.map((project, projectIndex) => {
+              const isActive = projectIndex === index
 
-      <AnimatePresence>
-        {selectedProject && (
-          <ProjectPreviewModal
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </AnimatePresence>
+              return (
+                <button
+                  key={project.slug}
+                  type="button"
+                  onClick={() => setIndex(projectIndex)}
+                  aria-label={`Show ${project.name}`}
+                  aria-pressed={isActive}
+                  className={`group w-[138px] text-left transition duration-300 sm:w-[158px] ${isActive ? 'opacity-100' : 'opacity-[0.42] hover:opacity-80'}`}
+                >
+                  <span
+                    className="block overflow-hidden rounded-lg border bg-[#111116] transition duration-300"
+                    style={{ borderColor: isActive ? project.accent : 'rgba(255,255,255,.1)' }}
+                  >
+                    <img src={project.image} alt="" className="aspect-[16/9] w-full object-cover object-top transition duration-500 group-hover:scale-[1.035]" loading="lazy" decoding="async" />
+                  </span>
+                  <span className="mt-2 flex items-center justify-between gap-3">
+                    <span className={`truncate text-[10px] font-semibold ${isActive ? 'text-white/84' : 'text-white/42'}`}>{project.name}</span>
+                    <span className="font-mono text-[8px]" style={{ color: isActive ? project.accent : 'rgba(255,255,255,.25)' }}>{project.id}</span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
+
+export default ProjectsShowcase
