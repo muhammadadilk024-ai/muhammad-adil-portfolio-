@@ -1,6 +1,5 @@
-import { useState, lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 
-import IntroLoader from './components/IntroLoader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 
@@ -13,15 +12,15 @@ const ContactSection = lazy(() => import('./components/ContactSection'))
 const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
-  const [showLoader, setShowLoader] = useState(true)
-
   return (
     <>
-      {showLoader && <IntroLoader onFinish={() => setShowLoader(false)} />}
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <Hero />
 
         <Suspense fallback={null}>
