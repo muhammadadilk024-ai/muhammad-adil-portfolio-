@@ -26,6 +26,8 @@ const projects = [
     type: 'AI Strategy and Consulting',
     platform: 'WordPress',
     image: '/images/projects/spotlight/fusionfora.webp',
+    imageFit: 'contain',
+    imageBackground: '#f7f7f7',
     accent: '#5a9cff',
     glow: 'rgba(90, 156, 255, 0.14)',
     description:
@@ -86,6 +88,8 @@ const projects = [
     type: 'Nonprofit and Donations',
     platform: 'WordPress',
     image: '/images/projects/spotlight/fam-humanity.webp',
+    imageFit: 'contain',
+    imageBackground: '#213a34',
     accent: '#9db49c',
     glow: 'rgba(157, 180, 156, 0.14)',
     description:
@@ -264,13 +268,16 @@ function ProjectsShowcase() {
                 <span className="hidden font-mono text-[8px] uppercase tracking-[0.15em] text-white/28 sm:block">Live build</span>
               </div>
 
-              <div className="relative aspect-[16/10] overflow-hidden bg-[#0e0e12]">
+              <div
+                className="relative aspect-[16/10] overflow-hidden bg-[#0e0e12]"
+                style={{ backgroundColor: active.imageBackground || '#0e0e12' }}
+              >
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={active.image}
                     src={active.image}
                     alt={`${active.name} website desktop preview`}
-                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    className={`absolute inset-0 h-full w-full ${active.imageFit === 'contain' ? 'object-contain' : 'object-cover object-top'}`}
                     initial={reduceMotion ? false : { opacity: 0, scale: 1.035, x: 22 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.985, x: -18 }}
