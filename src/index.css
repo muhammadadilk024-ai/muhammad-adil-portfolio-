@@ -231,6 +231,29 @@ canvas {
   to { transform: translate3d(-50%, 0, 0); }
 }
 
+.contact-split-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  background: #0f0f14;
+  padding: 0.75rem 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.contact-split-input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.contact-split-input:focus {
+  border-color: rgba(143, 127, 255, 0.72);
+  background: #121119;
+  box-shadow: 0 0 0 3px rgba(143, 127, 255, 0.12);
+}
+
 .skip-link {
   position: fixed;
   left: 1rem;

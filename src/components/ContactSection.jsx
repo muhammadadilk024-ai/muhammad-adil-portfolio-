@@ -1,442 +1,236 @@
-import { useRef } from 'react'
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'framer-motion'
+import { useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const contactEmail = 'muhammad.adilk024@gmail.com'
+const contactPhone = '+1 647 966 1710'
+const ease = [0.16, 1, 0.3, 1]
 
-const contactItems = [
-  {
-    label: 'Email',
-    value: contactEmail,
-    href: `mailto:${contactEmail}`,
-    icon: 'mail',
-  },
-  {
-    label: 'LinkedIn',
-    value: 'Muhammad Adil',
-    href: 'https://www.linkedin.com/in/adil-khan-15aa61297/',
-    icon: 'linkedin',
-  },
-  {
-    label: 'Location',
-    value: 'Canada / Remote Projects',
-    href: '#contact',
-    icon: 'location',
-  },
+const contactDetails = [
+  { label: 'Name', value: 'Muhammad Adil', type: 'user' },
+  { label: 'Email', value: contactEmail, href: `mailto:${contactEmail}`, type: 'mail' },
+  { label: 'Phone', value: contactPhone, href: 'tel:+16479661710', type: 'phone' },
+  { label: 'Location', value: 'Canada / Remote Work', type: 'location' },
 ]
 
-const projectTypes = [
-  'Business Website',
-  'WordPress Fix',
-  'Shopify Store',
-  'Ecommerce Setup',
-  'Landing Page',
-  'Website Redesign',
-]
+const socialButtons = ['GitHub', 'LinkedIn', 'Instagram']
 
-function RevealText({ text, className = '' }) {
-  const words = text.split(' ')
-
-  return (
-    <motion.h2
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.7 }}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: {
-            staggerChildren: 0.045,
-          },
-        },
-      }}
-    >
-      {words.map((word, wordIndex) => (
-        <span key={`${word}-${wordIndex}`} className="inline-block whitespace-nowrap">
-          {word.split('').map((char, charIndex) => (
-            <motion.span
-              key={`${word}-${char}-${charIndex}`}
-              className="inline-block"
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  y: 34,
-                  rotateX: -55,
-                  filter: 'blur(6px)',
-                },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  rotateX: 0,
-                  filter: 'blur(0px)',
-                  transition: {
-                    duration: 0.55,
-                    ease: [0.16, 1, 0.3, 1],
-                  },
-                },
-              }}
-            >
-              {char}
-            </motion.span>
-          ))}
-          <span className="inline-block">&nbsp;</span>
-        </span>
-      ))}
-    </motion.h2>
-  )
-}
-
-function ContactIcon({ type }) {
-  const common = 'h-6 w-6'
-
-  if (type === 'mail') {
-    return (
-      <svg viewBox="0 0 24 24" className={common} fill="none">
-        <path
-          d="M4.5 7.5h15v9a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-9Z"
-          stroke="currentColor"
-          strokeWidth="1.9"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M5.2 8.1l6.8 5.2l6.8-5.2"
-          stroke="currentColor"
-          strokeWidth="1.9"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    )
-  }
-
-  if (type === 'linkedin') {
-    return (
-      <svg viewBox="0 0 24 24" className={common} fill="none">
-        <path
-          d="M7.2 10.2v7.4"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          d="M11.3 17.6v-4.1a3.1 3.1 0 0 1 6.2 0v4.1"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
-          d="M7.2 6.9h.01"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-        <path
-          d="M5 3.8h14a1.2 1.2 0 0 1 1.2 1.2v14A1.2 1.2 0 0 1 19 20.2H5A1.2 1.2 0 0 1 3.8 19V5A1.2 1.2 0 0 1 5 3.8Z"
-          stroke="currentColor"
-          strokeWidth="1.8"
-        />
-      </svg>
-    )
+function ContactIcon({ type, className = 'h-4 w-4' }) {
+  const paths = {
+    user: (
+      <>
+        <circle cx="12" cy="8" r="3.3" />
+        <path d="M5.5 20c.5-4 2.7-6 6.5-6s6 2 6.5 6" />
+      </>
+    ),
+    mail: (
+      <>
+        <rect x="3.5" y="5.5" width="17" height="13" rx="2.3" />
+        <path d="M4.5 7l7.5 5.7L19.5 7" />
+      </>
+    ),
+    phone: <path d="M7.2 3.8l2.4 4.4l-2.1 1.9c1.4 3 3.4 5 6.4 6.4l1.9-2.1l4.4 2.4l-.8 3c-.3 1-1.2 1.7-2.3 1.7C9.1 21.2 2.8 14.9 2.5 6.9c0-1.1.7-2 1.7-2.3l3-.8Z" />,
+    location: (
+      <>
+        <path d="M12 21s6.5-4.8 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 16.2 12 21 12 21Z" />
+        <circle cx="12" cy="10.5" r="2.1" />
+      </>
+    ),
+    send: (
+      <>
+        <path d="M21 3L10 14" />
+        <path d="M21 3l-7 18l-4-7l-7-4l18-7Z" />
+      </>
+    ),
+    check: <path d="M5 12.5l4.2 4.2L19.5 6.5" />,
   }
 
   return (
-    <svg viewBox="0 0 24 24" className={common} fill="none">
-      <path
-        d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 12.4a2.4 2.4 0 1 0 0-4.8a2.4 2.4 0 0 0 0 4.8Z"
-        stroke="currentColor"
-        strokeWidth="1.9"
-      />
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {paths[type]}
     </svg>
   )
 }
 
-function ContactCard({ item, index }) {
+function ContactDetail({ item }) {
+  const content = (
+    <>
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/12 bg-white/[0.06] text-[#fe9d4a]">
+        <ContactIcon type={item.type} />
+      </span>
+      <span className="min-w-0">
+        <span className="block font-mono text-[9px] uppercase tracking-[0.15em] text-white/34">{item.label}</span>
+        <span className="mt-1 block break-words text-sm text-white/82">{item.value}</span>
+      </span>
+    </>
+  )
+
+  return item.href ? (
+    <a href={item.href} className="flex items-center gap-3 transition hover:text-white">{content}</a>
+  ) : (
+    <div className="flex items-center gap-3">{content}</div>
+  )
+}
+
+function Field({ label, children }) {
   return (
-    <motion.a
-      href={item.href}
-      target={item.href.startsWith('http') ? '_blank' : undefined}
-      rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-      initial={{ opacity: 0, y: 26, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{
-        duration: 0.6,
-        delay: 0.18 + index * 0.08,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="group relative overflow-hidden rounded-[1.45rem] border border-[#222222] bg-[#161616] p-5 transition duration-500 hover:-translate-y-1 hover:border-[#c8f135]/45 hover:bg-[#181818]"
-    >
-      <div className="absolute inset-x-0 top-0 h-1 bg-[#2a2a2a] transition duration-500 group-hover:bg-[#c8f135]" />
-      <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-[#c8f135]/6 blur-2xl transition group-hover:bg-[#c8f135]/10" />
-
-      <div className="relative flex items-start gap-4">
-        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl border border-[#2a2a2a] bg-[#111111] text-[#c8f135] transition group-hover:border-[#c8f135]/40">
-          <ContactIcon type={item.icon} />
-        </div>
-
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#9a9a9a]">
-            {item.label}
-          </p>
-          <p className="mt-2 break-words text-sm font-semibold text-[#f0f0f0]">
-            {item.value}
-          </p>
-        </div>
-      </div>
-    </motion.a>
+    <label className="block">
+      <span className="mb-2 block font-mono text-[9px] font-semibold uppercase tracking-[0.15em] text-white/42">{label}</span>
+      {children}
+    </label>
   )
 }
 
 export default function ContactSection() {
-  const sectionRef = useRef(null)
-  const prefersReducedMotion = useReducedMotion()
+  const reduceMotion = useReducedMotion()
+  const [status, setStatus] = useState('idle')
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start 95%', 'end start'],
-  })
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const form = event.currentTarget
+    setStatus('sending')
 
-  const contentY = useTransform(
-    scrollYProgress,
-    [0, 0.45, 1],
-    prefersReducedMotion ? [0, 0, 0] : [80, 0, -22]
-  )
+    const formData = new FormData(form)
+    const payload = Object.fromEntries(formData.entries())
 
-  const glowY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReducedMotion ? [0, 0] : [70, -65]
-  )
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) throw new Error('Message could not be sent')
+
+      form.reset()
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="relative -mt-px overflow-hidden bg-[#111111] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-24"
-    >
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[#111111]" />
-
-        <motion.div
-          style={{ y: glowY }}
-          className="absolute left-[8%] top-[10%] h-[28rem] w-[28rem] rounded-full bg-[#c8f135]/5 blur-2xl"
-        />
-
-        <motion.div
-          style={{ y: glowY }}
-          className="absolute right-[10%] bottom-[10%] h-[24rem] w-[24rem] rounded-full bg-[#c8f135]/4 blur-2xl"
-        />
-
-        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(200,241,53,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(200,241,53,.16)_1px,transparent_1px)] [background-size:96px_96px]" />
-
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_8%,transparent_0%,rgba(17,17,17,0.2)_38%,rgba(17,17,17,0.96)_100%)]" />
+    <section id="contact" className="relative -mt-px overflow-hidden bg-[#0d0d11] px-4 py-24 text-white sm:px-7 md:py-28 lg:px-10">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[5%] top-[5%] h-[30rem] w-[30rem] rounded-full bg-[#8f7fff]/7 blur-[160px]" />
+        <div className="absolute bottom-0 right-[4%] h-[26rem] w-[26rem] rounded-full bg-[#fe9d4a]/5 blur-[160px]" />
+        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:96px_96px]" />
       </div>
 
       <motion.div
-        style={{ y: contentY }}
-        className="relative z-10 mx-auto max-w-7xl will-change-transform"
+        initial={reduceMotion ? false : { opacity: 0, y: 34, scale: 0.985 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: reduceMotion ? 0 : 0.76, ease }}
+        className="relative mx-auto grid max-w-[1200px] overflow-hidden rounded-[1.7rem] border border-white/10 shadow-[0_36px_110px_rgba(0,0,0,.42)] md:grid-cols-2"
       >
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 16, letterSpacing: '0.12em' }}
-              whileInView={{ opacity: 1, y: 0, letterSpacing: '0.3em' }}
-              viewport={{ once: true, amount: 0.8 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-5 text-xs font-semibold uppercase text-[#c8f135] sm:text-sm"
-            >
-              Get In Touch
-            </motion.p>
-
-            <RevealText
-              text="Let’s build your next website together"
-              className="max-w-2xl text-4xl font-semibold leading-[1.05] tracking-[-0.065em] text-[#f0f0f0] sm:text-5xl lg:text-6xl"
-            />
-
-            <motion.p
-              initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.7 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 max-w-xl text-sm leading-7 text-[#d0d0d0] sm:text-base"
-            >
-              Have a project in mind, need a website redesign, or want help with
-              WordPress, Shopify, ecommerce, or frontend work? Send me a message
-              and I will get back to you.
-            </motion.p>
-
-            <div className="mt-8 grid gap-3">
-              {contactItems.map((item, index) => (
-                <ContactCard key={item.label} item={item} index={index} />
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.45 }}
-              transition={{ duration: 0.65, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 rounded-[1.45rem] border border-[#222222] bg-[#161616] p-5"
-            >
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c8f135]">
-                Available For
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {projectTypes.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[#2a2a2a] bg-[#111111]/70 px-3 py-1.5 text-[11px] font-semibold text-[#d0d0d0]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
+        <div className="relative isolate flex min-h-[610px] flex-col justify-between overflow-hidden bg-[#17131f] p-7 sm:p-9 lg:p-11">
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[#8f7fff]/35 blur-[95px]" />
+            <div className="absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-[#fe9d4a]/18 blur-[105px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(143,127,255,.14),transparent_48%,rgba(254,157,74,.06))]" />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.97, filter: 'blur(7px)' }}
-            whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="relative overflow-hidden rounded-[2rem] border border-[#222222] bg-[#161616] p-5 shadow-[0_35px_110px_rgba(0,0,0,0.42)] sm:p-6 lg:p-7"
-          >
-            <div className="absolute inset-x-0 top-0 h-1 bg-[#c8f135]" />
-            <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#c8f135]/7 blur-2xl" />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(200,241,53,0.04),transparent_42%)]" />
+          <div>
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em] text-[#fe9d4a]">Get in touch</p>
+            <h2 className="mt-5 max-w-md text-4xl font-medium leading-[1.03] tracking-[-0.052em] sm:text-5xl">
+              Let&apos;s build something worth sharing.
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/58 sm:text-[15px]">
+              Have a project, a role or simply an idea? Send me a message. I usually reply within one day.
+            </p>
+          </div>
 
-            <div className="relative mb-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c8f135]">
-                Project Form
-              </p>
-
-              <h3 className="mt-3 text-2xl font-semibold tracking-[-0.045em] text-[#f0f0f0] sm:text-3xl">
-                Leave a message
-              </h3>
-
-              <p className="mt-2 text-sm leading-6 text-[#b5b5b5]">
-                This form sends your message directly to my Gmail inbox.
-              </p>
+          <div className="mt-10">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+              {contactDetails.map((item) => <ContactDetail key={item.label} item={item} />)}
             </div>
 
-            <form
-              action={`https://formsubmit.co/${contactEmail}`}
-              method="POST"
-              className="relative grid gap-5"
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/30">Social profiles coming soon</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {socialButtons.map((name) => (
+                  <button
+                    key={name}
+                    type="button"
+                    aria-disabled="true"
+                    title={`${name} link coming soon`}
+                    className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/58"
+                  >
+                    {name}<span aria-hidden="true">↗</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="min-h-[610px] bg-[#15151b] p-7 sm:p-9 lg:p-11">
+          {status === 'success' ? (
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.55, ease }}
+              className="flex h-full min-h-[430px] flex-col items-center justify-center text-center"
             >
-              <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
+              <span className="grid h-14 w-14 place-items-center rounded-full border border-[#8f7fff]/35 bg-[#8f7fff]/12 text-[#a99dff]">
+                <ContactIcon type="check" className="h-6 w-6" />
+              </span>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">Message sent</h3>
+              <p className="mt-2 max-w-xs text-sm leading-6 text-white/48">Thanks for reaching out. I&apos;ll get back to you as soon as I can.</p>
+              <button type="button" onClick={() => setStatus('idle')} className="mt-6 text-sm font-medium text-[#a99dff] underline decoration-[#8f7fff]/55 underline-offset-4">
+                Send another message
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[#8f7fff]">Project form</p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-[-0.04em]">Tell me what you have in mind.</h3>
+              </div>
+
+              <input type="hidden" name="_subject" value="New message from Muhammad Adil Portfolio" />
               <input type="hidden" name="_template" value="table" />
               <input type="hidden" name="_captcha" value="false" />
+              <input type="text" name="_honey" className="hidden" tabIndex="-1" autoComplete="off" />
 
-              <div className="grid gap-5 md:grid-cols-2">
-                <label className="grid gap-2">
-                  <span className="text-sm font-semibold text-[#f0f0f0]">
-                    Full Name
-                  </span>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Your name"
-                    className="h-14 rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 text-sm text-[#f0f0f0] outline-none transition placeholder:text-[#9a9a9a] focus:border-[#c8f135]/70"
-                  />
-                </label>
-
-                <label className="grid gap-2">
-                  <span className="text-sm font-semibold text-[#f0f0f0]">
-                    Email Address
-                  </span>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="your@email.com"
-                    className="h-14 rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 text-sm text-[#f0f0f0] outline-none transition placeholder:text-[#9a9a9a] focus:border-[#c8f135]/70"
-                  />
-                </label>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <Field label="Name">
+                  <input required type="text" name="name" autoComplete="name" placeholder="Your name" className="contact-split-input" />
+                </Field>
+                <Field label="Email">
+                  <input required type="email" name="email" autoComplete="email" placeholder="you@company.com" className="contact-split-input" />
+                </Field>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2">
-                <label className="grid gap-2">
-                  <span className="text-sm font-semibold text-[#f0f0f0]">
-                    Phone Number
-                  </span>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="+1 000 000 0000"
-                    className="h-14 rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 text-sm text-[#f0f0f0] outline-none transition placeholder:text-[#9a9a9a] focus:border-[#c8f135]/70"
-                  />
-                </label>
+              <Field label="Subject">
+                <input required type="text" name="subject" placeholder="Project inquiry" className="contact-split-input" />
+              </Field>
 
-                <label className="grid gap-2">
-                  <span className="text-sm font-semibold text-[#f0f0f0]">
-                    Project Type
-                  </span>
-                  <select
-                    name="project_type"
-                    defaultValue=""
-                    className="h-14 rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 text-sm text-[#d0d0d0] outline-none transition focus:border-[#c8f135]/70"
-                  >
-                    <option value="" disabled>
-                      Select project type
-                    </option>
-                    {projectTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
+              <Field label="Message">
+                <textarea required name="message" rows="6" placeholder="Tell me a little about your project..." className="contact-split-input min-h-[150px] resize-y" />
+              </Field>
 
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-[#f0f0f0]">
-                  Subject
-                </span>
-                <input
-                  type="text"
-                  name="subject"
-                  required
-                  placeholder="Project subject"
-                  className="h-14 rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 text-sm text-[#f0f0f0] outline-none transition placeholder:text-[#9a9a9a] focus:border-[#c8f135]/70"
-                />
-              </label>
-
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-[#f0f0f0]">
-                  Message
-                </span>
-                <textarea
-                  name="message"
-                  required
-                  rows="6"
-                  placeholder="Tell me about your website or project..."
-                  className="min-h-[160px] resize-y rounded-2xl border border-[#2a2a2a] bg-[#111111] px-4 py-4 text-sm leading-6 text-[#f0f0f0] outline-none transition placeholder:text-[#9a9a9a] focus:border-[#c8f135]/70"
-                />
-              </label>
+              {status === 'error' && (
+                <p role="alert" className="rounded-lg border border-red-400/25 bg-red-400/8 px-4 py-3 text-sm text-red-200">
+                  The message could not be sent. Please try again or email me directly.
+                </p>
+              )}
 
               <button
                 type="submit"
-                className="inline-flex w-fit items-center gap-3 rounded-full bg-[#c8f135] px-7 py-3.5 text-sm font-bold text-black shadow-[0_18px_50px_rgba(200,241,53,0.14)] transition duration-300 hover:scale-[1.04] hover:bg-[#d8ff4d]"
+                disabled={status === 'sending'}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#8f7fff] px-5 py-3.5 text-sm font-semibold text-[#0d0d11] transition duration-300 hover:-translate-y-0.5 hover:bg-[#a99dff] disabled:cursor-wait disabled:opacity-65"
               >
-                Send Message
-                <span>↗</span>
+                <ContactIcon type="send" />
+                {status === 'sending' ? 'Sending...' : 'Send message'}
               </button>
+
+              <p className="text-center text-[11px] leading-5 text-white/28">Your details are only used to reply to your message.</p>
             </form>
-          </motion.div>
+          )}
         </div>
       </motion.div>
     </section>
