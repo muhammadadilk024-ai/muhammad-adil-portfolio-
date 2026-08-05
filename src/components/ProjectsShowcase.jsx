@@ -8,13 +8,13 @@ const projects = [
     slug: 'sb-traworld',
     url: 'https://sb-traworld.com/',
     domain: 'sb-traworld.com',
-    type: 'Travel & Pilgrimage Platform',
+    type: 'Travel and Pilgrimage Platform',
     platform: 'WordPress',
     image: '/images/projects/spotlight/sb-traworld.webp',
     accent: '#8b7cff',
     glow: 'rgba(139, 124, 255, 0.15)',
     description:
-      'A bilingual travel and pilgrimage platform bringing destinations, Hajj and Umrah packages, verified updates and enquiry journeys into one clear booking experience.',
+      'A bilingual travel and pilgrimage platform that brings destinations, Hajj and Umrah packages, travel updates and enquiries together in one clear booking experience.',
     services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Custom functionality', 'Bilingual experience', 'Deployment'],
   },
   {
@@ -23,14 +23,14 @@ const projects = [
     slug: 'fusionfora',
     url: 'https://fusionfora.com/',
     domain: 'fusionfora.com',
-    type: 'AI Strategy & Consulting',
+    type: 'AI Strategy and Consulting',
     platform: 'WordPress',
     image: '/images/projects/spotlight/fusionfora.webp',
     accent: '#5a9cff',
     glow: 'rgba(90, 156, 255, 0.14)',
     description:
-      'An AI strategy and leadership consulting website that turns complex advisory services into a clear, credible and conversion-focused experience.',
-    services: ['Logo & brand', 'UI/UX design', 'WordPress build', 'Service architecture', 'Lead generation', 'Deployment'],
+      'A polished consulting website that helps leaders understand AI strategy, explore advisory services and take the next step with confidence.',
+    services: ['Logo and brand', 'UI/UX design', 'WordPress build', 'Service architecture', 'Lead generation', 'Deployment'],
   },
   {
     id: '03',
@@ -38,14 +38,14 @@ const projects = [
     slug: 'paan-express',
     url: 'https://paanexpress.com/',
     domain: 'paanexpress.com',
-    type: 'Restaurant & Local Commerce',
+    type: 'Restaurant and Local Commerce',
     platform: 'WordPress',
     image: '/images/projects/spotlight/paan-express.webp',
     accent: '#f39a45',
     glow: 'rgba(243, 154, 69, 0.14)',
     description:
-      'A restaurant website built around appetite-led visuals, a structured digital menu, local discovery and direct ordering paths for Brampton customers.',
-    services: ['Logo & brand', 'UI/UX design', 'WordPress build', 'Digital menu', 'Local SEO structure', 'Deployment'],
+      'A bold restaurant website that presents the menu clearly, builds local trust and guides Brampton customers towards visiting or ordering.',
+    services: ['Logo and brand', 'UI/UX design', 'WordPress build', 'Digital menu', 'Local SEO structure', 'Deployment'],
   },
   {
     id: '04',
@@ -53,13 +53,13 @@ const projects = [
     slug: 'lavish-bath',
     url: 'https://lavishbathcalgary.ca/',
     domain: 'lavishbathcalgary.ca',
-    type: 'Bath & Kitchen Ecommerce',
+    type: 'Bath and Kitchen Ecommerce',
     platform: 'WordPress · WooCommerce',
     image: '/images/projects/spotlight/lavish-bath.webp',
     accent: '#b7a887',
     glow: 'rgba(183, 168, 135, 0.14)',
     description:
-      'A complete bath and kitchen ecommerce experience with product categories, detailed catalog content, discovery sections and a responsive shopping flow.',
+      'A complete bath and kitchen store with organized product categories, detailed product content and a smooth WooCommerce shopping experience.',
     services: ['UI/UX redesign', 'WordPress build', 'WooCommerce', 'Catalog architecture', 'Product content', 'Deployment'],
   },
   {
@@ -69,13 +69,13 @@ const projects = [
     url: 'https://mindcob.com/',
     domain: 'mindcob.com',
     type: 'Digital Agency Platform',
-    platform: 'Custom Full-Stack',
+    platform: 'Custom Full Stack',
     image: '/images/projects/spotlight/mindcob.webp',
     accent: '#55c8f1',
     glow: 'rgba(85, 200, 241, 0.13)',
     description:
-      'A custom business platform positioning a full-service digital agency through clear service architecture, location pages, case studies and lead-generation journeys.',
-    services: ['UI/UX design', 'Custom front end', 'Back-end & CMS', 'Service architecture', 'Lead generation', 'Deployment'],
+      'A custom digital agency website that explains complex services clearly, supports location focused content and turns visitors into qualified leads.',
+    services: ['UI/UX design', 'Frontend development', 'Backend and CMS', 'Service architecture', 'Lead generation', 'Deployment'],
   },
   {
     id: '06',
@@ -83,13 +83,13 @@ const projects = [
     slug: 'fam-humanity',
     url: 'https://famhumanity.com/',
     domain: 'famhumanity.com',
-    type: 'Nonprofit & Donations',
+    type: 'Nonprofit and Donations',
     platform: 'WordPress',
     image: '/images/projects/spotlight/fam-humanity.webp',
     accent: '#9db49c',
     glow: 'rgba(157, 180, 156, 0.14)',
     description:
-      'A compassionate charity website helping families discover healthcare support, understand the foundation’s mission and contribute through a focused donation journey.',
+      'A compassionate charity website that explains the foundation’s mission, presents its healthcare programs and makes it simple for supporters to donate.',
     services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Donation flow', 'Content structure', 'Deployment'],
   },
   {
@@ -99,13 +99,13 @@ const projects = [
     url: 'https://propexa.ca/',
     domain: 'propexa.ca',
     type: 'Real Estate Marketplace',
-    platform: 'Custom Full-Stack',
+    platform: 'Custom Full Stack',
     image: '/images/projects/spotlight/propexa.webp',
     accent: '#6fa3ff',
     glow: 'rgba(111, 163, 255, 0.13)',
     description:
-      'A custom real-estate listing platform with property search, category filters, agent and landlord areas, listing details and account-ready workflows.',
-    services: ['Brand & UI design', 'Custom full stack', 'Listings system', 'Search & filters', 'User roles', 'Deployment'],
+      'A custom property platform with listing search, category filters, agent and landlord areas, property details and user account features.',
+    services: ['Brand and UI design', 'Custom full stack', 'Listings system', 'Search and filters', 'User roles', 'Deployment'],
   },
   {
     id: '08',
@@ -114,13 +114,13 @@ const projects = [
     url: 'https://hellomoni.de/',
     domain: 'hellomoni.de',
     type: 'Custom Ecommerce Storefront',
-    platform: 'Custom Full-Stack',
+    platform: 'Custom Full Stack',
     image: '/images/projects/spotlight/hellomoni.webp',
     accent: '#db8f9b',
     glow: 'rgba(219, 143, 155, 0.14)',
     description:
-      'A custom ecommerce storefront created around product discovery, category browsing and a clean shopping journey with a tailored visual identity and responsive catalog.',
-    services: ['Logo & brand', 'UI/UX design', 'Custom front end', 'Back-end development', 'Product catalog', 'Deployment'],
+      'A custom ecommerce storefront with clear product discovery, category browsing and a responsive shopping experience shaped around the brand.',
+    services: ['Logo and brand', 'UI/UX design', 'Frontend development', 'Backend development', 'Product catalog', 'Deployment'],
   },
 ]
 
@@ -202,13 +202,13 @@ function ProjectsShowcase() {
         >
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: active.accent }}>
-              Selected work · 01—08
+              Selected Projects · Eight Complete Builds
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
-              Built from <span className="font-serif italic text-white/62">logo</span> to launch.
+              Digital products built to solve <span className="font-serif italic text-white/62">real problems.</span>
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/50 sm:text-[15px]">
-              Eight complete digital products — designed, developed and delivered end to end by one creator.
+              Every project here was created entirely by me, from the first idea and visual identity to the frontend, backend and final launch.
             </p>
           </div>
 
@@ -327,7 +327,7 @@ function ProjectsShowcase() {
               <div className="mt-7 border-y border-white/10 py-5">
                 <p className="font-mono text-[8px] font-semibold uppercase tracking-[0.2em] text-white/28">My role · 100% ownership</p>
                 <p className="mt-2 text-sm font-medium leading-6 text-white/82">
-                  Strategy, logo and branding, UI/UX, front end, back end and deployment.
+                  Strategy, logo and branding, UI/UX, frontend, backend and deployment.
                 </p>
               </div>
 
