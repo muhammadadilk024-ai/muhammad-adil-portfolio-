@@ -9,29 +9,23 @@ const journey = [
     period: '2021 — 2022',
     label: 'Learning by building',
     title: 'The starting point',
-    description: 'Built my first WordPress sites and learned responsive design through real practice.',
+    description: 'Started with WordPress and front end fundamentals, then kept expanding into custom development.',
     accent: '#8f7fff',
   },
   {
     period: '2023 — Present',
     label: 'Independent client work',
     title: 'From practice to real projects',
-    description: 'Building websites, online stores and custom features for businesses in different industries.',
-    accent: '#fe9d4a',
+    description: 'Built websites, ecommerce stores and custom systems for businesses across different industries.',
+    accent: '#8f7fff',
   },
   {
     period: '2024 — Present',
     label: 'Tech Joint Solution',
-    title: 'Project based web developer',
-    description: 'Delivering client websites, custom sections, technical fixes and successful launches.',
+    title: 'Full stack developer',
+    description: 'Delivering complete digital projects from interface design and development to integrations and launch.',
     accent: '#8f7fff',
   },
-]
-
-const quickFacts = [
-  ['Based in', 'Windsor, Ontario'],
-  ['Main focus', 'Websites, stores and web apps'],
-  ['Working style', 'Clear, practical and reliable'],
 ]
 
 function TimelineItem({ item, index, reduceMotion }) {
@@ -45,7 +39,7 @@ function TimelineItem({ item, index, reduceMotion }) {
     >
       <span
         aria-hidden="true"
-        className="absolute -left-[5px] top-1.5 h-[11px] w-[11px] rounded-full border-2 border-[#151319] transition duration-300 group-hover:scale-125"
+        className="absolute -left-[5px] top-1.5 h-[11px] w-[11px] rounded-full border-2 border-[#121217] transition duration-300 group-hover:scale-125"
         style={{ backgroundColor: item.accent, boxShadow: `0 0 18px ${item.accent}88` }}
       />
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -66,13 +60,13 @@ export default function AboutJourney() {
   return (
     <section
       id="about"
-      className="relative -mt-px overflow-hidden bg-[#151319] px-4 py-24 text-white sm:px-7 md:py-28 lg:px-10"
+      className="relative -mt-px overflow-hidden bg-[#121217] px-4 py-24 text-white sm:px-7 md:py-28 lg:px-10"
     >
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-52 top-8 h-[34rem] w-[34rem] rounded-full bg-[#8f7fff]/8 blur-[150px]" />
-        <div className="absolute -right-52 bottom-0 h-[32rem] w-[32rem] rounded-full bg-[#fe9d4a]/7 blur-[150px]" />
-        <div className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_76%_65%_at_50%_42%,black,transparent)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,19,25,.15),rgba(21,19,25,.72))]" />
+        <div className="absolute left-[20%] top-0 h-[30rem] w-[30rem] rounded-full bg-[#8f7fff]/6 blur-[170px]" />
+        <div className="absolute -right-52 bottom-0 h-[28rem] w-[28rem] rounded-full bg-[#8f7fff]/5 blur-[170px]" />
+        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.1)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_76%_65%_at_50%_42%,black,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,18,23,.06),rgba(18,18,23,.62))]" />
       </div>
 
       <div className="relative mx-auto max-w-[1400px]">
@@ -81,19 +75,16 @@ export default function AboutJourney() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: reduceMotion ? 0 : 0.68, ease }}
-          className="flex flex-col justify-between gap-6 border-b border-white/10 pb-7 sm:flex-row sm:items-end"
+          className="border-b border-white/10 pb-7"
         >
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.27em] text-[#8f7fff]">
               About and Experience
             </p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.052em] sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 max-w-4xl text-4xl font-medium leading-[1.03] tracking-[-0.05em] sm:text-5xl">
               A short story, backed by real work.
             </h2>
           </div>
-          <span className="hidden pb-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/28 sm:block">
-            01 — Profile
-          </span>
         </motion.div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-12">
@@ -104,26 +95,14 @@ export default function AboutJourney() {
             transition={{ duration: reduceMotion ? 0 : 0.76, ease }}
             className="lg:col-span-4"
           >
-            <div className="group relative mx-auto max-w-[440px] overflow-hidden rounded-[1.4rem] border border-white/10 bg-[#0f0e12] p-2 shadow-[0_30px_90px_rgba(0,0,0,.34)] lg:mx-0">
-              <div className="relative overflow-hidden rounded-[1rem]">
-                <img
-                  src={profileImage}
-                  alt="Muhammad Adil"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-[470px] w-full object-cover object-[50%_35%] grayscale-[5%] transition duration-700 group-hover:scale-[1.025] group-hover:grayscale-0 sm:h-[560px] lg:h-[520px] xl:h-[560px]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e12]/90 via-transparent to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
-                  <div>
-                    <p className="text-xl font-semibold tracking-[-0.035em]">Muhammad Adil</p>
-                    <p className="mt-1 text-xs text-white/48">Full Stack Web Developer</p>
-                  </div>
-                  <span className="rounded-full border border-[#8f7fff]/35 bg-[#8f7fff]/12 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-[#b7adff] backdrop-blur-md">
-                    Windsor, ON
-                  </span>
-                </div>
-              </div>
+            <div className="group relative mx-auto max-w-[440px] overflow-hidden rounded-2xl border border-white/10 bg-[#0d0d11] shadow-[0_26px_80px_rgba(0,0,0,.3)] lg:mx-0">
+              <img
+                src={profileImage}
+                alt="Muhammad Adil"
+                loading="lazy"
+                decoding="async"
+                className="h-[470px] w-full object-cover object-[50%_35%] transition duration-700 group-hover:scale-[1.02] sm:h-[560px] lg:h-[520px] xl:h-[560px]"
+              />
             </div>
           </motion.div>
 
@@ -135,7 +114,7 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.08, ease }}
               className="text-lg leading-8 tracking-[-0.02em] text-white/78"
             >
-              I&apos;m Muhammad Adil, a self taught developer who learned by building and kept growing through real client work.
+              I&apos;m Muhammad Adil, a full stack developer working across websites, web apps, mobile apps and practical AI integrations.
             </motion.p>
 
             <motion.p
@@ -145,37 +124,21 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.16, ease }}
               className="mt-5 text-sm leading-7 text-white/50 sm:text-[15px]"
             >
-              I work across design, development and launch, but the goal stays simple: make something useful, clear and dependable for the client.
+              I enjoy taking an idea from the first design to a working product, with clear communication and careful execution from start to launch.
             </motion.p>
-
-            <motion.dl
-              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.55 }}
-              transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.22, ease }}
-              className="mt-7 divide-y divide-white/8 border-y border-white/8"
-            >
-              {quickFacts.map(([label, value], index) => (
-                <div key={label} className="flex items-center justify-between gap-5 py-4">
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/28">{label}</dt>
-                  <dd className="max-w-[66%] text-right text-sm text-white/68">{value}</dd>
-                  <span className="sr-only">{index + 1}</span>
-                </div>
-              ))}
-            </motion.dl>
 
             <motion.div
               id="resume"
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.7 }}
-              transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.28, ease }}
+              transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.22, ease }}
               className="scroll-mt-28"
             >
               <a
                 href={resumeFile}
                 download="Muhammad-Adil-Resume.pdf"
-                className="group mt-7 inline-flex items-center gap-3 rounded-md border border-[#8f7fff]/45 bg-[#8f7fff]/12 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white transition duration-300 hover:border-[#8f7fff] hover:bg-[#8f7fff]/22"
+                className="group mt-8 inline-flex items-center gap-3 border-b border-[#8f7fff] pb-1.5 text-sm font-medium text-[#a99dff] transition hover:text-[#c2baff]"
               >
                 Download resume
                 <span className="text-[#8f7fff] transition-transform group-hover:translate-y-0.5" aria-hidden="true">↓</span>
@@ -191,7 +154,7 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.58, delay: reduceMotion ? 0 : 0.08, ease }}
               className="mb-6 flex items-center justify-between gap-4"
             >
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#fe9d4a]">My journey</p>
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8f7fff]">My journey</p>
               <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/26">2021 — Today</span>
             </motion.div>
 
