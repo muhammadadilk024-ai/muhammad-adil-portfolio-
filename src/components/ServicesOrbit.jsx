@@ -17,6 +17,7 @@ const services = [
       'Responsive business websites and web platforms built around your goals, using custom code or WordPress with clean functionality and room to grow.',
     deliverables: ['Custom websites', 'WordPress development', 'Frontend and backend'],
     icon: 'web',
+    image: '/services/web-development-20260806.webp',
     accent: '#8b7cff',
     glow: 'rgba(139, 124, 255, 0.22)',
   },
@@ -29,6 +30,7 @@ const services = [
       'Complete ecommerce websites with organized products, secure payments, customer accounts, shipping rules and a smooth shopping experience on every device.',
     deliverables: ['WooCommerce', 'Payment gateways', 'Product systems'],
     icon: 'commerce',
+    image: '/services/ecommerce-development-20260806.webp',
     accent: '#ff9568',
     glow: 'rgba(255, 149, 104, 0.2)',
   },
@@ -41,6 +43,7 @@ const services = [
       'Shopify stores with custom theme sections, product setup, conversion focused pages, useful apps, payment configuration and complete launch support.',
     deliverables: ['Store setup', 'Theme customization', 'Shopify apps'],
     icon: 'shopify',
+    image: '/services/shopify-development-20260806.webp',
     accent: '#9bc45a',
     glow: 'rgba(155, 196, 90, 0.18)',
   },
@@ -53,6 +56,7 @@ const services = [
       'AI features connected to your website or product, including assistants, smart search, content workflows, business automation and external AI services.',
     deliverables: ['AI assistants', 'API integration', 'Workflow automation'],
     icon: 'ai',
+    image: '/services/ai-integration-20260806.webp',
     accent: '#66a8ff',
     glow: 'rgba(102, 168, 255, 0.2)',
   },
@@ -65,6 +69,7 @@ const services = [
       'User journeys, wireframes, responsive interfaces and design systems that make websites, apps and digital products easier to understand and use.',
     deliverables: ['User flows', 'Wireframes', 'Interactive prototypes'],
     icon: 'design',
+    image: '/services/ui-ux-design-20260806.webp',
     accent: '#d98cff',
     glow: 'rgba(217, 140, 255, 0.2)',
   },
@@ -77,6 +82,7 @@ const services = [
       'Mobile applications connected to reliable APIs, designed for smooth everyday use and developed to feel consistent across phones and tablets.',
     deliverables: ['React Native', 'iOS and Android', 'API connectivity'],
     icon: 'mobile',
+    image: '/services/mobile-apps-20260806.webp',
     accent: '#f1bd6a',
     glow: 'rgba(241, 189, 106, 0.19)',
   },
@@ -128,90 +134,25 @@ function ServiceIcon({ type }) {
   return icons[type]
 }
 
-function ServiceBackdrop({ type, accent }) {
-  const art = {
-    web: (
-      <g>
-        <rect x="72" y="72" width="462" height="286" rx="24" />
-        <path d="M72 124h462M108 98h2M136 98h2M164 98h2" />
-        <rect x="110" y="160" width="150" height="150" rx="14" />
-        <path d="M296 174h184M296 208h136M296 242h164M296 276h104" />
-        <path d="M150 206l-22 22l22 22M218 206l22 22l-22 22M197 188l-27 80" />
-      </g>
-    ),
-    commerce: (
-      <g>
-        <rect x="82" y="88" width="438" height="268" rx="24" />
-        <rect x="116" y="130" width="104" height="132" rx="14" />
-        <rect x="240" y="130" width="104" height="132" rx="14" />
-        <rect x="364" y="130" width="104" height="132" rx="14" />
-        <path d="M138 286h58M262 286h58M386 286h58" />
-        <circle cx="461" cy="103" r="50" />
-        <path d="M433 92h10l8 29h29l8-21h-39M456 131h1M479 131h1" />
-      </g>
-    ),
-    shopify: (
-      <g>
-        <path d="M96 154h414l-30-70H126l-30 70Z" />
-        <path d="M108 154v202h390V154M108 194h390" />
-        <path d="M144 154c0 22 18 40 40 40s40-18 40-40M224 154c0 22 18 40 40 40s40-18 40-40M304 154c0 22 18 40 40 40s40-18 40-40M384 154c0 22 18 40 40 40s40-18 40-40" />
-        <rect x="156" y="230" width="118" height="82" rx="12" />
-        <rect x="320" y="224" width="128" height="132" rx="12" />
-        <path d="M353 258h62M353 286h62" />
-      </g>
-    ),
-    ai: (
-      <g>
-        <circle cx="304" cy="220" r="76" />
-        <circle cx="304" cy="220" r="24" />
-        <circle cx="128" cy="112" r="18" />
-        <circle cx="486" cy="104" r="18" />
-        <circle cx="506" cy="322" r="18" />
-        <circle cx="118" cy="332" r="18" />
-        <circle cx="204" cy="74" r="12" />
-        <circle cx="402" cy="364" r="12" />
-        <path d="M146 122l98 60M468 116l-104 68M489 309l-125-52M136 321l112-66M212 85l58 72M394 352l-60-58" />
-        <path d="M304 166l14 38l40 14l-40 14l-14 38l-14-38l-40-14l40-14l14-38Z" />
-      </g>
-    ),
-    design: (
-      <g>
-        <rect x="76" y="70" width="456" height="292" rx="24" />
-        <path d="M76 122h456M132 96h2M160 96h2M188 96h2" />
-        <rect x="112" y="156" width="170" height="166" rx="14" />
-        <rect x="310" y="156" width="184" height="62" rx="14" />
-        <rect x="310" y="242" width="86" height="80" rx="14" />
-        <rect x="408" y="242" width="86" height="80" rx="14" />
-        <path d="M132 286c44-94 91-91 130-18M330 186h118" />
-        <circle cx="132" cy="286" r="7" fill={accent} stroke="none" />
-        <circle cx="262" cy="268" r="7" fill={accent} stroke="none" />
-      </g>
-    ),
-    mobile: (
-      <g>
-        <rect x="90" y="94" width="144" height="278" rx="30" />
-        <rect x="228" y="48" width="166" height="326" rx="34" />
-        <rect x="386" y="104" width="128" height="254" rx="28" />
-        <path d="M140 126h44M287 83h48M426 135h48M142 330h40M290 332h42M430 320h40" />
-        <rect x="116" y="158" width="92" height="112" rx="14" />
-        <rect x="254" y="118" width="114" height="78" rx="14" />
-        <path d="M256 226h110M256 254h82M256 282h98M410 176h80M410 204h58M410 232h72" />
-      </g>
-    ),
-  }
-
+function ServiceBackdrop({ image, accent }) {
   return (
-    <svg viewBox="0 0 600 440" className="h-full w-full" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id={`service-art-${type}`} x1="80" y1="40" x2="520" y2="400" gradientUnits="userSpaceOnUse">
-          <stop stopColor={accent} stopOpacity="0.74" />
-          <stop offset="1" stopColor={accent} stopOpacity="0.14" />
-        </linearGradient>
-      </defs>
-      <g stroke={`url(#service-art-${type})`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        {art[type]}
-      </g>
-    </svg>
+    <div className="relative h-full w-full overflow-hidden" aria-hidden="true">
+      <img
+        src={image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d11]/95 via-[#0d0d11]/72 to-[#0d0d11]/22" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d11] via-[#0d0d11]/16 to-black/15" />
+      <div
+        className="absolute inset-0 mix-blend-soft-light"
+        style={{
+          background: `radial-gradient(120% 90% at 18% 100%, ${accent}55 0%, transparent 62%)`,
+        }}
+      />
+    </div>
   )
 }
 
@@ -220,16 +161,21 @@ function ServicePanel({ service, index, active, onSelect, reduceMotion }) {
 
   return (
     <motion.article
-      layout={!reduceMotion}
+      layout={reduceMotion ? false : 'size'}
       onMouseEnter={() => onSelect(index)}
       initial={reduceMotion ? false : { opacity: 0, y: 44, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.72, delay: reduceMotion ? 0 : index * 0.07, ease }}
-      className={`group relative w-full cursor-pointer overflow-hidden rounded-[1.35rem] border outline-none transition-[flex,min-height,border-color,box-shadow] md:h-[470px] md:min-h-0 md:w-auto ${
+      transition={{
+        duration: 0.72,
+        delay: reduceMotion ? 0 : index * 0.07,
+        ease,
+        layout: { duration: reduceMotion ? 0 : 0.42, ease },
+      }}
+      className={`group relative w-full cursor-pointer overflow-hidden rounded-[1.35rem] border outline-none transition-[flex,border-color,box-shadow] md:h-[470px] md:min-h-0 md:w-auto ${
         active
           ? 'min-h-[410px] md:flex-[5.5]'
-          : 'min-h-[84px] md:flex-[0.82]'
+          : 'h-[82px] min-h-[82px] md:flex-[0.82]'
       }`}
       style={{
         borderColor: active ? `${service.accent}66` : 'rgba(255,255,255,0.1)',
@@ -258,22 +204,17 @@ function ServicePanel({ service, index, active, onSelect, reduceMotion }) {
         style={{ background: `linear-gradient(90deg, transparent, ${service.accent}, transparent)` }}
       />
 
-      <AnimatePresence initial={false}>
-        {active && (
-          <motion.div
-            key={`${service.number}-art`}
-            initial={reduceMotion ? false : { opacity: 0, x: 70, scale: 0.9, rotate: 2 }}
-            animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, x: 45, scale: 0.94 }}
-            transition={{ duration: reduceMotion ? 0 : 0.8, delay: reduceMotion ? 0 : 0.16, ease }}
-            className="pointer-events-none absolute -bottom-[5%] -right-[8%] h-[88%] w-[78%] opacity-30 [mask-image:linear-gradient(to_right,transparent_0%,black_34%,black_100%)] sm:opacity-40 md:h-[96%] md:w-[68%] md:opacity-50"
-          >
-            <ServiceBackdrop type={service.icon} accent={service.accent} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        aria-hidden="true"
+        initial={false}
+        animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 1.06 }}
+        transition={{ duration: reduceMotion ? 0 : 0.62, ease }}
+        className="pointer-events-none absolute inset-0 will-change-[opacity,transform]"
+      >
+        <ServiceBackdrop image={service.image} accent={service.accent} />
+      </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0d0d11]/90 via-[#0d0d11]/48 to-transparent opacity-80" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0d0d11]/30 via-transparent to-transparent" />
 
       <div className="relative flex h-full flex-col md:flex-row">
         <button
@@ -328,10 +269,10 @@ function ServicePanel({ service, index, active, onSelect, reduceMotion }) {
           {active && (
             <motion.div
               key={service.number}
-              initial={reduceMotion ? false : { opacity: 0, x: 24, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, x: -18, filter: 'blur(6px)' }}
-              transition={{ duration: reduceMotion ? 0 : 0.48, delay: reduceMotion ? 0 : 0.12, ease }}
+              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: reduceMotion ? 0 : 0.38, delay: reduceMotion ? 0 : 0.05, ease }}
               className="flex min-w-0 flex-1 flex-col justify-between p-6 sm:p-7 md:p-8 lg:p-9"
             >
               <div>
