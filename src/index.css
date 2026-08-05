@@ -82,6 +82,11 @@ canvas {
   max-width: 100%;
 }
 
+.site-signature {
+  font-family: Georgia, "Times New Roman", ui-serif, serif;
+  text-shadow: 0 8px 28px rgba(129, 116, 214, 0.13);
+}
+
 .terminal-hero {
   isolation: isolate;
 }
@@ -104,14 +109,18 @@ canvas {
 .terminal-gradient-text {
   color: transparent;
   background: linear-gradient(100deg, #ef9a86 0%, #e9a064 38%, #a08de2 72%, #8174d6 100%);
-  background-size: 180% 100%;
+  background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
-  animation: terminal-gradient-flow 9s ease-in-out infinite alternate;
+  animation: terminal-text-shimmer 8s linear infinite;
 }
 
 .terminal-window {
   transform-style: preserve-3d;
+}
+
+.terminal-float-shell {
+  animation: terminal-box-float 8s ease-in-out infinite;
 }
 
 .terminal-sheen {
@@ -149,9 +158,16 @@ canvas {
   100% { transform: scale(1.055) translate3d(0.35%, -0.25%, 0); filter: saturate(1.08); }
 }
 
-@keyframes terminal-gradient-flow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+@keyframes terminal-text-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes terminal-box-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(6px, -7px, 0); }
+  50% { transform: translate3d(-3px, -11px, 0); }
+  75% { transform: translate3d(-6px, -3px, 0); }
 }
 
 @keyframes terminal-sheen {

@@ -3,7 +3,7 @@ import {
   useReducedMotion,
 } from 'framer-motion'
 
-const stack = ['WordPress', 'WooCommerce', 'React', 'PHP', 'JavaScript']
+const stack = ['Custom websites', 'Web apps', 'WordPress', 'Ecommerce', 'React + PHP']
 const ease = [0.16, 1, 0.3, 1]
 
 function ArrowIcon() {
@@ -65,7 +65,7 @@ function Hero() {
             className="mb-7 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9b8cff]"
           >
             <span className="text-[#ff9a58]">{'//'}</span>
-            WordPress + front-end developer
+            Full-stack web developer
           </motion.div>
 
           <h1 className="max-w-[680px] text-[clamp(2.75rem,4.5vw,4.25rem)] font-light leading-[1.04] tracking-[-0.045em]">
@@ -107,8 +107,8 @@ function Hero() {
             transition={{ delay: 0.52, duration: 0.68, ease }}
             className="mt-6 max-w-[520px] text-sm leading-7 text-white/58 sm:text-[15px]"
           >
-            I design and build clear, fast WordPress, ecommerce and front-end
-            experiences — from the first idea to the final pixel.
+            I build custom websites, web apps, WordPress and ecommerce experiences
+            — from backend logic to the final pixel.
           </motion.p>
 
           <motion.div
@@ -155,7 +155,7 @@ function Hero() {
           transition={{ delay: 0.28, duration: 1, ease }}
           className="relative mx-auto w-full max-w-[640px]"
         >
-          <div className="terminal-window relative overflow-hidden rounded-xl border border-white/14 bg-[#121217]/[0.94] shadow-[0_32px_85px_rgba(0,0,0,.58)]">
+          <div className="terminal-window terminal-float-shell relative overflow-hidden rounded-xl border border-white/14 bg-[#121217]/[0.94] shadow-[0_32px_85px_rgba(0,0,0,.58)]">
             <div className="terminal-sheen pointer-events-none absolute inset-0 z-10" />
 
             <div className="flex h-12 items-center border-b border-white/10 bg-white/[0.025] px-4">
@@ -182,10 +182,10 @@ function Hero() {
               </TerminalLine>
               <TerminalLine delay={1.2}>
                 <pre className="overflow-x-auto font-medium text-white/88">{`{
-  "web":       ["WordPress", "React"],
-  "commerce":  ["WooCommerce", "UX"],
-  "backend":   ["PHP", "MySQL"],
-  "focus":     ["Speed", "Conversion"]
+  "frontend":  ["React", "JavaScript"],
+  "backend":   ["PHP", "Node", "MySQL"],
+  "platforms": ["WordPress", "WooCommerce"],
+  "builds":    ["Websites", "Web Apps"]
 }`}</pre>
               </TerminalLine>
               <TerminalLine delay={1.52} className="pt-1 text-white/58">
