@@ -196,6 +196,41 @@ canvas {
   to { transform: scaleX(1); }
 }
 
+.skills-ribbon-window {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.skills-ribbon-track {
+  animation: skills-ribbon-marquee var(--ribbon-duration, 30s) linear infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.skills-ribbon-track.skills-ribbon-reverse {
+  animation-direction: reverse;
+}
+
+.skills-ribbon-window:hover .skills-ribbon-track,
+.skills-ribbon-window:focus-within .skills-ribbon-track {
+  animation-play-state: paused;
+}
+
+.skills-ribbon-chip {
+  transition: border-color 240ms ease, background-color 240ms ease, transform 240ms ease;
+}
+
+.skills-ribbon-chip:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--chip-accent) 54%, transparent);
+  background-color: color-mix(in srgb, var(--chip-accent) 10%, #17171d);
+}
+
+@keyframes skills-ribbon-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
 .skip-link {
   position: fixed;
   left: 1rem;
@@ -238,5 +273,10 @@ canvas {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .skills-ribbon-track {
+    animation: none;
+    transform: none;
   }
 }
