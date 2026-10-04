@@ -12,7 +12,18 @@ const contactDetails = [
   { label: 'Location', value: 'Canada / Remote Work', type: 'location' },
 ]
 
-const socialButtons = ['GitHub', 'LinkedIn', 'Instagram']
+// Add a real profile URL to show a link; entries without one stay hidden.
+const socialLinks = [
+  { name: 'GitHub', href: '' },
+  { name: 'LinkedIn', href: '' },
+  { name: 'Instagram', href: '' },
+].filter((link) => link.href)
+
+const quickActions = [
+  { label: 'Email me', href: `mailto:${contactEmail}?subject=Project%20inquiry`, primary: true },
+  { label: 'Call', href: 'tel:+16479661710' },
+  { label: 'Download CV', href: '/files/adil-cv.pdf', download: 'Muhammad-Adil-Resume.pdf' },
+]
 
 function ContactIcon({ type, className = 'h-4 w-4' }) {
   const paths = {
@@ -136,11 +147,21 @@ export default function ContactSection() {
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em] text-[#fe9d4a]">Get in touch</p>
             <h2 className="mt-5 max-w-md text-4xl font-medium leading-[1.03] tracking-[-0.052em] sm:text-5xl">
-              Let&apos;s build something worth sharing.
+              Let&apos;s build something that lasts.
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-white/58 sm:text-[15px]">
-              Have a project, a role or simply an idea? Send me a message. I usually reply within one day.
+              Hiring for a remote role, or have a project in mind? Send me a message. I usually reply within one day.
             </p>
+            <ul className="mt-6 space-y-2 text-sm text-white/66">
+              <li className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#93ad9e]" />
+                Open to remote full-time roles in Canada and the US
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#fe9d4a]" />
+                Taking on freelance and contract projects
+              </li>
+            </ul>
           </div>
 
           <div className="mt-10">
@@ -149,18 +170,32 @@ export default function ContactSection() {
             </div>
 
             <div className="mt-8 border-t border-white/10 pt-6">
-              <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/30">Social profiles coming soon</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/30">Prefer a direct line?</p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {socialButtons.map((name) => (
-                  <button
-                    key={name}
-                    type="button"
-                    aria-disabled="true"
-                    title={`${name} link coming soon`}
-                    className="inline-flex cursor-default items-center gap-1.5 rounded-full border border-white/14 px-3 py-1.5 text-xs text-white/58"
+                {quickActions.map((action) => (
+                  <a
+                    key={action.label}
+                    href={action.href}
+                    download={action.download}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-xs transition hover:-translate-y-0.5 ${
+                      action.primary
+                        ? 'border-[#8f7fff]/55 bg-[#8f7fff]/14 text-white hover:bg-[#8f7fff]/28'
+                        : 'border-white/14 text-white/66 hover:border-white/35 hover:text-white'
+                    }`}
                   >
-                    {name}<span aria-hidden="true">↗</span>
-                  </button>
+                    {action.label}<span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/14 px-3.5 py-1.5 text-xs text-white/66 transition hover:-translate-y-0.5 hover:border-white/35 hover:text-white"
+                  >
+                    {link.name}<span aria-hidden="true">↗</span>
+                  </a>
                 ))}
               </div>
             </div>

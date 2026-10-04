@@ -6,66 +6,82 @@ const ease = [0.16, 1, 0.3, 1]
 
 const skillGroups = [
   {
-    id: 'frontend',
-    label: 'Frontend',
+    id: 'web-cms',
+    label: 'Web and CMS',
+    level: 'Client work',
     accent: PURPLE,
     skills: [
-      { name: 'React.js', logo: '/logos/react.svg' },
+      { name: 'WordPress', logo: '/logos/wordpress.svg' },
+      { name: 'Custom Plugin Development', icon: 'code' },
+      { name: 'WooCommerce', logo: '/logos/woocommerce.svg' },
+      { name: 'PHP', logo: '/logos/php.svg' },
+      { name: 'MySQL', logo: '/logos/mysql.svg' },
+      { name: 'Shopify', logo: '/logos/shopify.svg' },
+      { name: 'Elementor', logo: '/logos/elementor.svg' },
+    ],
+  },
+  {
+    id: 'frontend',
+    label: 'Frontend and design',
+    level: 'Client work',
+    accent: ORANGE,
+    skills: [
       { name: 'JavaScript', logo: '/logos/javascript.svg' },
       { name: 'HTML5', logo: '/logos/html5.svg' },
       { name: 'CSS3', logo: '/logos/css.svg' },
       { name: 'Tailwind CSS', logo: '/logos/tailwind.svg' },
-      { name: 'Bootstrap', logo: '/logos/bootstrap.svg' },
-    ],
-  },
-  {
-    id: 'backend',
-    label: 'Backend',
-    accent: ORANGE,
-    skills: [
-      { name: 'Node.js', logo: '/logos/node.svg' },
-      { name: 'PHP', logo: '/logos/php.svg' },
-      { name: 'MySQL', logo: '/logos/mysql.svg' },
-      { name: 'REST API Integration', icon: 'api' },
-    ],
-  },
-  {
-    id: 'commerce',
-    label: 'CMS and Ecommerce',
-    accent: PURPLE,
-    skills: [
-      { name: 'WordPress', logo: '/logos/wordpress.svg' },
-      { name: 'WooCommerce', logo: '/logos/woocommerce.svg' },
-      { name: 'Shopify', logo: '/logos/shopify.svg' },
-      { name: 'Elementor', logo: '/logos/elementor.svg' },
-      { name: 'Custom WordPress Development', icon: 'code' },
-    ],
-  },
-  {
-    id: 'mobile-ai',
-    label: 'Mobile and AI',
-    accent: ORANGE,
-    skills: [
-      { name: 'React Native', logo: '/logos/reactnative.svg' },
-      { name: 'AI API Integration', icon: 'ai' },
-      { name: 'Workflow Automation', icon: 'workflow' },
-    ],
-  },
-  {
-    id: 'design-tools',
-    label: 'Design and Tools',
-    accent: PURPLE,
-    skills: [
       { name: 'UI and UX Design', icon: 'design' },
       { name: 'Figma', logo: '/logos/figma.svg' },
+    ],
+  },
+  {
+    id: 'ai-cloud',
+    label: 'Full-stack and AI',
+    level: 'Personal projects',
+    accent: PURPLE,
+    skills: [
+      { name: 'React.js', logo: '/logos/react.svg' },
+      { name: 'Node.js', logo: '/logos/node.svg' },
+      { name: 'Python', icon: 'terminal' },
+      { name: 'AI Agents', icon: 'ai' },
+      { name: 'LLM API Integration', icon: 'api' },
+      { name: 'Voice AI', icon: 'voice' },
+      { name: 'Workflow Automation', icon: 'workflow' },
+      { name: 'Supabase', icon: 'database' },
+      { name: 'Cloudflare Workers', icon: 'cloud' },
+      { name: 'REST APIs', icon: 'api' },
+    ],
+  },
+  {
+    id: 'mobile',
+    label: 'Mobile',
+    level: 'Personal projects',
+    accent: ORANGE,
+    skills: [
+      { name: 'Flutter and Dart', icon: 'mobile' },
+      { name: 'Kotlin (Android)', icon: 'code' },
+      { name: 'Encrypted SQLite', icon: 'database' },
+      { name: 'React Native', logo: '/logos/reactnative.svg' },
+    ],
+  },
+  {
+    id: 'foundations',
+    label: 'Foundations and tooling',
+    level: 'Strong foundations',
+    accent: PURPLE,
+    skills: [
+      { name: 'Java', icon: 'terminal' },
+      { name: 'C and C++', icon: 'terminal' },
       { name: 'Git', logo: '/logos/git.svg' },
       { name: 'GitHub', logo: '/logos/github.svg' },
       { name: 'Vite', logo: '/logos/vite.svg' },
-      { name: 'Performance Optimization', icon: 'speed' },
       { name: 'Technical SEO', icon: 'search' },
+      { name: 'Performance Optimization', icon: 'speed' },
     ],
   },
 ]
+
+const skillCount = skillGroups.reduce((total, group) => total + group.skills.length, 0)
 
 function ConceptIcon({ type }) {
   const paths = {
@@ -108,6 +124,31 @@ function ConceptIcon({ type }) {
         <path d="M15 15l5 5M7.8 12.8l2-2l1.6 1.3l2.5-3" />
       </>
     ),
+    voice: (
+      <>
+        <rect x="9" y="3.5" width="6" height="11" rx="3" />
+        <path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3M9 21h6" />
+      </>
+    ),
+    database: (
+      <>
+        <ellipse cx="12" cy="6" rx="7" ry="2.8" />
+        <path d="M5 6v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12v6c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-6" />
+      </>
+    ),
+    cloud: <path d="M7 18.5a4.2 4.2 0 0 1-.6-8.4a5.6 5.6 0 0 1 10.8 1.2a3.6 3.6 0 0 1-.5 7.2H7Z" />,
+    mobile: (
+      <>
+        <rect x="6.5" y="2.8" width="11" height="18.4" rx="2.5" />
+        <path d="M10 5.6h4M10.8 18.2h2.4" />
+      </>
+    ),
+    terminal: (
+      <>
+        <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
+        <path d="M7 10l3 2.5L7 15M12.5 15.5H17" />
+      </>
+    ),
   }
 
   return (
@@ -138,8 +179,8 @@ function SkillChip({ skill, accent }) {
 function RibbonSet({ skills, accent, hidden = false }) {
   return (
     <div className="skills-ribbon-set flex shrink-0 gap-3 pr-3" aria-hidden={hidden || undefined}>
-      {skills.map((skill) => (
-        <SkillChip key={skill.name} skill={skill} accent={accent} />
+      {skills.map((skill, index) => (
+        <SkillChip key={`${skill.name}-${index}`} skill={skill} accent={accent} />
       ))}
     </div>
   )
@@ -148,6 +189,8 @@ function RibbonSet({ skills, accent, hidden = false }) {
 function SkillRibbon({ group, index, reduceMotion }) {
   const reverse = index % 2 === 1
   const duration = 27 + index * 3
+  // Short rows are repeated so the looping ribbon never leaves a gap on wide screens.
+  const loopSkills = group.skills.length < 7 ? [...group.skills, ...group.skills] : group.skills
 
   return (
     <motion.div
@@ -165,7 +208,10 @@ function SkillRibbon({ group, index, reduceMotion }) {
           className="h-1.5 w-1.5 rounded-full"
           style={{ backgroundColor: group.accent, boxShadow: `0 0 16px ${group.accent}` }}
         />
-        <span className="text-sm font-semibold tracking-[-0.02em] text-white/86">{group.label}</span>
+        <span>
+          <span className="block text-sm font-semibold tracking-[-0.02em] text-white/86">{group.label}</span>
+          <span className="mt-0.5 block font-mono text-[8px] uppercase tracking-[0.16em] text-white/32">{group.level}</span>
+        </span>
       </div>
 
       <div className="skills-ribbon-window group relative min-w-0 overflow-hidden">
@@ -173,8 +219,8 @@ function SkillRibbon({ group, index, reduceMotion }) {
           className={`skills-ribbon-track flex w-max ${reverse ? 'skills-ribbon-reverse' : ''}`}
           style={{ '--ribbon-duration': `${duration}s` }}
         >
-          <RibbonSet skills={group.skills} accent={group.accent} />
-          <RibbonSet skills={group.skills} accent={group.accent} hidden />
+          <RibbonSet skills={loopSkills} accent={group.accent} />
+          <RibbonSet skills={loopSkills} accent={group.accent} hidden />
         </div>
       </div>
     </motion.div>
@@ -224,7 +270,7 @@ export default function SkillsShowcase() {
             transition={{ duration: reduceMotion ? 0 : 0.65, delay: reduceMotion ? 0 : 0.22, ease }}
             className="max-w-xl text-sm leading-7 text-white/52 sm:text-[15px] lg:pb-1"
           >
-            A practical full stack toolkit for building websites, online stores, web apps, mobile products and useful AI experiences.
+            From client-ready WordPress and ecommerce to AI agents, cloud backends and mobile apps. Each row shows where the skill comes from: client work, personal projects or strong foundations.
           </motion.p>
         </div>
 
@@ -241,7 +287,7 @@ export default function SkillsShowcase() {
           transition={{ duration: reduceMotion ? 0 : 0.6, delay: reduceMotion ? 0 : 0.4 }}
           className="mt-5 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.17em] text-white/28"
         >
-          <span>25 capabilities across five disciplines</span>
+          <span>{skillCount} capabilities across {skillGroups.length} disciplines</span>
           <span className="hidden sm:inline">Hover a ribbon to pause</span>
         </motion.div>
       </div>

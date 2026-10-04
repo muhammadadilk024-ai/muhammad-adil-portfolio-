@@ -9,7 +9,7 @@ const projects = [
     url: 'https://sb-traworld.com/',
     domain: 'sb-traworld.com',
     type: 'Travel and Pilgrimage Platform',
-    platform: 'WordPress',
+    platform: 'WordPress · Custom Plugins',
     image: '/images/projects/spotlight/sb-traworld.webp',
     accent: '#8b7cff',
     glow: 'rgba(139, 124, 255, 0.15)',
@@ -96,36 +96,6 @@ const projects = [
       'A compassionate charity website that explains the foundation’s mission, presents its healthcare programs and makes it simple for supporters to donate.',
     services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Donation flow', 'Content structure', 'Deployment'],
   },
-  {
-    id: '07',
-    name: 'Propexa',
-    slug: 'propexa',
-    url: 'https://propexa.ca/',
-    domain: 'propexa.ca',
-    type: 'Real Estate Marketplace',
-    platform: 'Custom Full Stack',
-    image: '/images/projects/spotlight/propexa.webp',
-    accent: '#6fa3ff',
-    glow: 'rgba(111, 163, 255, 0.13)',
-    description:
-      'A custom property platform with listing search, category filters, agent and landlord areas, property details and user account features.',
-    services: ['Brand and UI design', 'Custom full stack', 'Listings system', 'Search and filters', 'User roles', 'Deployment'],
-  },
-  {
-    id: '08',
-    name: 'HelloMoni',
-    slug: 'hellomoni',
-    url: 'https://hellomoni.de/',
-    domain: 'hellomoni.de',
-    type: 'Custom Ecommerce Storefront',
-    platform: 'Custom Full Stack',
-    image: '/images/projects/spotlight/hellomoni.webp',
-    accent: '#db8f9b',
-    glow: 'rgba(219, 143, 155, 0.14)',
-    description:
-      'A custom ecommerce storefront with clear product discovery, category browsing and a responsive shopping experience shaped around the brand.',
-    services: ['Logo and brand', 'UI/UX design', 'Frontend development', 'Backend development', 'Product catalog', 'Deployment'],
-  },
 ]
 
 const ease = [0.16, 1, 0.3, 1]
@@ -206,7 +176,7 @@ function ProjectsShowcase() {
         >
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: active.accent }}>
-              Selected Projects · Eight Complete Builds
+              Client work · Six projects delivered
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
               Digital products built to solve <span className="font-serif italic text-white/62">real problems.</span>
@@ -349,15 +319,19 @@ function ProjectsShowcase() {
                 </div>
               </div>
 
-              <a
-                href={active.url}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-md px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] text-[#0b0b0f] transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
-                style={{ backgroundColor: active.accent }}
-              >
-                View live website <ExternalIcon />
-              </a>
+              {active.url ? (
+                <a
+                  href={active.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-2 rounded-md px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] text-[#0b0b0f] transition duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                  style={{ backgroundColor: active.accent }}
+                >
+                  View live website <ExternalIcon />
+                </a>
+              ) : (
+                <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.14em] text-white/38">Live link not available right now</p>
+              )}
             </motion.article>
           </AnimatePresence>
         </div>

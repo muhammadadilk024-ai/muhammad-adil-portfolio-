@@ -260,7 +260,7 @@ export default function ResumeSection() {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4"
         >
-          {resumeHighlights.map(([value, label], index) => (
+          {resumeHighlights.map(([value, label]) => (
             <div
               key={label}
               className="rounded-2xl border border-[#222222] bg-[#141414] px-4 py-4 text-center"

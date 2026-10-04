@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 const links = [
+  { label: 'Case studies', href: '#case-studies' },
   { label: 'Projects', href: '#projects' },
   { label: 'Services', href: '#services' },
   { label: 'About', href: '#about' },
@@ -10,6 +11,7 @@ const links = [
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeId, setActiveId] = useState('')
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -19,6 +21,41 @@ function Navbar() {
 
     window.addEventListener('keydown', closeOnEscape)
     return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  // Highlight the nav link of the section that is currently in view.
+  useEffect(() => {
+    const hashLinks = links.filter((link) => link.href.startsWith('#'))
+    const observed = new Set()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    )
+
+    // Sections load lazily, so keep looking until every target exists.
+    function attach() {
+      hashLinks.forEach((link) => {
+        const element = document.querySelector(link.href)
+        if (element && !observed.has(element)) {
+          observed.add(element)
+          observer.observe(element)
+        }
+      })
+      return observed.size >= hashLinks.length
+    }
+
+    const timer = attach() ? undefined : window.setInterval(() => {
+      if (attach()) window.clearInterval(timer)
+    }, 400)
+
+    return () => {
+      window.clearInterval(timer)
+      observer.disconnect()
+    }
   }, [])
 
   return (
@@ -32,7 +69,8 @@ function Navbar() {
         className="mx-auto flex h-[82px] max-w-[1500px] items-center justify-between"
         aria-label="Main navigation"
       >
-        <a href="#home" className="group py-2" onClick={() => setIsOpen(false)} aria-label="Muhammad Adil — Home">
+        <a href="#home" className="group flex items-center gap-3 py-2" onClick={() => setIsOpen(false)} aria-label="Muhammad Adil — Home">
+          <img src="/favicon.svg" alt="" width="36" height="36" className="h-9 w-9 rounded-[10px] transition duration-300 group-hover:rotate-[-6deg] group-hover:scale-105" />
           <span className="site-signature block bg-gradient-to-r from-[#f7f3ee] via-[#b8abef] to-[#e2a06d] bg-clip-text text-[21px] font-semibold italic leading-none tracking-[-0.04em] text-transparent transition duration-300 group-hover:brightness-125 sm:text-[23px]">
             Muhammad Adil
           </span>
@@ -44,10 +82,11 @@ function Navbar() {
               key={link.label}
               href={link.href}
               download={link.download}
-              className="group relative py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white/66 transition hover:text-white"
+              aria-current={activeId === link.href ? 'true' : undefined}
+              className={`group relative py-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] transition hover:text-white ${activeId === link.href ? 'text-white' : 'text-white/66'}`}
             >
               {link.label}
-              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-gradient-to-r from-[#8b7cff] to-[#ff9a58] transition-transform duration-300 group-hover:scale-x-100" />
+              <span className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gradient-to-r from-[#8b7cff] to-[#ff9a58] transition-transform duration-300 group-hover:scale-x-100 ${activeId === link.href ? 'scale-x-100' : 'scale-x-0'}`} />
             </a>
           ))}
         </div>
@@ -55,7 +94,7 @@ function Navbar() {
         <div className="hidden items-center gap-6 lg:flex">
           <span className="flex items-center gap-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-white/62">
             <span className="h-2 w-2 animate-pulse rounded-full bg-[#93ad9e] shadow-[0_0_12px_rgba(147,173,158,.45)]" />
-            Available
+            Open to work
           </span>
           <a
             href="#contact"

@@ -9,14 +9,14 @@ const journey = [
     period: '2021 — 2022',
     label: 'Learning by building',
     title: 'The starting point',
-    description: 'Started with WordPress and front end fundamentals, then kept expanding into custom development.',
+    description: 'Started with WordPress and front end fundamentals, then went deeper into PHP, JavaScript, Python and Java.',
     accent: '#8f7fff',
   },
   {
     period: '2023 — Present',
     label: 'Independent client work',
     title: 'From practice to real projects',
-    description: 'Built websites, ecommerce stores and custom systems for businesses across different industries.',
+    description: 'Built websites, ecommerce stores and custom-coded WordPress plugins (roles, multilingual, listings) for businesses across different industries.',
     accent: '#8f7fff',
   },
   {
@@ -25,6 +25,13 @@ const journey = [
     title: 'Full stack developer',
     description: 'Delivering complete digital projects from interface design and development to integrations and launch.',
     accent: '#8f7fff',
+  },
+  {
+    period: 'Now',
+    label: 'AI and mobile',
+    title: 'Building KnowWhere',
+    description: 'A voice-first memory app with Flutter, Kotlin, Gemini Live and a secure Cloudflare backend, built to learn what production-grade mobile and AI really takes.',
+    accent: '#fe9d4a',
   },
 ]
 
@@ -114,7 +121,7 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.08, ease }}
               className="text-lg leading-8 tracking-[-0.02em] text-white/78"
             >
-              I&apos;m Muhammad Adil, a full stack developer working across websites, web apps, mobile apps and practical AI integrations.
+              I&apos;m Muhammad Adil, a full-stack developer in Canada building custom web platforms, mobile apps and AI-powered products.
             </motion.p>
 
             <motion.p
@@ -124,7 +131,17 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.16, ease }}
               className="mt-5 text-sm leading-7 text-white/50 sm:text-[15px]"
             >
-              I enjoy taking an idea from the first design to a working product, with clear communication and careful execution from start to launch.
+              I learn fast and ship end to end, from design and database to deployment. I use AI-assisted engineering to move quickly, and I check the result with builds, tests and careful review before anything goes live.
+            </motion.p>
+
+            <motion.p
+              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.2, ease }}
+              className="mt-4 text-sm leading-7 text-white/50 sm:text-[15px]"
+            >
+              I&apos;m open to remote roles in Canada and the US, and to client projects of any size.
             </motion.p>
 
             <motion.div

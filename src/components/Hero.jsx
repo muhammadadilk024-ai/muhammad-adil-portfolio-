@@ -3,7 +3,7 @@ import {
   useReducedMotion,
 } from 'framer-motion'
 
-const stack = ['Custom websites', 'Web apps', 'WordPress', 'Ecommerce', 'React + PHP']
+const stack = ['Full-stack', 'AI agents', 'Flutter apps', 'Custom plugins', 'Ecommerce']
 const ease = [0.16, 1, 0.3, 1]
 
 function ArrowIcon() {
@@ -45,7 +45,7 @@ function Hero() {
         transition={{ duration: 1.45, ease }}
       >
         <img
-          src="/images/terrain.png"
+          src="/images/terrain.webp"
           alt=""
           className="terminal-terrain h-full w-full object-cover object-bottom opacity-[0.48]"
           fetchPriority="high"
@@ -65,7 +65,7 @@ function Hero() {
             className="mb-7 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9b8cff]"
           >
             <span className="text-[#ff9a58]">{'//'}</span>
-            Full-stack web developer
+            Muhammad Adil · Full-stack and AI developer
           </motion.div>
 
           <h1 className="max-w-[680px] text-[clamp(2.75rem,4.5vw,4.25rem)] font-light leading-[1.04] tracking-[-0.045em]">
@@ -86,7 +86,7 @@ function Hero() {
                 animate={{ y: 0 }}
                 transition={{ delay: 0.23, duration: 0.85, ease }}
               >
-                I turn ideas into
+                I build web platforms,
               </motion.span>
             </span>
             <span className="mt-2 block overflow-hidden pb-[0.12em]">
@@ -96,7 +96,7 @@ function Hero() {
                 animate={{ y: 0 }}
                 transition={{ delay: 0.32, duration: 0.85, ease }}
               >
-                websites that work.
+                apps and AI.
               </motion.span>
             </span>
           </h1>
@@ -107,8 +107,8 @@ function Hero() {
             transition={{ delay: 0.52, duration: 0.68, ease }}
             className="mt-6 max-w-[520px] text-sm leading-7 text-white/58 sm:text-[15px]"
           >
-            I build custom websites, web apps, WordPress and ecommerce experiences
-            — from backend logic to the final pixel.
+            Full-stack developer based in Canada. I build custom-coded platforms, plugins, mobile apps and
+            AI-powered products, from the database and API to the final pixel.
           </motion.p>
 
           <motion.div
@@ -135,16 +135,16 @@ function Hero() {
             className="mt-7 flex flex-wrap gap-3"
           >
             <a
-              href="#projects"
+              href="#case-studies"
               className="group inline-flex items-center gap-2 rounded-md bg-[#7564f5] px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] text-white shadow-[0_14px_34px_rgba(117,100,245,.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#8b7cff]"
             >
-              View projects <ArrowIcon />
+              View case studies <ArrowIcon />
             </a>
             <a
               href="#contact"
               className="rounded-md border border-white/17 bg-black/10 px-5 py-3 text-xs font-bold uppercase tracking-[0.1em] text-white/72 backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-[#ff9a58]/70 hover:text-white"
             >
-              Start a project
+              Hire me
             </a>
           </motion.div>
         </div>
@@ -182,10 +182,11 @@ function Hero() {
               </TerminalLine>
               <TerminalLine delay={1.2}>
                 <pre className="overflow-x-auto font-medium text-white/88">{`{
-  "frontend":  ["React", "JavaScript"],
-  "backend":   ["PHP", "Node", "MySQL"],
-  "platforms": ["WordPress", "WooCommerce"],
-  "builds":    ["Websites", "Web Apps"]
+  "web":     ["React", "PHP", "Node", "MySQL"],
+  "ai":      ["LLM APIs", "Agents", "Voice"],
+  "cloud":   ["Supabase", "Cloudflare"],
+  "mobile":  ["Flutter", "Kotlin"],
+  "open_to": ["Remote roles", "Projects"]
 }`}</pre>
               </TerminalLine>
               <TerminalLine delay={1.52} className="pt-1 text-white/58">

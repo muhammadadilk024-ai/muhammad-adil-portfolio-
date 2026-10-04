@@ -303,3 +303,43 @@ canvas {
     transform: none;
   }
 }
+
+/* Case-study architecture diagrams: animated dashed connectors */
+.flow-link {
+  flex: none;
+  width: 1px;
+  height: 28px;
+  margin: 0 auto;
+  background-image: linear-gradient(180deg, var(--flow-accent, #8f7fff) 50%, transparent 50%);
+  background-size: 1px 10px;
+  animation: flow-y 0.9s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .flow-link {
+    width: 44px;
+    height: 1px;
+    margin: 0;
+    background-image: linear-gradient(90deg, var(--flow-accent, #8f7fff) 50%, transparent 50%);
+    background-size: 10px 1px;
+    animation-name: flow-x;
+  }
+}
+
+@keyframes flow-x {
+  to {
+    background-position: 10px 0;
+  }
+}
+
+@keyframes flow-y {
+  to {
+    background-position: 0 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-link {
+    animation: none;
+  }
+}
