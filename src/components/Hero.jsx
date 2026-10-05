@@ -3,7 +3,7 @@ import {
   useReducedMotion,
 } from 'framer-motion'
 
-const stack = ['Full-stack', 'AI agents', 'Flutter apps', 'Custom plugins', 'Ecommerce']
+const stack = ['Full-stack', 'Laravel', 'AI agents', 'Flutter apps', 'Ecommerce']
 const ease = [0.16, 1, 0.3, 1]
 
 function ArrowIcon() {
@@ -107,8 +107,8 @@ function Hero() {
             transition={{ delay: 0.52, duration: 0.68, ease }}
             className="mt-6 max-w-[520px] text-sm leading-7 text-white/58 sm:text-[15px]"
           >
-            Full-stack developer based in Canada. I build custom-coded platforms, plugins, mobile apps and
-            AI-powered products, from the database and API to the final pixel.
+            Full-stack developer in Canada with 5 years of experience, including 2+ years at Tech Joint Solution. I
+            build Laravel and WordPress platforms, mobile apps and AI-powered products, from the database to the final pixel.
           </motion.p>
 
           <motion.div
@@ -182,7 +182,7 @@ function Hero() {
               </TerminalLine>
               <TerminalLine delay={1.2}>
                 <pre className="overflow-x-auto font-medium text-white/88">{`{
-  "web":     ["React", "PHP", "Node", "MySQL"],
+  "web":     ["Laravel", "PHP", "React", "Node"],
   "ai":      ["LLM APIs", "Agents", "Voice"],
   "cloud":   ["Supabase", "Cloudflare"],
   "mobile":  ["Flutter", "Kotlin"],

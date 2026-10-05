@@ -11,10 +11,12 @@ const skillGroups = [
     level: 'Client work',
     accent: PURPLE,
     skills: [
+      { name: 'Laravel', icon: 'code' },
+      { name: 'PHP', logo: '/logos/php.svg' },
       { name: 'WordPress', logo: '/logos/wordpress.svg' },
       { name: 'Custom Plugin Development', icon: 'code' },
+      { name: 'Local SEO', icon: 'search' },
       { name: 'WooCommerce', logo: '/logos/woocommerce.svg' },
-      { name: 'PHP', logo: '/logos/php.svg' },
       { name: 'MySQL', logo: '/logos/mysql.svg' },
       { name: 'Shopify', logo: '/logos/shopify.svg' },
       { name: 'Elementor', logo: '/logos/elementor.svg' },

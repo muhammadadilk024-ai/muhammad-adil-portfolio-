@@ -4,7 +4,7 @@ import { animate, motion, useInView, useReducedMotion } from 'framer-motion'
 const ease = [0.16, 1, 0.3, 1]
 
 const stats = [
-  { value: 6, suffix: '', label: 'Client projects delivered' },
+  { value: 9, suffix: '', label: 'Client projects delivered' },
   { value: 5, suffix: '+', label: 'Years building, since 2021' },
   { value: 3, suffix: '', label: 'Languages in my voice AI app' },
   { value: 24, suffix: 'h', label: 'Typical reply time' },

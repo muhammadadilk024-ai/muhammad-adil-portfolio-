@@ -58,6 +58,31 @@ const caseStudies = [
       { label: 'Packages and enquiries', detail: 'One clear booking path' },
     ],
   },
+  {
+    id: '03',
+    name: 'BC Scrap Cars',
+    kind: 'Laravel lead-generation site · Local SEO',
+    status: 'Live',
+    accent: '#ff7a3d',
+    glow: 'rgba(255, 122, 61, 0.14)',
+    url: 'https://bcscrapcars.com/',
+    summary:
+      'A lead-generation website for a junk car removal service across British Columbia’s Lower Mainland, built to turn local searches into quote requests.',
+    challenge:
+      'Compete city by city for junk and scrap car searches, while keeping the quote process quick enough that visitors actually finish it.',
+    built: [
+      'A multi-step instant quote form that collects contact details, vehicle details and condition.',
+      'Landing pages for 12 Lower Mainland cities, plus separate service pages for cash for cars, junk removal, free towing and ICBC write-offs.',
+      'FAQ and city structured data (schema markup) to support local search visibility.',
+      'A Laravel (PHP) application, built and launched as the only developer on the project at Tech Joint Solution.',
+    ],
+    stack: ['Laravel', 'PHP', 'Local SEO', 'Structured data', 'Multi-step forms'],
+    flow: [
+      { label: 'Visitor in their city', detail: 'Searches for junk car removal' },
+      { label: 'Laravel site', detail: 'City and service pages' },
+      { label: 'Instant quote form', detail: 'Contact, vehicle, condition' },
+    ],
+  },
 ]
 
 function FlowNode({ node, accent }) {
@@ -197,7 +222,7 @@ export default function CaseStudies() {
             How I think, build and <span className="font-serif italic text-white/62">ship.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-white/52 sm:text-[15px]">
-            Two projects in more depth: the problem, what I built, and how the pieces fit together.
+            Three projects in more depth: the problem, what I built, and how the pieces fit together.
           </p>
         </motion.div>
 

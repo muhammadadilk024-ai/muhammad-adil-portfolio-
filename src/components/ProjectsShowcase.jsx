@@ -1,9 +1,62 @@
 import { useCallback, useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
+const tjsRole = {
+  roleLabel: 'My role · Solo developer at Tech Joint Solution',
+  role: 'Laravel development, integrations, testing and launch, delivered as the project’s only developer.',
+}
+
 const projects = [
   {
     id: '01',
+    name: 'Beauty Supply Call',
+    slug: 'beauty-supply-call',
+    url: 'https://beautysupplycall.com/',
+    domain: 'beautysupplycall.com',
+    type: 'Ecommerce · Professional Beauty Equipment',
+    platform: 'Laravel (PHP)',
+    image: '/images/projects/spotlight/beauty-supply-call.webp',
+    accent: '#e0577a',
+    glow: 'rgba(224, 87, 122, 0.14)',
+    description:
+      'A Laravel ecommerce store for professional beauty and aesthetic equipment, with categorized product browsing, a shopping cart, customer accounts and product reviews.',
+    services: ['Laravel development', 'Ecommerce build', 'Product catalog', 'Cart and accounts', 'Product reviews', 'Deployment'],
+    ...tjsRole,
+  },
+  {
+    id: '02',
+    name: 'BC Scrap Cars',
+    slug: 'bc-scrap-cars',
+    url: 'https://bcscrapcars.com/',
+    domain: 'bcscrapcars.com',
+    type: 'Lead Generation · Local Services',
+    platform: 'Laravel (PHP) · Local SEO',
+    image: '/images/projects/spotlight/bc-scrap-cars.webp',
+    accent: '#ff7a3d',
+    glow: 'rgba(255, 122, 61, 0.14)',
+    description:
+      'A lead-generation website for a junk car removal service, with a multi-step instant quote form, service pages and landing pages for 12 Lower Mainland cities, supported by FAQ and city structured data.',
+    services: ['Laravel development', 'Multi-step quote form', '12 city pages', 'Local SEO structure', 'Structured data', 'Deployment'],
+    ...tjsRole,
+  },
+  {
+    id: '03',
+    name: 'Medaan',
+    slug: 'medaan',
+    url: 'https://medaan.ca/',
+    domain: 'medaan.ca',
+    type: 'Restaurant · Online Ordering',
+    platform: 'Laravel (PHP)',
+    image: '/images/projects/spotlight/medaan.webp',
+    accent: '#e0b84a',
+    glow: 'rgba(224, 184, 74, 0.14)',
+    description:
+      'A website for a Calgary Middle Eastern fusion restaurant, with browsable menu categories, links into online ordering, a rewards offer, Google Maps directions and Restaurant structured data for local search.',
+    services: ['Laravel development', 'Menu system', 'Ordering integrations', 'Google Maps', 'Local SEO structure', 'Deployment'],
+    ...tjsRole,
+  },
+  {
+    id: '04',
     name: 'SB TraWorld',
     slug: 'sb-traworld',
     url: 'https://sb-traworld.com/',
@@ -18,7 +71,7 @@ const projects = [
     services: ['Brand identity', 'UI/UX design', 'WordPress build', 'Custom functionality', 'Bilingual experience', 'Deployment'],
   },
   {
-    id: '02',
+    id: '05',
     name: 'Fusion Fora',
     slug: 'fusionfora',
     url: 'https://fusionfora.com/',
@@ -35,7 +88,7 @@ const projects = [
     services: ['Logo and brand', 'UI/UX design', 'WordPress build', 'Service architecture', 'Lead generation', 'Deployment'],
   },
   {
-    id: '03',
+    id: '06',
     name: 'Paan Express',
     slug: 'paan-express',
     url: 'https://paanexpress.com/',
@@ -50,7 +103,7 @@ const projects = [
     services: ['Logo and brand', 'UI/UX design', 'WordPress build', 'Digital menu', 'Local SEO structure', 'Deployment'],
   },
   {
-    id: '04',
+    id: '07',
     name: 'Lavish Bath',
     slug: 'lavish-bath',
     url: 'https://lavishbathcalgary.ca/',
@@ -65,7 +118,7 @@ const projects = [
     services: ['UI/UX redesign', 'WordPress build', 'WooCommerce', 'Catalog architecture', 'Product content', 'Deployment'],
   },
   {
-    id: '05',
+    id: '08',
     name: 'MindCob',
     slug: 'mindcob',
     url: 'https://mindcob.com/',
@@ -80,7 +133,7 @@ const projects = [
     services: ['UI/UX design', 'Frontend development', 'Backend and CMS', 'Service architecture', 'Lead generation', 'Deployment'],
   },
   {
-    id: '06',
+    id: '09',
     name: 'FAM Humanity',
     slug: 'fam-humanity',
     url: 'https://famhumanity.com/',
@@ -176,13 +229,13 @@ function ProjectsShowcase() {
         >
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: active.accent }}>
-              Client work · Six projects delivered
+              Client work · Nine projects delivered
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
               Digital products built to solve <span className="font-serif italic text-white/62">real problems.</span>
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/50 sm:text-[15px]">
-              Every project here was created entirely by me, from the first idea and visual identity to the frontend, backend and final launch.
+              Websites and platforms I built for clients, as a solo developer and as part of the Tech Joint Solution team. Each card shows my exact role.
             </p>
           </div>
 
@@ -302,9 +355,9 @@ function ProjectsShowcase() {
               <p className="mt-5 text-sm leading-7 text-white/56 sm:text-[15px]">{active.description}</p>
 
               <div className="mt-7 border-y border-white/10 py-5">
-                <p className="font-mono text-[8px] font-semibold uppercase tracking-[0.2em] text-white/28">My role · 100% ownership</p>
+                <p className="font-mono text-[8px] font-semibold uppercase tracking-[0.2em] text-white/28">{active.roleLabel || 'My role · 100% ownership'}</p>
                 <p className="mt-2 text-sm font-medium leading-6 text-white/82">
-                  Strategy, logo and branding, UI/UX, frontend, backend and deployment.
+                  {active.role || 'Strategy, logo and branding, UI/UX, frontend, backend and deployment.'}
                 </p>
               </div>
 

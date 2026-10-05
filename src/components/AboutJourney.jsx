@@ -21,9 +21,9 @@ const journey = [
   },
   {
     period: '2024 — Present',
-    label: 'Tech Joint Solution',
+    label: 'Tech Joint Solution · Calgary',
     title: 'Full stack developer',
-    description: 'Delivering complete digital projects from interface design and development to integrations and launch.',
+    description: 'Building client websites in Laravel and WordPress at a Calgary web agency, as part of the team and as the solo developer on projects like BC Scrap Cars, Medaan and Beauty Supply Call.',
     accent: '#8f7fff',
   },
   {
@@ -121,7 +121,7 @@ export default function AboutJourney() {
               transition={{ duration: reduceMotion ? 0 : 0.62, delay: reduceMotion ? 0 : 0.08, ease }}
               className="text-lg leading-8 tracking-[-0.02em] text-white/78"
             >
-              I&apos;m Muhammad Adil, a full-stack developer in Canada building custom web platforms, mobile apps and AI-powered products.
+              I&apos;m Muhammad Adil, a full-stack developer in Canada with 5 years of experience building web platforms, mobile apps and AI-powered products.
             </motion.p>
 
             <motion.p

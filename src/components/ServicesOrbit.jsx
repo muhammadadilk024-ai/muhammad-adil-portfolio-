@@ -14,8 +14,8 @@ const services = [
     shortTitle: 'Web Platforms',
     tagline: 'Full-stack builds with custom-coded plugins',
     description:
-      'Websites and web platforms built around your workflow: user roles, multilingual experiences, listings, dashboards and integrations, using custom code and custom-coded WordPress plugins.',
-    deliverables: ['Custom plugins', 'Roles and permissions', 'Multilingual sites'],
+      'Websites and web platforms built around your workflow: user roles, multilingual experiences, quote forms, listings and integrations, using Laravel, custom code and custom-coded WordPress plugins.',
+    deliverables: ['Laravel applications', 'Custom plugins', 'Roles and multilingual'],
     icon: 'web',
     image: '/services/web-development-20260806.webp',
     accent: '#fe9d4a',
