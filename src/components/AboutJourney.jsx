@@ -29,8 +29,8 @@ const journey = [
   {
     period: 'Now',
     label: 'AI and mobile',
-    title: 'Building KnowWhere',
-    description: 'A voice-first memory app with Flutter, Kotlin, Gemini Live and a secure Cloudflare backend, built to learn what production-grade mobile and AI really takes.',
+    title: 'Founder of Aatox',
+    description: 'Building KnowWhere, a voice-first memory app with Flutter, Kotlin, Gemini Live and a secure Cloudflare backend, as the first product of Aatox (aatox.com).',
     accent: '#fe9d4a',
   },
 ]

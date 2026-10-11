@@ -14,13 +14,13 @@ const caseStudies = [
     summary:
       'A private, voice-first memory assistant that remembers where you put things. Speak in English, Hindi or Urdu and it saves and finds items without opening the app.',
     challenge:
-      'Make voice recall fast, private and usable on any phone, without putting an API key on the device or sending locations and photos to the cloud.',
+      'Make voice recall fast, private and usable on any phone, without putting an API key on the device and with smart voice switched on only after the user agrees.',
     built: [
       'Flutter app with Riverpod state management, a repository layer and an encrypted local SQLite database (Drift with SQLite3MultipleCiphers).',
       'Cloudflare Worker proxy that keeps the Gemini API key off the phone.',
       'Real-time voice conversation with Gemini Live. The model calls tools (save, find, list, undo) that run against the local database, with an automatic on-device speech fallback when offline.',
       'Native Android work in Kotlin: a home-screen widget, a Quick Settings tile and a background listening service for hands-free use.',
-      'Privacy by design: only the voice request, saved item names and short replies leave the device. Locations and photos never do.',
+      'Privacy by design: memories live in an encrypted on-device database, smart voice is opt-in, photos are never sent, and the backend does not keep what the user says.',
     ],
     stack: ['Flutter', 'Dart', 'Kotlin', 'Riverpod', 'Drift', 'Encrypted SQLite', 'Cloudflare Workers', 'Gemini Live API'],
     flow: [

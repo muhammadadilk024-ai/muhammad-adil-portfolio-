@@ -229,13 +229,13 @@ function ProjectsShowcase() {
         >
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: active.accent }}>
-              Client work · Nine projects delivered
+              Selected client work · 20+ projects delivered
             </p>
             <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
               Digital products built to solve <span className="font-serif italic text-white/62">real problems.</span>
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/50 sm:text-[15px]">
-              Websites and platforms I built for clients, as a solo developer and as part of the Tech Joint Solution team. Each card shows my exact role.
+              A selection from the 20+ websites and platforms I have delivered for clients, as a solo developer and as part of the Tech Joint Solution team. Each card shows my exact role.
             </p>
           </div>
 
