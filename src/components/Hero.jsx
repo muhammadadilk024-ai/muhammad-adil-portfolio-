@@ -56,7 +56,7 @@ function Hero() {
 
       <div aria-hidden="true" className="terminal-grid pointer-events-none absolute inset-0 opacity-35" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-[minmax(0,1fr)] items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <motion.div
             initial={reduceMotion ? false : { opacity: 0, y: 12 }}

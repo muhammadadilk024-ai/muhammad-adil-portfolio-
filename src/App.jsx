@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import ScrollProgress from './components/ScrollProgress'
 import StatsStrip from './components/StatsStrip'
+import { useAnchorScroll } from './utils/anchorScroll'
 
 const CaseStudies = lazy(() => import('./components/CaseStudies'))
 const Testimonials = lazy(() => import('./components/Testimonials'))
@@ -16,6 +17,8 @@ const ContactSection = lazy(() => import('./components/ContactSection'))
 const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
+  useAnchorScroll()
+
   return (
     <>
       <a className="skip-link" href="#main-content">

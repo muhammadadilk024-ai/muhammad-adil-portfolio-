@@ -44,7 +44,8 @@ body,
 
 body {
   background: var(--ink);
-  overflow-x: hidden;
+  /* clip, not hidden: "hidden" on html and body turns body into its own scroller, which breaks "#section" scrolling on phones */
+  overflow-x: clip;
 }
 
 *,
