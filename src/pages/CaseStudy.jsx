@@ -5,6 +5,7 @@ import { ProjectImage } from '../components/ProjectCard.jsx'
 import { PhoneMock } from '../components/PhoneMock.jsx'
 import { caseStudies, caseStudyBySlug } from '../data/caseStudies.js'
 import { site } from '../data/site.js'
+import { testimonialFor } from '../data/testimonials.js'
 import { graph, ids, person, aatox, website, webPage, breadcrumb, softwareApp } from '../seo/schema.js'
 
 function Facts({ study }) {
@@ -60,6 +61,7 @@ function Flow({ study }) {
 
 function CaseStudyPage({ study }) {
   const related = study.related.map((slug) => caseStudyBySlug(slug)).filter(Boolean)
+  const quote = testimonialFor(study.slug)
   const crumbs = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects/' },
@@ -136,6 +138,22 @@ function CaseStudyPage({ study }) {
                 <li key={note} className="text-base text-cream/75" data-reveal>{note}</li>
               ))}
             </ul>
+          </div>
+        </section>
+      )}
+
+      {quote && (
+        <section className="section border-t border-white/10">
+          <div className="container-x grid gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="eyebrow" data-reveal>Client feedback</p>
+              <h2 className="mt-3 text-3xl" data-reveal>In their words</h2>
+            </div>
+            <figure className="surface p-6 sm:p-8 lg:col-span-8" data-reveal>
+              <span className="text-4xl font-semibold leading-none text-accent" aria-hidden="true">“</span>
+              <blockquote className="mt-2 text-lg text-cream sm:text-xl">{quote.quote}</blockquote>
+              <figcaption className="mt-6 text-sm text-cream/65"><span className="font-semibold text-cream">{quote.client}</span>, {quote.context}</figcaption>
+            </figure>
           </div>
         </section>
       )}

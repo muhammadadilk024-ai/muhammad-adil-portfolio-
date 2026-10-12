@@ -24,7 +24,7 @@ export function Nav({ current }) {
         className="pointer-events-auto relative z-10 mt-4 flex w-full max-w-3xl items-center justify-between gap-2 rounded-full border border-white/10 bg-ink/75 p-2 shadow-card backdrop-blur-xl sm:mt-6 lg:w-max"
       >
         <a href="/" className="flex items-center gap-2 rounded-full py-1 pl-1 pr-3" aria-label="Muhammad Adil, home">
-          <img src="/favicon.svg" alt="" width="32" height="32" className="h-8 w-8 rounded-lg" />
+          <img src="/favicon.svg?v=2" alt="" width="32" height="32" className="h-8 w-8 rounded-lg" />
           <span className="text-sm font-semibold text-cream">Muhammad Adil</span>
         </a>
 

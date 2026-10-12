@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container-x grid gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <a href="/" className="flex items-center gap-3" aria-label="Muhammad Adil, home">
-            <img src="/favicon.svg" alt="" width="40" height="40" className="h-10 w-10 rounded-xl" />
+            <img src="/favicon.svg?v=2" alt="" width="40" height="40" className="h-10 w-10 rounded-xl" />
             <span className="text-lg font-semibold text-cream">Muhammad Adil</span>
           </a>
           <p className="mt-4 max-w-sm text-sm text-cream/65">

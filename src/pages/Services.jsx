@@ -2,6 +2,7 @@ import { Layout } from '../components/Layout.jsx'
 import { Icon } from '../components/Icons.jsx'
 import { PageHeader, SectionHeading, CtaBand } from '../components/Section.jsx'
 import { FaqList } from '../components/FaqList.jsx'
+import { Testimonials } from '../components/Testimonials.jsx'
 import { services, process } from '../data/services.js'
 import { servicesFaq } from '../data/faq.js'
 import { graph, person, employer, website, webPage, breadcrumb, professionalService, faqPage } from '../seo/schema.js'
@@ -133,6 +134,8 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <Testimonials intro="What it is like to work with me, from the people who did." />
 
       <section className="section border-t border-white/10">
         <div className="container-x">

@@ -5,6 +5,7 @@ import { SectionHeading, Stats, CtaBand } from '../components/Section.jsx'
 import { ProjectImage } from '../components/ProjectCard.jsx'
 import { FeatureCard } from '../components/FeatureCard.jsx'
 import { FaqList } from '../components/FaqList.jsx'
+import { Testimonials } from '../components/Testimonials.jsx'
 import { site } from '../data/site.js'
 import { projects, bySlug } from '../data/projects.js'
 import { caseStudies } from '../data/caseStudies.js'
@@ -314,6 +315,7 @@ function HomePage() {
     <Layout current={path}>
       <Hero />
       <Work />
+      <Testimonials intro="Four clients, four live sites you can open. Their words, unedited." />
       <Tagline />
       <Services />
       <Process />

@@ -10,7 +10,7 @@ const aliases = {
   '#skills': '/about/#stack',
   '#resume': '/about/',
   '#contact': '/contact/',
-  '#testimonials': '#proof',
+  '#testimonials': '#testimonials',
 }
 
 export function Layout({ current, children }) {

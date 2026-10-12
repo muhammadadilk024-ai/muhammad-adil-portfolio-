@@ -1,4 +1,6 @@
 import { Icon } from './Icons.jsx'
+import { testimonialFor } from '../data/testimonials.js'
+import { ProjectQuote } from './Testimonials.jsx'
 
 export function ProjectImage({ project, className = '', sizes = '(min-width: 1024px) 50vw, 100vw', priority = false }) {
   return (
@@ -35,6 +37,7 @@ export function ProjectCard({ project, index = 0 }) {
         <h3 className="mt-2 text-xl">{project.name}</h3>
         <p className="mt-2 text-sm text-cream/70">{project.summary}</p>
         <p className="mt-3 text-xs text-cream/55">{project.role}</p>
+        <ProjectQuote item={testimonialFor(project.slug)} className="mt-4" />
         <div className="mt-4 flex flex-wrap gap-2">
           {project.stack.map((item) => (
             <span key={item} className="chip">{item}</span>
