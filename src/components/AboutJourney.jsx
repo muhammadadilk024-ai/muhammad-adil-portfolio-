@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
-const profileImage = '/images/adil-about.jpg'
+const profileImage = '/images/adil-about-v2.jpg'
 const resumeFile = '/files/adil-cv.pdf'
 const ease = [0.16, 1, 0.3, 1]
 
