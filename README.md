@@ -1,75 +1,70 @@
-# Muhammad Adil — Developer Portfolio
+# Muhammad Adil, developer portfolio
 
 **Live site:** [muhammadadil.cloud](https://muhammadadil.cloud)
 
-![Muhammad Adil — Full-Stack and AI Developer](public/images/og-image.png)
+![Muhammad Adil, full stack and AI developer](public/images/og-image.jpg)
 
-A fast, animated single-page portfolio for Muhammad Adil, a full-stack and AI developer in Canada. It presents
-case studies, client projects, skills grouped by evidence level, and a hiring-focused contact section.
+The portfolio of Muhammad Adil, a full stack and AI developer in Canada. Nine pages, prerendered to static HTML,
+hydrated with React, designed around one offer (web, mobile and AI products built end to end) and one action
+(start a conversation).
 
-## Highlights
+## Pages
 
-- **Case studies with architecture diagrams.** Each case study explains the problem, what was built and how the
-  pieces fit together, with an animated flow diagram.
-- **Projects carousel.** Nine client projects with screenshots, a per-project role line and live links.
-- **Honest skills.** Skills are labelled by where they come from: client work, personal projects or foundations.
-- **Search-ready.** JSON-LD structured data (`ProfilePage`, `Person`, `ProfessionalService`), Open Graph and
-  Twitter cards, `sitemap.xml`, `robots.txt`, a canonical URL and crawler-readable fallback content.
-- **Accessible and responsive.** Skip link, keyboard-friendly navigation, reduced-motion support, an
-  `aria-current` scroll-spy in the navbar and layouts tested from phone to wide desktop.
-- **Performance-minded.** Lazy-loaded sections, WebP images and a preloaded hero image.
-
-## Tech stack
-
-| Area | Tools |
+| URL | Purpose |
 |---|---|
-| UI | React 19, Tailwind CSS 4, Framer Motion |
-| Build | Vite 8, ESLint |
-| Hosting | Hostinger (Node.js), continuous deployment from `main` |
+| `/` | Home: hero, selected work, services, process, about, proof, FAQ, contact call to action |
+| `/projects/` | Three case studies and nine live client projects with roles |
+| `/projects/knowwhere/`, `/projects/bc-scrap-cars/`, `/projects/sb-traworld/` | Case studies |
+| `/services/` | Five services with proof, process, pricing model, FAQ |
+| `/about/` | Entity page: facts, timeline, principles, stack, profiles |
+| `/contact/` | Direct lines and a validated contact form (FormSubmit) |
+| `/privacy/` | Short privacy note (not indexed) |
+| `/404.html` | Branded not found page (served by `.htaccess`) |
+
+## How it is built
+
+- **React 19 + Vite 8 + Tailwind CSS 4.** One HTML entry per page (`vite.config.js`), no client side router.
+- **Prerendered.** `npm run build` runs `vite build`, then `scripts/prerender.mjs` renders every route with
+  `react-dom/server` and writes the HTML into `dist/`. Crawlers and AI assistants get full content without JavaScript;
+  the browser hydrates the same markup.
+- **SEO data in one place.** `src/data/site.js` holds the identity used by every page, `src/seo/schema.js` builds the
+  JSON-LD graph (Person, ProfilePage, WebSite, ProfessionalService, FAQPage, BreadcrumbList, SoftwareApplication) and
+  `src/seo/head.js` builds the head tags.
+- **Design system.** Manrope (self hosted), one accent colour, flat backgrounds, Phosphor icons inlined, scroll reveals
+  with `IntersectionObserver`, no animation library.
+- **Hosting.** Hostinger, continuous deployment from `main`. `public/.htaccess` redirects www to the apex, strips
+  `index.html`, sets the 404 page and cache headers.
 
 ## Getting started
 
 ```bash
 npm install
-npm run dev      # start the dev server
-npm run lint     # check code quality
-npm run build    # production build into dist/
-npm run preview  # serve the production build locally
+npm run dev      # http://localhost:5173, every page under its own path
+npm run lint
+npm run build    # dist/ with prerendered HTML
+npm run preview  # serve dist/ locally
 ```
 
-Requires Node.js 20.19 or newer (Node 22 is used in production).
-
-## Project structure
-
-```text
-src/
-  components/    Hero, CaseStudies, ProjectsShowcase, ServicesOrbit, SkillsShowcase, Testimonials, ...
-  data/          testimonials.js (real client feedback only; the section stays hidden while empty)
-public/
-  images/        project screenshots, hero image, social preview image
-  files/         downloadable CV (PDF)
-  sitemap.xml, robots.txt, site.webmanifest, icons
-cv/              source (HTML) for the one-page CV and the generated PDF
-index.html       meta tags, structured data and fallback content
-```
+Requires Node.js 20.19 or newer.
 
 ## Updating content
 
-- **Projects:** edit the `projects` array in `src/components/ProjectsShowcase.jsx`.
-- **Case studies:** edit the `caseStudies` array in `src/components/CaseStudies.jsx`.
-- **Skills:** edit `skillGroups` in `src/components/SkillsShowcase.jsx`.
-- **Testimonials:** add entries to `src/data/testimonials.js` using a client's exact words or a screenshot.
-- **CV:** edit `cv/cv.html`, print it to PDF and copy the result to `public/files/adil-cv.pdf`.
+- **Identity, links, stats:** `src/data/site.js`
+- **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`)
+- **Case studies:** `src/data/caseStudies.js`; a new case study also needs an HTML entry under `projects/<slug>/`,
+  an entry in `vite.config.js`, `src/entries/<slug>.jsx` and a line in `public/sitemap.xml`
+- **Services, process:** `src/data/services.js`
+- **FAQ:** `src/data/faq.js`
+- **Skills, timeline:** `src/data/skills.js`
+- **Resume:** edit `cv/cv.html`, print to PDF, copy to `public/files/adil-cv.pdf`
+- **AI assistants summary:** `public/llms.txt`
 
-## Deployment
+## SEO files
 
-The site is deployed on Hostinger. Pushing to `main` triggers an automatic build (`npm run build`) and deploy.
+`public/robots.txt`, `public/sitemap.xml`, `public/llms.txt`, `public/.htaccess`, `public/site.webmanifest`.
+The audit and plan behind this build are in `docs/SEO_AUDIT_2026-10-12.md`.
 
 ## License
 
-Copyright © Muhammad Adil. All rights reserved. The source is shared for reference. Please do not copy the design
+Copyright Muhammad Adil. All rights reserved. The source is shared for reference. Please do not copy the design
 or content without permission.
-
-## Contact
-
-[muhammad.adilk024@gmail.com](mailto:muhammad.adilk024@gmail.com) · [muhammadadil.cloud](https://muhammadadil.cloud)

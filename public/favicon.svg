@@ -1,12 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Muhammad Adil">
-  <defs>
-    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8f7fff" />
-      <stop offset="1" stop-color="#fe9d4a" />
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="15" fill="#0a0a0e" />
-  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" fill="none" stroke="url(#g)" stroke-opacity=".55" stroke-width="2" />
-  <path d="M16 42V21.5L32 37l16-15.5V42" fill="none" stroke="url(#g)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
-  <rect x="38" y="46.5" width="12" height="4" rx="2" fill="#fe9d4a" />
+  <rect width="64" height="64" rx="15" fill="#131209"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" fill="none" stroke="#e9a066" stroke-opacity=".5" stroke-width="2"/>
+  <path d="M16 42V21.5L32 37l16-15.5V42" fill="none" stroke="#f3eee4" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="38" y="46.5" width="12" height="4" rx="2" fill="#e9a066"/>
 </svg>

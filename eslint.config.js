@@ -18,4 +18,10 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    // Pages export their SEO meta next to the component, and Reveal.jsx exports a hook. The site is a
+    // prerendered multi page build, so fast refresh boundaries do not matter here.
+    files: ['src/pages/**/*.jsx', 'src/components/Reveal.jsx', 'src/entry-server.jsx', 'src/mount.jsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
 ])
