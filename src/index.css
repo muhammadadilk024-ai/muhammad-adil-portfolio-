@@ -504,6 +504,132 @@
   .cursor-badge.is-on { opacity: 1; transform: scale(1); }
   @media (hover: none) { .cursor-badge { display: none; } }
 
+  /* KnowWhere case study: the real app in a phone shape, logo stuck to the corner */
+  .app-hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: clamp(22rem, 58vh, 30rem);
+    padding: 2.75rem 1.5rem 0;
+    border-radius: 1.5rem;
+    background: var(--color-sky);
+    overflow: hidden;
+  }
+  .app-hero-phone {
+    width: min(62vw, 18rem);
+    flex: none;
+    border-radius: 2.2rem;
+    border: 8px solid var(--color-ink);
+    background: var(--color-ink);
+    box-shadow: var(--shadow-deck);
+    overflow: hidden;
+  }
+  .app-hero-phone img { display: block; width: 100%; height: auto; }
+  .app-hero-logo {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 14px 16px rgba(14, 26, 38, 0.28));
+  }
+  .app-hero-note { position: absolute; right: 1.25rem; bottom: 1.5rem; display: none; }
+  @media (min-width: 640px) {
+    .app-hero { padding-top: 3rem; }
+    .app-hero-logo { left: 1.75rem; top: 1.75rem; width: 7rem; height: 7rem; }
+    .app-hero-note { display: inline-block; }
+  }
+  html.js .app-hero-phone { animation: rise 1s var(--ease-fluid) both; }
+  html.js .app-hero-logo { animation: rise 1s 0.15s var(--ease-fluid) both; }
+
+  /* Gallery: tiles with captions, each image opens larger in a native dialog */
+  .gallery { display: grid; gap: 1.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+  .gallery figure { margin: 0; }
+  .gallery figcaption { padding: 0.9rem 0.25rem 0; }
+  .gallery-tile {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    padding: 0;
+    border: 1px solid var(--color-line);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow-sheet);
+    text-align: inherit;
+    transition: transform 0.6s var(--ease-fluid), box-shadow 0.6s var(--ease-fluid), border-color 0.4s var(--ease-fluid);
+  }
+  button.gallery-tile { cursor: zoom-in; }
+  button.gallery-tile:hover, button.gallery-tile:focus-visible { transform: translateY(-4px); border-color: rgba(23, 122, 76, 0.45); box-shadow: 0 28px 50px -30px rgba(14, 26, 38, 0.45); }
+  .gallery-tile img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .gallery-item.phone .gallery-tile { background: #ece9ff; }
+  .gallery-item.logo .gallery-tile { background: linear-gradient(135deg, #ebe7ff 0%, #f8f6ff 50%, #e2f0ff 100%); }
+  .gallery-item.logo .gallery-tile img { object-fit: contain; padding: 14%; }
+  .gallery-item.chat .gallery-tile { display: grid; place-items: center; padding: 1rem; background: var(--color-sky); }
+  .gallery-item.chat .gallery-tile > div { width: 100%; max-width: 16.5rem; }
+  .gallery-zoom {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s var(--ease-fluid), transform 0.4s var(--ease-spring);
+  }
+  button.gallery-tile:hover .gallery-zoom, button.gallery-tile:focus-visible .gallery-zoom { opacity: 1; transform: none; }
+  @media (hover: none) { .gallery-zoom { opacity: 1; transform: none; } }
+  @media (max-width: 639px) {
+    .gallery { display: flex; gap: 0.9rem; margin: 0 -1rem; padding: 0.25rem 1rem 0.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery-item { flex: 0 0 72vw; max-width: 18rem; scroll-snap-align: center; }
+  }
+
+  .lightbox {
+    width: min(92vw, 56rem);
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 1.5rem;
+    background: #fff;
+    color: var(--color-ink);
+    box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+  .lightbox::backdrop { background: rgba(14, 26, 38, 0.72); backdrop-filter: blur(6px); }
+  .lightbox[open] { animation: lightbox-in 0.4s var(--ease-fluid) both; }
+  @keyframes lightbox-in { from { opacity: 0; transform: translateY(12px) scale(0.97); } to { opacity: 1; transform: none; } }
+  .lightbox-body { margin: 0; display: flex; flex-direction: column; max-height: 92vh; overflow: auto; }
+  .lightbox-pic { display: grid; place-items: center; background: #ece9ff; }
+  .lightbox-pic img { display: block; width: auto; max-width: 100%; height: auto; max-height: calc(92vh - 8.5rem); object-fit: contain; }
+  @media (min-width: 640px) { .lightbox-pic img { max-height: calc(92vh - 5.5rem); } }
+  .lightbox-body figcaption { padding: 1rem 3.5rem 1.1rem 1.25rem; font-size: 0.9rem; line-height: 1.45; color: var(--color-mute); }
+  .lightbox-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    cursor: pointer;
+    transition: background-color 0.3s var(--ease-fluid), transform 0.4s var(--ease-spring);
+  }
+  .lightbox-close:hover { background: var(--color-leaf); transform: rotate(90deg); }
+
   .on-dark { color: rgba(246, 248, 243, 0.82); }
   .on-dark h1, .on-dark h2, .on-dark h3, .on-dark strong { color: var(--color-paper); }
   .on-dark .lead { color: rgba(246, 248, 243, 0.7); }
@@ -513,7 +639,8 @@
     html.js [data-reveal], html.js .bubble-row, html.js .stop { opacity: 1; transform: none; transition: none; }
     html.js .stop .stop-dot { opacity: 1; }
     .tilt, .parallax { transform: none; transition: none; }
-    .hero-rise, .hero-slide, .float-note, .arch-photo, .picker-panel { animation: none; }
+    .hero-rise, .hero-slide, .float-note, .arch-photo, .picker-panel, .app-hero-phone, .app-hero-logo, .lightbox[open] { animation: none; }
+    .gallery-tile, .gallery-zoom, .lightbox-close { transition: none; }
     .arch-ring path { animation: none; stroke-dashoffset: 0; }
     .deck-stage { --p: 1 !important; }
     .path-line { --p: 1 !important; }

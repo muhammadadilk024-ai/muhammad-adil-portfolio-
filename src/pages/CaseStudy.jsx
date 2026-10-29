@@ -3,10 +3,11 @@ import { Icon } from '../components/Icons.jsx'
 import { PageHeader, CtaBand } from '../components/Section.jsx'
 import { ProjectImage } from '../components/ProjectCard.jsx'
 import { PhoneMock } from '../components/PhoneMock.jsx'
+import { Gallery, AppHero } from '../components/Gallery.jsx'
 import { caseStudies, caseStudyBySlug } from '../data/caseStudies.js'
 import { site } from '../data/site.js'
 import { testimonialFor } from '../data/testimonials.js'
-import { graph, ids, person, aatox, website, webPage, breadcrumb, softwareApp } from '../seo/schema.js'
+import { graph, ids, person, aatox, website, webPage, breadcrumb, softwareApp, imageObject } from '../seo/schema.js'
 
 function Facts({ study }) {
   const rows = [
@@ -81,6 +82,19 @@ function CaseStudyPage({ study }) {
     { name: 'Projects', path: '/projects/' },
     { name: study.name, path: study.path },
   ]
+  const gallery = study.shot
+    ? [
+        { ...study.shot, kind: 'phone' },
+        { ...study.logo, kind: 'logo' },
+        {
+          key: 'conversation',
+          kind: 'chat',
+          name: 'A conversation',
+          caption: 'You say where something is. Later you ask, and it answers, in the language you spoke.',
+          render: () => <PhoneMock />,
+        },
+      ]
+    : null
 
   return (
     <Layout current={study.path}>
@@ -89,7 +103,9 @@ function CaseStudyPage({ study }) {
       <section className="section pt-0">
         <div className="container-x grid gap-8 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-8" data-reveal>
-            {study.mock === 'phone' ? (
+            {study.shot ? (
+              <AppHero shot={study.shot} logo={study.logo} note="say it once, ask any time" />
+            ) : study.mock === 'phone' ? (
               <div className="rounded-3xl bg-sky px-6 py-10">
                 <PhoneMock />
               </div>
@@ -117,6 +133,19 @@ function CaseStudyPage({ study }) {
           ))}
         </ul>
       </Block>
+
+      {gallery && (
+        <section id="gallery" className="section border-t border-line">
+          <div className="container-x">
+            <p className="eyebrow" data-reveal>a closer look</p>
+            <h2 className="mt-2 text-3xl" data-reveal>The app, up close</h2>
+            <p className="mt-3 max-w-2xl text-mute" data-reveal>The real home screen, the logo, and what a conversation looks like. Tap a picture to see it larger.</p>
+            <div className="mt-8">
+              <Gallery items={gallery} />
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section border-t border-line">
         <div className="container-x">
@@ -183,7 +212,15 @@ export function caseStudyPage(slug) {
       path: study.path,
       name: study.title,
       description: study.description,
-      extra: slug === 'knowwhere' ? { about: { '@id': 'https://aatox.com/knowwhere/#app' }, author: { '@id': ids.person } } : { author: { '@id': ids.person } },
+      extra:
+        slug === 'knowwhere'
+          ? {
+              about: { '@id': 'https://aatox.com/knowwhere/#app' },
+              author: { '@id': ids.person },
+              primaryImageOfPage: imageObject({ src: study.ogImage, width: 1200, height: 630, title: 'KnowWhere case study card', alt: study.ogAlt }),
+              image: [imageObject(study.shot), imageObject(study.logo)],
+            }
+          : { author: { '@id': ids.person } },
     }),
     person(),
     website(),
@@ -196,6 +233,8 @@ export function caseStudyPage(slug) {
     ogTitle: study.h1,
     description: study.description,
     ogType: 'article',
+    image: study.ogImage,
+    imageAlt: study.ogAlt,
     schema: graph(...nodes),
   }
   const Component = () => <CaseStudyPage study={study} />

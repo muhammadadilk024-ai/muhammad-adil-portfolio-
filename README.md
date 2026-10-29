@@ -57,6 +57,8 @@ Requires Node.js 20.19 or newer.
 - **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`)
 - **Case studies:** `src/data/caseStudies.js`; a new case study also needs an HTML entry under `projects/<slug>/`,
   an entry in `vite.config.js`, `src/entries/<slug>.jsx` and a line in `public/sitemap.xml`
+- **KnowWhere images:** `public/images/projects/knowwhere/` (logo and Android home screen, two sizes each, and the
+  share card); their alt text and captions live on the `logo` and `shot` records in `src/data/caseStudies.js`
 - **Services, process:** `src/data/services.js`
 - **FAQ:** `src/data/faq.js`
 - **Skills, timeline:** `src/data/skills.js`

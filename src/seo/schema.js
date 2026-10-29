@@ -1,4 +1,5 @@
 import { site } from '../data/site.js'
+import { caseStudyBySlug } from '../data/caseStudies.js'
 
 const U = site.url
 export const ids = {
@@ -149,7 +150,21 @@ export function itemList(items, path, name) {
   }
 }
 
+/** An ImageObject from one of the image records in src/data (src, width, height, alt, title). */
+export function imageObject(image) {
+  return {
+    '@type': 'ImageObject',
+    url: U + image.src,
+    contentUrl: U + image.src,
+    width: image.width,
+    height: image.height,
+    name: image.title,
+    caption: image.alt,
+  }
+}
+
 export function softwareApp() {
+  const knowwhere = caseStudyBySlug('knowwhere')
   return {
     '@type': 'SoftwareApplication',
     '@id': 'https://aatox.com/knowwhere/#app',
@@ -160,6 +175,8 @@ export function softwareApp() {
     author: { '@id': ids.person },
     publisher: { '@id': ids.aatox },
     description: 'A private, voice first memory assistant that remembers where you put things, in English, Hindi and Urdu.',
+    image: imageObject(knowwhere.logo),
+    screenshot: imageObject(knowwhere.shot),
   }
 }
 
