@@ -1,20 +1,22 @@
 import { Icon } from './Icons.jsx'
 import { ProjectImage } from './ProjectCard.jsx'
 import { PhoneMock } from './PhoneMock.jsx'
+import { AppHero } from './Gallery.jsx'
 
 /** Case study teaser used on the projects page. */
 export function FeatureCard({ study, index = 0, wide = false }) {
-  const visual =
-    study.mock === 'phone' ? (
-      <div className="rounded-2xl bg-sky px-4 py-6">
-        <PhoneMock />
-      </div>
-    ) : (
-      <ProjectImage
-        project={{ image: study.image, imageAlt: study.imageAlt, width: study.width, height: study.height, domain: study.urlLabel }}
-        sizes={wide ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 40vw, 100vw'}
-      />
-    )
+  const visual = study.shot ? (
+    <AppHero shot={study.shot} logo={study.logo} note="say it once, ask any time" tile priority={index === 0} />
+  ) : study.mock === 'phone' ? (
+    <div className="rounded-2xl bg-sky px-4 py-6">
+      <PhoneMock />
+    </div>
+  ) : (
+    <ProjectImage
+      project={{ image: study.image, imageAlt: study.imageAlt, width: study.width, height: study.height, domain: study.urlLabel }}
+      sizes={wide ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 40vw, 100vw'}
+    />
+  )
 
   return (
     <article

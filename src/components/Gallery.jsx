@@ -74,24 +74,27 @@ export function Gallery({ items, label = 'KnowWhere gallery' }) {
   )
 }
 
-/** The real app, in a phone shape, with the logo stuck to the corner. Used as the KnowWhere case study hero. */
-export function AppHero({ shot, logo, note }) {
+/**
+ * The real app, in a phone shape, with the logo stuck to the corner. The KnowWhere case study hero,
+ * and with `tile` a 16:10 thumbnail that lines up with the other project cards.
+ */
+export function AppHero({ shot, logo, note, tile = false, priority = true }) {
   return (
-    <div className="app-hero" role="group" aria-label="KnowWhere, the app and its logo">
+    <div className={tile ? 'app-hero app-tile' : 'app-hero'} role="group" aria-label="KnowWhere, the app and its logo">
       <div className="app-hero-phone">
         <img
           src={shot.src}
           srcSet={shot.srcSet}
-          sizes="(min-width: 640px) 18rem, 62vw"
+          sizes={tile ? '(min-width: 640px) 13rem, 46vw' : '(min-width: 640px) 18rem, 62vw'}
           alt={shot.alt}
           width={shot.width}
           height={shot.height}
-          loading="eager"
-          fetchPriority="high"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : undefined}
           decoding="async"
         />
       </div>
-      <img className="app-hero-logo" src={logo.src} srcSet={logo.srcSet} sizes="7rem" alt={logo.alt} width={logo.width} height={logo.height} loading="eager" decoding="async" />
+      <img className="app-hero-logo" src={logo.src} srcSet={logo.srcSet} sizes="7rem" alt={logo.alt} width={logo.width} height={logo.height} loading={priority ? 'eager' : 'lazy'} decoding="async" />
       {note && <p className="note note-sky app-hero-note" style={{ '--rot': '4deg' }}>{note}</p>}
     </div>
   )

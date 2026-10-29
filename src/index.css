@@ -543,6 +543,17 @@
   }
   html.js .app-hero-phone { animation: rise 1s var(--ease-fluid) both; }
   html.js .app-hero-logo { animation: rise 1s 0.15s var(--ease-fluid) both; }
+  /* Thumbnail version for the projects page: same 16:10 box as the site screenshots */
+  .app-tile { height: auto; aspect-ratio: 16 / 10; padding: 1.75rem 1rem 0; border-radius: 1rem; }
+  .app-tile .app-hero-phone { width: min(46%, 13rem); border-width: 6px; border-radius: 1.8rem; transition: transform 0.6s var(--ease-fluid); }
+  .group:hover .app-tile .app-hero-phone { transform: translateY(-8px); }
+  .app-tile .app-hero-logo { left: 0.9rem; top: 0.9rem; width: 4.25rem; height: 4.25rem; }
+  .app-tile .app-hero-note { right: 1rem; bottom: 1rem; font-size: 1.2rem; }
+  @media (min-width: 640px) {
+    .app-tile { padding-top: 2.25rem; }
+    .app-tile .app-hero-logo { left: 1.25rem; top: 1.25rem; width: 5.5rem; height: 5.5rem; }
+  }
+  html.js .app-tile .app-hero-phone, html.js .app-tile .app-hero-logo { animation: none; }
 
   /* Gallery: tiles with captions, each image opens larger in a native dialog */
   .gallery { display: grid; gap: 1.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
