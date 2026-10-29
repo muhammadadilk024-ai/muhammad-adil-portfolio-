@@ -2,27 +2,21 @@ import { testimonials } from '../data/testimonials.js'
 import { Icon } from './Icons.jsx'
 import { SectionHeading } from './Section.jsx'
 
-/** Client quotes in an uneven two column grid, each linked to the live site it came from. */
-export function Testimonials({ id = 'testimonials', eyebrow = 'Client feedback', title = 'In my clients’ words', intro }) {
+/** Client quotes on the services page, each linked to the live site it came from. */
+export function Testimonials({ id = 'testimonials', eyebrow = 'actual messages, unedited', title = 'What clients say after launch', intro }) {
   return (
-    <section id={id} className="section scroll-mt-24 border-t border-white/10">
+    <section id={id} className="section scroll-mt-16 bg-sky/60">
       <div className="container-x">
         <SectionHeading eyebrow={eyebrow} title={title} intro={intro} />
-        <ul className="mt-12 grid gap-4 lg:grid-cols-12">
+        <ul className="mt-10 grid gap-5 md:grid-cols-2">
           {testimonials.map((item, index) => (
-            <li
-              key={item.project}
-              className={`surface surface-hover flex flex-col justify-between p-6 sm:p-8 ${index % 4 === 0 || index % 4 === 3 ? 'lg:col-span-7' : 'lg:col-span-5'}`}
-              data-reveal
-              style={{ '--d': `${(index % 2) * 80}ms` }}
-            >
+            <li key={item.project} className="bubble max-w-none" data-reveal style={{ '--d': `${(index % 2) * 90}ms` }}>
               <figure>
-                <span className="text-4xl font-semibold leading-none text-accent" aria-hidden="true">“</span>
-                <blockquote className="mt-2 text-lg text-cream sm:text-xl">{item.quote}</blockquote>
-                <figcaption className="mt-6 flex flex-wrap items-center gap-3 text-sm text-cream/65">
-                  <span className="font-semibold text-cream">{item.client}</span>
+                <blockquote className="text-lg leading-snug text-ink sm:text-xl">{item.quote}</blockquote>
+                <figcaption className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-mute">
+                  <span className="hand text-xl text-leaf">{item.client}</span>
                   <span>{item.context}</span>
-                  <a href={item.url} target="_blank" rel="noopener" className="link-arrow text-sm text-cream/70">
+                  <a href={item.url} target="_blank" rel="noopener" className="link-arrow text-sm">
                     Open the site <Icon name="arrow-up-right" className="h-4 w-4" />
                   </a>
                 </figcaption>
@@ -39,9 +33,9 @@ export function Testimonials({ id = 'testimonials', eyebrow = 'Client feedback',
 export function ProjectQuote({ item, className = '' }) {
   if (!item) return null
   return (
-    <figure className={`rounded-xl bg-accent/8 p-4 ${className}`}>
-      <blockquote className="text-sm text-cream/85">“{item.quote}”</blockquote>
-      <figcaption className="mt-2 text-xs text-cream/60">{item.client}</figcaption>
+    <figure className={`rounded-2xl bg-sky/70 p-4 ${className}`}>
+      <blockquote className="text-sm text-ink">“{item.quote}”</blockquote>
+      <figcaption className="hand mt-1 text-lg leading-none text-leaf">{item.client}</figcaption>
     </figure>
   )
 }

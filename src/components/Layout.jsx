@@ -1,16 +1,19 @@
 import { useEffect } from 'react'
 import { Nav } from './Nav.jsx'
 import { Footer } from './Footer.jsx'
+import { CursorBadge } from './CursorBadge.jsx'
 import { useReveal } from './Reveal.jsx'
 
 // Old single page anchors that may still be linked from LinkedIn and elsewhere.
 const aliases = {
   '#case-studies': '#work',
   '#projects': '#work',
+  '#services': '#build',
   '#skills': '/about/#stack',
   '#resume': '/about/',
   '#contact': '/contact/',
-  '#testimonials': '#testimonials',
+  '#process': '#how',
+  '#proof': '#work',
 }
 
 export function Layout({ current, children }) {
@@ -37,6 +40,7 @@ export function Layout({ current, children }) {
       <Nav current={current} />
       <main id="main">{children}</main>
       <Footer />
+      <CursorBadge />
     </>
   )
 }

@@ -2,7 +2,7 @@
 
 **Live site:** [muhammadadil.cloud](https://muhammadadil.cloud)
 
-![Muhammad Adil, full stack and AI developer](public/images/og-image.jpg)
+![Muhammad Adil, full stack and AI developer](public/images/og-card.jpg)
 
 The portfolio of Muhammad Adil, a full stack and AI developer in Canada. Nine pages, prerendered to static HTML,
 hydrated with React, designed around one offer (web, mobile and AI products built end to end) and one action
@@ -12,7 +12,7 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 
 | URL | Purpose |
 |---|---|
-| `/` | Home: hero, selected work, services, process, about, proof, FAQ, contact call to action |
+| `/` | Home: hero with the portrait and sticky note facts, the fan deck of nine live sites, the five offers picker, client messages as a chat thread, the timeline path, how a project goes, FAQ, closing call to action |
 | `/projects/` | Three case studies and nine live client projects with roles |
 | `/projects/knowwhere/`, `/projects/bc-scrap-cars/`, `/projects/sb-traworld/` | Case studies |
 | `/services/` | Five services with proof, process, pricing model, FAQ |
@@ -30,8 +30,11 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 - **SEO data in one place.** `src/data/site.js` holds the identity used by every page, `src/seo/schema.js` builds the
   JSON-LD graph (Person, ProfilePage, WebSite, ProfessionalService, FAQPage, BreadcrumbList, SoftwareApplication) and
   `src/seo/head.js` builds the head tags.
-- **Design system.** Manrope (self hosted), one accent colour, flat backgrounds, Phosphor icons inlined, scroll reveals
-  with `IntersectionObserver`, no animation library.
+- **Design system.** "The builder's desk, in daylight": paper white, navy ink, sky blue and leaf green taken from the
+  portrait, sticky note yellow for handwritten facts. Bricolage Grotesque for type, Caveat only for handwritten
+  annotations (both self hosted). Phosphor icons inlined. No animation library: a canvas dot grid that reacts to the
+  pointer, a scroll driven card fan, a scroll drawn timeline and `IntersectionObserver` reveals, all in
+  `src/components/` with `prefers-reduced-motion` respected.
 - **Hosting.** Hostinger, continuous deployment from `main`. `public/.htaccess` redirects www to the apex, strips
   `index.html`, sets the 404 page and cache headers.
 
@@ -50,13 +53,16 @@ Requires Node.js 20.19 or newer.
 ## Updating content
 
 - **Identity, links, stats:** `src/data/site.js`
+- **Home page copy** (rolling words, sticky notes, facts, offers, steps, quotes): `src/data/home.js`
 - **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`)
 - **Case studies:** `src/data/caseStudies.js`; a new case study also needs an HTML entry under `projects/<slug>/`,
   an entry in `vite.config.js`, `src/entries/<slug>.jsx` and a line in `public/sitemap.xml`
 - **Services, process:** `src/data/services.js`
 - **FAQ:** `src/data/faq.js`
 - **Skills, timeline:** `src/data/skills.js`
-- **Resume:** edit `cv/cv.html`, print to PDF, copy to `public/files/adil-cv.pdf`
+- **Resume:** edit `cv/cv.html`, print to PDF (headless Chrome, Letter, backgrounds on), copy to `cv/Muhammad-Adil-CV.pdf` and `public/files/adil-cv.pdf`
+- **Social card:** `public/images/og-card.jpg` (1200x630), referenced from `src/data/site.js`
+- **Portrait:** `public/images/muhammad-adil.webp` (About page) and the transparent cutout `muhammad-adil-cutout.webp` (home hero)
 - **AI assistants summary:** `public/llms.txt`
 
 ## SEO files

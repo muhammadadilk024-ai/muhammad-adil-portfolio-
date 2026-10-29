@@ -40,15 +40,16 @@ function ProjectsPage() {
     <Layout current={path}>
       <PageHeader
         crumbs={crumbs}
-        eyebrow="Work"
-        title="Projects and case studies"
-        lead="Nine client sites you can open right now, plus three projects explained in depth. Each card says exactly what my role was."
+        eyebrow="all of it, with my exact role"
+        title="Nine client sites you can open, three stories in depth"
+        lead="Every card says what I built and whether I did it alone or as part of the Tech Joint Solution team. The live sites are one click away, so you can judge the work yourself."
+        note="all nine are live right now"
       />
 
       <section className="section pt-0">
         <div className="container-x">
-          <SectionHeading eyebrow="Case studies" title="Three projects, in depth" />
-          <div className="mt-12 grid gap-6 lg:grid-cols-12">
+          <SectionHeading eyebrow="the three with a story" title="Case studies" />
+          <div className="mt-10 grid gap-6 lg:grid-cols-12">
             {caseStudies.map((study, index) => (
               <FeatureCard key={study.slug} study={study} index={index} wide={index === 2} />
             ))}
@@ -56,14 +57,14 @@ function ProjectsPage() {
         </div>
       </section>
 
-      <section className="section border-t border-white/10">
+      <section className="section border-t border-line">
         <div className="container-x">
           <SectionHeading
-            eyebrow="Client work"
+            eyebrow="client work"
             title="Nine live client projects"
             intro="Laravel builds as the solo developer at Tech Joint Solution, and WordPress, WooCommerce and custom builds delivered independently from brand to launch."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} index={index} />
             ))}
@@ -71,11 +72,7 @@ function ProjectsPage() {
         </div>
       </section>
 
-      <CtaBand
-        title="Want something like this for your business?"
-        text="Send a link to your current site or a short description of what you need. I reply within one business day."
-        secondary={{ label: 'See services', href: '/services/' }}
-      />
+      <CtaBand title="Want something like this for your business?" text="Send a link to your current site or a short description of what you need. I reply within one business day." secondary={{ label: 'See services', href: '/services/' }} />
     </Layout>
   )
 }

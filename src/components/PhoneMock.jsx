@@ -8,19 +8,19 @@ export function PhoneMock({ className = '' }) {
   ]
   return (
     <div
-      className={`mx-auto w-full max-w-xs rounded-3xl border border-white/12 bg-[#181818] p-2 shadow-card ${className}`}
+      className={`mx-auto w-full max-w-xs rounded-[2rem] border border-ink/15 bg-ink p-2 shadow-deck ${className}`}
       role="img"
       aria-label="Illustration of a KnowWhere voice conversation: the user says where the passport is, later asks for it, and the app answers."
     >
-      <div className="rounded-2xl bg-ink p-4">
-        <div className="flex items-center justify-between text-xs text-cream/50">
-          <span>KnowWhere</span>
-          <span className="flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-accent" /> listening</span>
+      <div className="rounded-[1.6rem] bg-[#15222f] p-4">
+        <div className="flex items-center justify-between text-xs text-paper/60">
+          <span className="font-semibold text-paper">KnowWhere</span>
+          <span className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sprout" /> listening</span>
         </div>
         <ul className="mt-6 space-y-3 text-sm">
           {lines.map((line, index) => (
             <li key={index} className={`flex ${line.who === 'you' ? 'justify-end' : 'justify-start'}`}>
-              <span className={`max-w-[85%] rounded-2xl px-3 py-2 ${line.who === 'you' ? 'bg-accent text-ink' : 'bg-white/8 text-cream'}`}>
+              <span className={`max-w-[85%] rounded-2xl px-3 py-2 ${line.who === 'you' ? 'bg-sprout text-ink' : 'bg-paper/10 text-paper'}`}>
                 {line.text}
               </span>
             </li>
@@ -28,7 +28,7 @@ export function PhoneMock({ className = '' }) {
         </ul>
         <div className="mt-8 flex items-center justify-center gap-1" aria-hidden="true">
           {[10, 18, 26, 16, 22, 12, 20].map((h, i) => (
-            <span key={i} className="w-1 rounded-full bg-accent/70" style={{ height: `${h}px` }} />
+            <span key={i} className="w-1 rounded-full bg-sprout/80" style={{ height: `${h}px` }} />
           ))}
         </div>
       </div>

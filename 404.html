@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found | Muhammad Adil</title>
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#131209" />
-    <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <meta name="theme-color" content="#f6f8f3" />
+    <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
     <style>
-      @font-face { font-family: "Manrope"; font-weight: 400 800; font-display: swap; src: url("/fonts/manrope-latin.woff2") format("woff2"); }
+      @font-face { font-family: "Bricolage Grotesque"; font-weight: 400 800; font-display: swap; src: url("/fonts/bricolage-latin.woff2") format("woff2"); }
+      @font-face { font-family: "Caveat"; font-weight: 600; font-display: swap; src: url("/fonts/caveat-latin.woff2") format("woff2"); }
       * { box-sizing: border-box; }
-      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; background: #131209; color: rgba(243, 238, 228, 0.8); font-family: Manrope, system-ui, sans-serif; padding: 24px; }
+      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; background: #f6f8f3; color: #0e1a26; font-family: "Bricolage Grotesque", system-ui, sans-serif; padding: 24px; background-image: radial-gradient(rgba(14, 26, 38, 0.13) 1.1px, transparent 1.2px); background-size: 26px 26px; }
       main { max-width: 560px; }
-      p.eyebrow { margin: 0 0 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #e9a066; }
-      h1 { margin: 0; font-size: 36px; line-height: 40px; letter-spacing: -0.02em; color: #f3eee4; }
-      p { font-size: 16px; line-height: 24px; }
+      p.note { display: inline-block; margin: 0 0 20px; padding: 8px 14px; border-radius: 4px; background: #fff0a3; font-family: Caveat, cursive; font-size: 24px; line-height: 1; transform: rotate(-3deg); box-shadow: 1px 6px 18px -8px rgba(14, 26, 38, 0.35); }
+      h1 { margin: 0; font-size: 44px; line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
+      p { font-size: 18px; line-height: 1.5; color: #5a6b7a; }
       nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-      a { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 24px; border-radius: 9999px; font-weight: 600; text-decoration: none; color: #f3eee4; border: 1px solid rgba(255, 255, 255, 0.14); }
-      a.primary { background: #e9a066; color: #131209; border-color: #e9a066; }
+      a { display: inline-flex; align-items: center; min-height: 52px; padding: 12px 24px; border-radius: 9999px; font-weight: 700; text-decoration: none; color: #0e1a26; border: 1.5px solid #0e1a26; }
+      a.primary { background: #177a4c; color: #fff; border-color: #177a4c; }
     </style>
   </head>
   <body>
     <main>
-      <p class="eyebrow">404</p>
-      <h1>That page is not here.</h1>
+      <p class="note">404, that page wandered off</p>
+      <h1>Not here, but everything else is.</h1>
       <p>The address may have changed when the site was rebuilt. The work, services and contact details are all one click away.</p>
       <nav aria-label="Useful pages">
         <a class="primary" href="/">Go to the homepage</a>
-        <a href="/projects/">See projects</a>
-        <a href="/contact/">Contact</a>
+        <a href="/projects/">See the work</a>
+        <a href="/contact/">Say hello</a>
       </nav>
     </main>
   </body>

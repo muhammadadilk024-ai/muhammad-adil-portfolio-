@@ -3,7 +3,8 @@ import { Icon } from '../components/Icons.jsx'
 import { PageHeader, SectionHeading, CtaBand } from '../components/Section.jsx'
 import { FaqList } from '../components/FaqList.jsx'
 import { Testimonials } from '../components/Testimonials.jsx'
-import { services, process } from '../data/services.js'
+import { services } from '../data/services.js'
+import { steps } from '../data/home.js'
 import { servicesFaq } from '../data/faq.js'
 import { graph, person, employer, website, webPage, breadcrumb, professionalService, faqPage } from '../seo/schema.js'
 
@@ -30,64 +31,60 @@ export const meta = {
   ),
 }
 
+const isExternal = (href) => href.startsWith('http')
+
 function ServicesPage() {
   return (
     <Layout current={path}>
       <PageHeader
         crumbs={crumbs}
-        eyebrow="Services"
-        title="Web, mobile and AI development, built end to end"
-        lead="Five things I do well, each backed by a project you can open. Fixed quotes for defined scope, hourly for ongoing work, and everything delivered to your own hosting."
+        eyebrow="what I can build for you"
+        title="Websites, stores, apps and AI, built end to end"
+        lead="Five things I do well, each backed by a project you can open. Fixed quotes for a defined scope, hourly for ongoing work, and everything delivered to your own hosting."
+        note="first call is free"
       />
 
       <section className="section pt-0">
         <div className="container-x space-y-6">
           {services.map((service, index) => (
-            <article key={service.slug} id={service.slug} className="surface scroll-mt-24 grid gap-8 p-6 sm:p-8 lg:grid-cols-12 lg:p-10" data-reveal style={{ '--d': `${(index % 2) * 80}ms` }}>
+            <article key={service.slug} id={service.slug} className="sheet scroll-mt-24 grid gap-8 p-6 sm:p-8 lg:grid-cols-12 lg:p-10" data-reveal style={{ '--d': `${(index % 2) * 80}ms` }}>
               <div className="lg:col-span-6">
-                <div className="flex items-center gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent/12 text-accent">
-                    <Icon name={service.icon} className="h-6 w-6" />
-                  </span>
-                  <span className="text-sm font-semibold text-cream/60">0{index + 1}</span>
-                </div>
+                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-sky text-ink">
+                  <Icon name={service.icon} className="h-6 w-6" />
+                </span>
                 <h2 className="mt-6 text-2xl sm:text-3xl">{service.title}</h2>
-                <p className="mt-3 text-lg font-semibold text-cream">{service.benefit}</p>
-                <p className="mt-3 text-base text-cream/70">{service.detail}</p>
-                <p className="mt-4 text-sm text-cream/60">
-                  <strong className="font-semibold text-cream/80">Good fit:</strong> {service.fit}
+                <p className="mt-3 text-lg font-semibold text-ink">{service.benefit}</p>
+                <p className="mt-3 text-base text-mute">{service.detail}</p>
+                <p className="mt-4 text-sm text-mute">
+                  <span className="hand text-lg text-leaf">good fit: </span>
+                  {service.fit}
                 </p>
               </div>
               <div className="lg:col-span-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">What you get</p>
-                <ul className="mt-3 space-y-2">
+                <p className="hand text-xl text-leaf">what you get</p>
+                <ul className="mt-2 space-y-2">
                   {service.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3 text-base text-cream/80">
-                      <Icon name="check" className="mt-1 h-4 w-4 shrink-0 text-accent" />
+                    <li key={bullet} className="flex gap-3 text-base text-ink/85">
+                      <Icon name="check" className="mt-1 h-4 w-4 shrink-0 text-leaf" />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
                 <div className="mt-6 grid gap-6 sm:grid-cols-2">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">Tools</p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
+                    <p className="hand text-xl text-leaf">tools</p>
+                    <ul className="mt-2 flex flex-wrap gap-1.5">
                       {service.tools.map((tool) => (
                         <li key={tool} className="chip">{tool}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">Proof</p>
-                    <ul className="mt-3 flex flex-wrap gap-2">
+                    <p className="hand text-xl text-leaf">proof</p>
+                    <ul className="mt-2 flex flex-wrap gap-1.5">
                       {service.proof.map((item) => (
                         <li key={item.href}>
-                          <a
-                            href={item.href}
-                            className="chip transition-colors duration-300 ease-fluid hover:border-accent/60 hover:text-cream"
-                            target={item.href.startsWith('http') ? '_blank' : undefined}
-                            rel={item.href.startsWith('http') ? 'noopener' : undefined}
-                          >
+                          <a href={item.href} className="chip" target={isExternal(item.href) ? '_blank' : undefined} rel={isExternal(item.href) ? 'noopener' : undefined}>
                             {item.name}
                           </a>
                         </li>
@@ -101,35 +98,30 @@ function ServicesPage() {
         </div>
       </section>
 
-      <section className="section border-t border-white/10">
+      <section className="section border-t border-line">
         <div className="container-x">
-          <SectionHeading eyebrow="How a project runs" title="Three steps from first call to launch" intro="You get a quote and a timeline before any work starts, a working preview early, and support after launch." />
-          <ol className="mt-12 grid gap-4 md:grid-cols-3">
-            {process.map((step, index) => (
-              <li key={step.step} className="surface p-6 sm:p-8" data-reveal style={{ '--d': `${index * 100}ms` }}>
-                <div className="flex items-center justify-between">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-accent/12 text-accent">
-                    <Icon name={step.icon} className="h-6 w-6" />
-                  </span>
-                  <span className="text-sm font-semibold text-cream/60">{step.step}</span>
-                </div>
-                <h3 className="mt-6 text-2xl">{step.title}</h3>
-                <p className="mt-3 text-base text-cream/70">{step.text}</p>
+          <SectionHeading eyebrow="three steps, no surprises" title="How a project goes" intro="You get a quote and a timeline before any work starts, a working preview early, and support after launch." />
+          <ol className="mt-10 grid gap-5 md:grid-cols-3">
+            {steps.map((step, index) => (
+              <li key={step.title} className="sheet p-6 sm:p-8" data-reveal style={{ '--d': `${index * 100}ms` }}>
+                <span className="hand text-4xl leading-none text-leaf" aria-hidden="true">{index + 1}</span>
+                <h3 className="mt-4 text-2xl">{step.title}</h3>
+                <p className="mt-3 text-base text-mute">{step.text}</p>
               </li>
             ))}
           </ol>
-          <div className="surface mt-6 grid gap-6 p-6 sm:grid-cols-3 sm:p-8" data-reveal>
+          <div className="sheet sheet-sky mt-5 grid gap-6 p-6 sm:grid-cols-3 sm:p-8" data-reveal>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">Pricing</p>
-              <p className="mt-2 text-base text-cream/80">Fixed quote for a defined scope, or hourly for ongoing work. No fee for the first call.</p>
+              <p className="hand text-xl text-leaf">pricing</p>
+              <p className="mt-1 text-base text-ink/85">Fixed quote for a defined scope, or hourly for ongoing work. No fee for the first call.</p>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">Ownership</p>
-              <p className="mt-2 text-base text-cream/80">Code, content and accounts stay yours, on your hosting.</p>
+              <p className="hand text-xl text-leaf">ownership</p>
+              <p className="mt-1 text-base text-ink/85">Code, content and accounts stay yours, on your hosting.</p>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cream/50">Hours</p>
-              <p className="mt-2 text-base text-cream/80">Remote, North American hours. Replies within one business day.</p>
+              <p className="hand text-xl text-leaf">hours</p>
+              <p className="mt-1 text-base text-ink/85">Remote, North American hours. Replies within one business day.</p>
             </div>
           </div>
         </div>
@@ -137,20 +129,18 @@ function ServicesPage() {
 
       <Testimonials intro="What it is like to work with me, from the people who did." />
 
-      <section className="section border-t border-white/10">
-        <div className="container-x">
-          <SectionHeading eyebrow="Questions" title="Before you hire a developer" />
-          <div className="mt-12">
+      <section className="section">
+        <div className="container-x grid gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <SectionHeading eyebrow="before you hire a developer" title="Questions clients ask" />
+          </div>
+          <div className="lg:col-span-8" data-reveal>
             <FaqList items={servicesFaq} />
           </div>
         </div>
       </section>
 
-      <CtaBand
-        title="Tell me what you need built."
-        text="A link to your current site, a rough budget and a date are enough to start. You get a reply within one business day."
-        secondary={{ label: 'See the work', href: '/projects/' }}
-      />
+      <CtaBand title="Tell me what you need built." text="A link to your current site, a rough budget and a date are enough to start. You get a reply within one business day." secondary={{ label: 'See the work', href: '/projects/' }} />
     </Layout>
   )
 }

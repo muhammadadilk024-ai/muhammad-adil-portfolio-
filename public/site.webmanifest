@@ -1,19 +1,19 @@
 {
   "name": "Muhammad Adil, full stack and AI developer",
   "short_name": "Muhammad Adil",
-  "description": "Full stack and AI developer in Canada building web platforms, mobile apps and AI products.",
+  "description": "Full stack and AI developer in Canada building websites, online stores, mobile apps and AI assistants.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#131209",
-  "theme_color": "#131209",
+  "background_color": "#f6f8f3",
+  "theme_color": "#f6f8f3",
   "icons": [
     {
-      "src": "/icon-192.png?v=2",
+      "src": "/icon-192.png?v=3",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png?v=2",
+      "src": "/icon-512.png?v=3",
       "sizes": "512x512",
       "type": "image/png"
     }

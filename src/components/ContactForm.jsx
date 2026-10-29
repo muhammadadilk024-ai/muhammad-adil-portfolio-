@@ -13,7 +13,7 @@ function validate(values) {
 }
 
 function ErrorText({ id, children }) {
-  return <p id={id} className="mt-2 text-sm text-[#f0a79b]">{children}</p>
+  return <p id={id} className="mt-2 text-sm font-semibold text-[#b8361f]">{children}</p>
 }
 
 export function ContactForm() {
@@ -55,12 +55,12 @@ export function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="surface flex min-h-80 flex-col items-start justify-center p-8" role="status">
-        <span className="grid h-12 w-12 place-items-center rounded-full bg-accent/15 text-accent">
+      <div className="sheet flex min-h-80 flex-col items-start justify-center p-8" role="status">
+        <span className="grid h-12 w-12 place-items-center rounded-full bg-sprout/30 text-leaf">
           <Icon name="check" className="h-6 w-6" />
         </span>
         <h3 className="mt-6 text-2xl">Message sent.</h3>
-        <p className="mt-2 max-w-sm text-cream/70">Thanks for writing. I read every message and usually reply within one business day.</p>
+        <p className="mt-2 max-w-sm text-mute">Thanks for writing. I read every message and usually reply within one business day.</p>
         <button type="button" onClick={() => setStatus('idle')} className="link-inline mt-6 text-sm">
           Send another message
         </button>
@@ -69,7 +69,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="surface space-y-6 p-6 sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="sheet space-y-6 p-6 sm:p-8">
       <input type="hidden" name="_subject" value="New message from muhammadadil.cloud" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_captcha" value="false" />
@@ -77,19 +77,19 @@ export function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-semibold text-cream">Name</label>
+          <label htmlFor="name" className="mb-2 block text-sm font-bold text-ink">Name</label>
           <input id="name" name="name" type="text" autoComplete="name" className="input" aria-invalid={errors.name ? 'true' : undefined} aria-describedby={errors.name ? 'name-error' : undefined} onBlur={handleBlur} />
           {errors.name && <ErrorText id="name-error">{errors.name}</ErrorText>}
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-semibold text-cream">Email</label>
+          <label htmlFor="email" className="mb-2 block text-sm font-bold text-ink">Email</label>
           <input id="email" name="email" type="email" autoComplete="email" inputMode="email" className="input" aria-invalid={errors.email ? 'true' : undefined} aria-describedby={errors.email ? 'email-error' : undefined} onBlur={handleBlur} />
           {errors.email && <ErrorText id="email-error">{errors.email}</ErrorText>}
         </div>
       </div>
 
       <div>
-        <label htmlFor="topic" className="mb-2 block text-sm font-semibold text-cream">What is this about?</label>
+        <label htmlFor="topic" className="mb-2 block text-sm font-bold text-ink">What is this about?</label>
         <select id="topic" name="topic" className="input" defaultValue="A project">
           <option>A project</option>
           <option>A remote role</option>
@@ -99,17 +99,17 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-semibold text-cream">Message</label>
+        <label htmlFor="message" className="mb-2 block text-sm font-bold text-ink">Message</label>
         <textarea id="message" name="message" rows="6" className="input min-h-40 resize-y" placeholder="What are you building, what already exists, and when do you need it?" aria-invalid={errors.message ? 'true' : undefined} aria-describedby={errors.message ? 'message-error' : 'message-help'} onBlur={handleBlur} />
         {errors.message ? (
           <ErrorText id="message-error">{errors.message}</ErrorText>
         ) : (
-          <p id="message-help" className="mt-2 text-sm text-cream/50">A link to your current site or a rough budget helps me reply with something useful.</p>
+          <p id="message-help" className="mt-2 text-sm text-mute">A link to your current site or a rough budget helps me reply with something useful.</p>
         )}
       </div>
 
       {status === 'error' && (
-        <p role="alert" className="rounded-xl border border-[#e06a5c]/40 bg-[#e06a5c]/10 px-4 py-3 text-sm text-[#f0a79b]">
+        <p role="alert" className="rounded-xl border border-[#c2412d]/40 bg-[#c2412d]/10 px-4 py-3 text-sm font-semibold text-[#b8361f]">
           The message could not be sent. Please try again or email {site.email} directly.
         </p>
       )}
@@ -117,7 +117,7 @@ export function ContactForm() {
       <button type="submit" className="btn btn-primary w-full sm:w-auto" disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending' : 'Send message'} <Icon name="paper-plane-tilt" className="h-4 w-4" />
       </button>
-      <p className="text-xs text-cream/50">
+      <p className="text-xs text-mute">
         Your details are only used to reply to you. See the <a href="/privacy/" className="link-inline">privacy note</a>.
       </p>
     </form>

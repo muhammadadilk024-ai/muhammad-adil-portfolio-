@@ -1,13 +1,16 @@
-/** Questions and answers fully visible: easier to read on a phone and easier for search engines to quote. */
-export function FaqList({ items, columns = 2 }) {
+/** Questions as native details: the answers are in the HTML for crawlers, one tap away for people. */
+export function FaqList({ items, openFirst = false }) {
   return (
-    <dl className={`grid gap-x-12 gap-y-8 ${columns === 2 ? 'md:grid-cols-2' : ''}`}>
+    <div className="border-b border-line">
       {items.map((item, index) => (
-        <div key={item.q} className="border-t border-white/10 pt-6" data-reveal style={{ '--d': `${(index % 2) * 80}ms` }}>
-          <dt className="text-lg font-semibold text-cream">{item.q}</dt>
-          <dd className="mt-3 text-base text-cream/70">{item.a}</dd>
-        </div>
+        <details key={item.q} className="faq" open={openFirst && index === 0 ? true : undefined}>
+          <summary>
+            <span>{item.q}</span>
+            <span className="plus" aria-hidden="true" />
+          </summary>
+          <div className="faq-body">{item.a}</div>
+        </details>
       ))}
-    </dl>
+    </div>
   )
 }

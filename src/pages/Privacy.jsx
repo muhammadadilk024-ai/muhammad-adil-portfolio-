@@ -20,9 +20,9 @@ export const meta = {
 function PrivacyPage() {
   return (
     <Layout current={path}>
-      <PageHeader crumbs={crumbs} eyebrow="Privacy" title="A short privacy note" lead="This is a personal portfolio. It collects as little as possible." />
+      <PageHeader crumbs={crumbs} eyebrow="the short version" title="A short privacy note" lead="This is a personal portfolio. It collects as little as possible." />
       <section className="section pt-0">
-        <div className="container-x max-w-3xl space-y-8 text-base text-cream/75">
+        <div className="container-x max-w-3xl space-y-8 text-base text-mute">
           <div data-reveal>
             <h2 className="text-2xl">No analytics, no ads, no cookies set by me</h2>
             <p className="mt-3">The site runs no analytics scripts, sets no cookies of its own and shows no advertising. Pages are static files served from Hostinger, whose servers keep standard access logs (IP address, time, page requested) for security.</p>

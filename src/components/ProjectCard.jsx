@@ -5,8 +5,8 @@ import { ProjectQuote } from './Testimonials.jsx'
 export function ProjectImage({ project, className = '', sizes = '(min-width: 1024px) 50vw, 100vw', priority = false }) {
   return (
     <div
-      className={`overflow-hidden rounded-lg border border-white/10 ${className}`}
-      style={{ backgroundColor: project.background || '#1f1f1f', aspectRatio: '16 / 10' }}
+      className={`overflow-hidden rounded-2xl border border-line ${className}`}
+      style={{ backgroundColor: project.background || '#1b2a39', aspectRatio: '16 / 10' }}
     >
       <img
         src={project.image}
@@ -23,33 +23,33 @@ export function ProjectImage({ project, className = '', sizes = '(min-width: 102
   )
 }
 
-/** Compact card for the projects grid. */
+/** Card for the projects grid: screenshot, what it is, what my role was, the client's words if they sent any. */
 export function ProjectCard({ project, index = 0 }) {
   const href = project.caseStudy ? `/projects/${project.slug}/` : project.url
   const external = !project.caseStudy
   return (
-    <article className="surface surface-hover group flex flex-col p-2" data-reveal style={{ '--d': `${(index % 3) * 80}ms` }}>
-      <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined} className="block rounded-lg" tabIndex={-1} aria-hidden="true">
+    <article className="sheet sheet-hover group flex flex-col p-2" data-reveal style={{ '--d': `${(index % 3) * 80}ms` }}>
+      <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined} className="block rounded-2xl" tabIndex={-1} aria-hidden="true" data-cursor={external ? 'Open site' : 'Case study'}>
         <ProjectImage project={project} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
       </a>
-      <div className="flex flex-1 flex-col p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">{project.type}</p>
-        <h3 className="mt-2 text-xl">{project.name}</h3>
-        <p className="mt-2 text-sm text-cream/70">{project.summary}</p>
-        <p className="mt-3 text-xs text-cream/55">{project.role}</p>
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="hand text-xl leading-none text-leaf">{project.type.toLowerCase()}</p>
+        <h3 className="mt-2 text-2xl">{project.name}</h3>
+        <p className="mt-2 text-sm text-mute">{project.summary}</p>
+        <p className="mt-3 text-xs font-semibold text-ink/70">{project.role}</p>
         <ProjectQuote item={testimonialFor(project.slug)} className="mt-4" />
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-1.5">
           {project.stack.map((item) => (
             <span key={item} className="chip">{item}</span>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-4 pt-2">
+        <div className="mt-6 flex flex-wrap items-center gap-4 pt-1">
           {project.caseStudy && (
             <a href={`/projects/${project.slug}/`} className="link-arrow text-sm">
-              Case study <Icon name="arrow-right" className="h-4 w-4" />
+              Case study
             </a>
           )}
-          <a href={project.url} target="_blank" rel="noopener" className="link-arrow text-sm text-cream/70">
+          <a href={project.url} target="_blank" rel="noopener" className="link-arrow text-sm">
             {project.domain} <Icon name="arrow-up-right" className="h-4 w-4" />
           </a>
         </div>
