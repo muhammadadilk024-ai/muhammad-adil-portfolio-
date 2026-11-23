@@ -1,10 +1,13 @@
 // Client work, in the order it is shown. Only what the live sites show is claimed.
+// note: the handwritten fact on the print in the home page pile. tint: the glow behind it, from the site's own palette.
 const tjs = 'Solo developer at Tech Joint Solution'
 const own = 'Independent: design, build and launch'
 
 export const projects = [
   {
     slug: 'bc-scrap-cars',
+    note: '12 city pages',
+    tint: '#e2532a',
     name: 'BC Scrap Cars',
     url: 'https://bcscrapcars.com/',
     domain: 'bcscrapcars.com',
@@ -24,6 +27,8 @@ export const projects = [
   },
   {
     slug: 'beauty-supply-call',
+    note: 'cart, accounts, reviews',
+    tint: '#d43a5c',
     name: 'Beauty Supply Call',
     url: 'https://beautysupplycall.com/',
     domain: 'beautysupplycall.com',
@@ -41,6 +46,8 @@ export const projects = [
   },
   {
     slug: 'medaan',
+    note: 'menu plus online ordering',
+    tint: '#d4b13a',
     name: 'Medaan',
     url: 'https://medaan.ca/',
     domain: 'medaan.ca',
@@ -58,6 +65,8 @@ export const projects = [
   },
   {
     slug: 'sb-traworld',
+    note: 'English and German',
+    tint: '#d1a651',
     name: 'SB TraWorld',
     url: 'https://sb-traworld.com/',
     domain: 'sb-traworld.com',
@@ -77,6 +86,8 @@ export const projects = [
   },
   {
     slug: 'property-movers',
+    note: 'estimate in 60 seconds',
+    tint: '#f47b2a',
     name: 'Property Movers',
     url: 'https://propertymoversuk.com/',
     domain: 'propertymoversuk.com',
@@ -95,6 +106,8 @@ export const projects = [
   },
   {
     slug: 'fusionfora',
+    note: 'brand, design and build',
+    tint: '#2f6fe0',
     name: 'Fusion Fora',
     url: 'https://fusionfora.com/',
     domain: 'fusionfora.com',
@@ -114,6 +127,8 @@ export const projects = [
   },
   {
     slug: 'paan-express',
+    note: 'logo, menu and site',
+    tint: '#8ab82c',
     name: 'Paan Express',
     url: 'https://paanexpress.com/',
     domain: 'paanexpress.com',
@@ -131,6 +146,8 @@ export const projects = [
   },
   {
     slug: 'lavish-bath',
+    note: 'WooCommerce checkout',
+    tint: '#c49a62',
     name: 'Lavish Bath',
     url: 'https://lavishbathcalgary.ca/',
     domain: 'lavishbathcalgary.ca',
@@ -148,6 +165,8 @@ export const projects = [
   },
   {
     slug: 'mindcob',
+    note: 'custom CMS',
+    tint: '#3fbdf0',
     name: 'MindCob',
     url: 'https://mindcob.com/',
     domain: 'mindcob.com',
@@ -165,6 +184,8 @@ export const projects = [
   },
   {
     slug: 'fam-humanity',
+    note: 'donation flow',
+    tint: '#2f9468',
     name: 'FAM Humanity',
     url: 'https://famhumanity.com/',
     domain: 'famhumanity.com',

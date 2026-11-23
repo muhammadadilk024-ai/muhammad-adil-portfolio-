@@ -40,6 +40,16 @@ export const caseStudies = [
     stack: ['Flutter', 'Dart', 'Kotlin', 'Riverpod', 'Drift', 'SQLite3MultipleCiphers', 'Cloudflare Workers', 'Gemini Live API'],
     related: ['bc-scrap-cars', 'sb-traworld'],
     mock: 'phone',
+    // How the app appears in the home page pile of project prints.
+    showcase: {
+      type: 'Voice first memory app',
+      summary: 'A private assistant that remembers where you put things. Say it once in English, Hindi or Urdu, ask later, and it answers out loud. The memories stay in an encrypted database on the phone.',
+      role: 'Founder and sole developer (Aatox)',
+      note: 'speaks three languages',
+      tint: '#8f7df7',
+      caption: 'in testing on Android',
+      thumb: '/images/projects/knowwhere/knowwhere-thumb.webp',
+    },
     ogImage: '/images/projects/knowwhere/knowwhere-share-card.jpg',
     ogAlt: 'KnowWhere case study by Muhammad Adil: the Android home screen and the app logo',
     logo: {

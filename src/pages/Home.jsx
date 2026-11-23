@@ -2,7 +2,7 @@ import { Layout } from '../components/Layout.jsx'
 import { Icon } from '../components/Icons.jsx'
 import { SectionHeading, CtaBand } from '../components/Section.jsx'
 import { Hero } from '../components/Hero.jsx'
-import { Deck } from '../components/Deck.jsx'
+import { Showcase } from '../components/Showcase.jsx'
 import { Picker } from '../components/Picker.jsx'
 import { Chat } from '../components/Chat.jsx'
 import { Path } from '../components/Path.jsx'
@@ -41,8 +41,8 @@ export const meta = {
 
 function Work() {
   return (
-    <section id="work" className="on-dark relative bg-ink py-16 md:py-0">
-      <Deck />
+    <section id="work" className="on-dark relative scroll-mt-16 overflow-clip bg-ink py-16 md:py-24">
+      <Showcase />
     </section>
   )
 }

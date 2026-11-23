@@ -12,7 +12,7 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 
 | URL | Purpose |
 |---|---|
-| `/` | Home: hero with the portrait and sticky note facts, the fan deck of ten live sites, the five offers picker, client messages as a chat thread, the timeline path, how a project goes, FAQ, closing call to action |
+| `/` | Home: hero with the portrait and sticky note facts, the pile of project prints you flick through (ten live sites and the app), the five offers picker, client messages as a chat thread, the timeline path, how a project goes, FAQ, closing call to action |
 | `/projects/` | Three case studies and ten live client projects with roles |
 | `/projects/knowwhere/`, `/projects/bc-scrap-cars/`, `/projects/sb-traworld/` | Case studies |
 | `/services/` | Five services with proof, process, pricing model, FAQ |
@@ -33,7 +33,7 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 - **Design system.** "The builder's desk, in daylight": paper white, navy ink, sky blue and leaf green taken from the
   portrait, sticky note yellow for handwritten facts. Bricolage Grotesque for type, Caveat only for handwritten
   annotations (both self hosted). Phosphor icons inlined. No animation library: a canvas dot grid that reacts to the
-  pointer, a scroll driven card fan, a scroll drawn timeline and `IntersectionObserver` reveals, all in
+  pointer, a pile of project prints you flick, drag or let play, a scroll drawn timeline and `IntersectionObserver` reveals, all in
   `src/components/` with `prefers-reduced-motion` respected.
 - **Hosting.** Hostinger, continuous deployment from `main`. `public/.htaccess` redirects www to the apex, strips
   `index.html`, sets the 404 page and cache headers.
@@ -55,8 +55,10 @@ Requires Node.js 20.19 or newer.
 - **Identity, links, stats:** `src/data/site.js`
 - **Home page copy** (rolling words, sticky notes, facts, offers, steps, quotes): `src/data/home.js`
 - **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`). A new project
-  needs a 1280x800 `<slug>.webp` and a 560x385 `<slug>-560.webp` thumbnail for the deck. The count in page copy
-  ("ten client sites") follows the length of the list; the social card and `public/llms.txt` say it in plain text
+  needs a 1280x800 `<slug>.webp`, a 160x100 `<slug>-thumb.webp` for the index under the home page pile, a `note`
+  (the handwritten fact on its print) and a `tint` (the glow behind it, from the site's own palette). The count in
+  page copy ("ten client sites") follows the length of the list; the social card and `public/llms.txt` say it in
+  plain text
 - **Case studies:** `src/data/caseStudies.js`; a new case study also needs an HTML entry under `projects/<slug>/`,
   an entry in `vite.config.js`, `src/entries/<slug>.jsx` and a line in `public/sitemap.xml`
 - **KnowWhere images:** `public/images/projects/knowwhere/` (logo and Android home screen, two sizes each, and the
