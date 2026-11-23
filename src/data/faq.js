@@ -6,7 +6,7 @@ export const homeFaq = [
   },
   {
     q: 'What kind of projects do you take on?',
-    a: 'Custom web platforms (Laravel and WordPress with custom plugins), ecommerce stores, Flutter mobile apps and AI features such as assistants, agents and voice. Most of my client work so far has been web; the AI and mobile work includes my own product, KnowWhere.',
+    a: 'Custom web platforms (Laravel and WordPress with custom plugins), ecommerce stores, Flutter mobile apps and AI features such as assistants, agents and voice. Most of my client work so far has been web; the AI and mobile work includes my own product, KnowWhere, which is live on Google Play.',
   },
   {
     q: 'How much does a project cost?',

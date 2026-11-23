@@ -1,19 +1,23 @@
+import { site } from './site.js'
+
 // Three projects in depth. Facts only: what the live product shows or what was actually built.
 export const caseStudies = [
   {
     slug: 'knowwhere',
     path: '/projects/knowwhere/',
     name: 'KnowWhere',
-    kicker: 'Own product, AI and mobile, in development',
+    kicker: 'Own product, AI and mobile, live on Google Play',
     title: 'KnowWhere Case Study: Voice First Memory App (Flutter, Gemini Live)',
     description:
-      'How Muhammad Adil built KnowWhere, a private voice first memory assistant: Flutter and Kotlin app, encrypted local database, Cloudflare Worker backend and real time Gemini Live conversation.',
+      'How Muhammad Adil built KnowWhere, a voice first memory app now on Google Play: a Flutter and Kotlin app, an encrypted local database, a Cloudflare Worker backend and real time Gemini Live conversation.',
     h1: 'KnowWhere: a voice first memory app that remembers where you put things',
-    status: 'In development, testing on Android',
+    status: 'Live on Google Play, free for Android',
+    storeUrl: site.knowwherePlay,
+    storeLabel: 'Get it on Google Play',
     url: 'https://aatox.com/knowwhere/',
     urlLabel: 'KnowWhere on aatox.com',
     summary:
-      'KnowWhere is a private memory assistant. You say where you put something, in English, Hindi or Urdu, and later you ask where it is. It saves and finds items by voice, without opening the app, and keeps the memories on the phone.',
+      'KnowWhere is a private memory assistant. You say where you put something, in English, Hindi or Urdu, and later you ask where it is. It saves and finds items by voice, without opening the app, and keeps the memories on the phone. It is free on Google Play.',
     challenge:
       'Make voice recall fast, private and usable on any phone, without putting an API key on the device, and with smart voice switched on only after the user agrees to it.',
     built: [
@@ -34,7 +38,7 @@ export const caseStudies = [
     ],
     notes: [
       'Three languages in one conversation: English, Hindi, Urdu and mixed speech, with the reply in the language the user spoke.',
-      'Built and published under Aatox, the small software company Muhammad founded in 2026.',
+      'Published on Google Play as KnowWhere: Find Stuff by Voice, under Aatox, the small software company Muhammad founded in 2026. It is free, with no account and no ads.',
       'Automated test suite across repositories, services, flows, accessibility and security, plus a Node test suite for the Worker.',
     ],
     stack: ['Flutter', 'Dart', 'Kotlin', 'Riverpod', 'Drift', 'SQLite3MultipleCiphers', 'Cloudflare Workers', 'Gemini Live API'],
@@ -47,7 +51,7 @@ export const caseStudies = [
       role: 'Founder and sole developer (Aatox)',
       note: 'speaks three languages',
       tint: '#8f7df7',
-      caption: 'in testing on Android',
+      caption: 'free on Google Play',
       thumb: '/images/projects/knowwhere/knowwhere-thumb.webp',
     },
     ogImage: '/images/projects/knowwhere/knowwhere-share-card.jpg',

@@ -87,6 +87,6 @@ export const journey = [
   {
     period: '2026',
     title: 'Founder of Aatox',
-    text: 'Started Aatox, a small software company, and its first product KnowWhere: a voice first memory app built with Flutter, Kotlin, Gemini Live and a Cloudflare backend.',
+    text: 'Started Aatox, a small software company, and launched its first product KnowWhere on Google Play: a voice first memory app built with Flutter, Kotlin, Gemini Live and a Cloudflare backend.',
   },
 ]

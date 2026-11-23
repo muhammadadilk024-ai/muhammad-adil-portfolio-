@@ -19,7 +19,7 @@ export const facts = [
   'BC Scrap Cars has 12 city pages, each with its own structured data for local search.',
   'SB TraWorld runs in English and German, and the client can edit every section in both.',
   'Property Movers turns two postcodes into a moving estimate in about a minute.',
-  'KnowWhere understands English, Hindi and Urdu in the same conversation.',
+  'KnowWhere is live on Google Play and understands English, Hindi and Urdu in the same conversation.',
   'This page is prerendered to plain HTML, so it loads before the JavaScript does.',
   'I use AI to write code faster, then check every change with builds, tests and my own eyes.',
   'Three of these projects were built as the only developer on the job, start to finish.',

@@ -17,13 +17,22 @@ export const site = {
   since: 2021,
   updated: '2026-10-29',
   // Pages changed since then. Schema dateModified reads these; keep public/sitemap.xml lastmod in step.
-  pageUpdated: { '/': '2026-11-23', '/projects/': '2026-11-23', '/services/': '2026-11-23' },
+  pageUpdated: {
+    '/': '2026-11-23',
+    '/projects/': '2026-11-23',
+    '/services/': '2026-11-23',
+    '/about/': '2026-11-23',
+    '/projects/knowwhere/': '2026-11-23',
+    '/projects/bc-scrap-cars/': '2026-11-23',
+    '/projects/sb-traworld/': '2026-11-23',
+  },
   linkedin: 'https://www.linkedin.com/in/muhammad-adil-15aa61297/',
   github: 'https://github.com/muhammadadilk024-ai',
   aatox: 'https://aatox.com/',
   aatoxAbout: 'https://aatox.com/about/',
   aatoxLinkedin: 'https://www.linkedin.com/company/aatox/',
   knowwhere: 'https://aatox.com/knowwhere/',
+  knowwherePlay: 'https://play.google.com/store/apps/details?id=com.aatox.knowwhere',
   employer: {
     name: 'Tech Joint Solution',
     url: 'https://techjointsolution.com/',

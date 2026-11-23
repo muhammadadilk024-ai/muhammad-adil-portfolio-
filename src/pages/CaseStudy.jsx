@@ -25,11 +25,18 @@ function Facts({ study }) {
           </div>
         ))}
       </dl>
-      {study.url && (
-        <a href={study.url} target="_blank" rel="noopener" className="btn btn-ink btn-sm mt-6">
-          Open {study.urlLabel} <Icon name="arrow-up-right" className="h-4 w-4" />
-        </a>
-      )}
+      <div className="mt-6 flex flex-wrap gap-3">
+        {study.storeUrl && (
+          <a href={study.storeUrl} target="_blank" rel="noopener" className="btn btn-ink btn-sm">
+            {study.storeLabel} <Icon name="arrow-up-right" className="h-4 w-4" />
+          </a>
+        )}
+        {study.url && (
+          <a href={study.url} target="_blank" rel="noopener" className={`btn btn-sm ${study.storeUrl ? 'btn-secondary' : 'btn-ink'}`}>
+            {study.storeUrl ? study.urlLabel : `Open ${study.urlLabel}`} <Icon name="arrow-up-right" className="h-4 w-4" />
+          </a>
+        )}
+      </div>
     </div>
   )
 }

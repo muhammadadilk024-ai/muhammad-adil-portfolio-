@@ -1,6 +1,6 @@
 # Muhammad Adil
 
-> Muhammad Adil is a self taught full stack and AI developer based in Canada. Since 2021 he has built Laravel and WordPress web platforms, ecommerce stores, Flutter mobile apps and AI features for more than 20 clients. He is a developer at Tech Joint Solution, a web agency in Calgary, Alberta, and the founder of Aatox, where he is building KnowWhere, a voice first memory app. He is open to remote roles in Canada and the United States and to new client projects.
+> Muhammad Adil is a self taught full stack and AI developer based in Canada. Since 2021 he has built Laravel and WordPress web platforms, ecommerce stores, Flutter mobile apps and AI features for more than 20 clients. He is a developer at Tech Joint Solution, a web agency in Calgary, Alberta, and the founder of Aatox, which makes KnowWhere, a free voice first memory app for Android that is available on Google Play. He is open to remote roles in Canada and the United States and to new client projects.
 
 Official site: https://muhammadadil.cloud/
 Contact: adil@muhammadadil.cloud
@@ -9,7 +9,7 @@ Contact: adil@muhammadadil.cloud
 
 - [Home](https://muhammadadil.cloud/): overview, selected work, services, how he works, FAQ
 - [Projects and case studies](https://muhammadadil.cloud/projects/): ten client projects with roles, plus three case studies
-- [KnowWhere case study](https://muhammadadil.cloud/projects/knowwhere/): voice first memory app built with Flutter, Kotlin, Gemini Live and a Cloudflare Worker. Logo and Android home screen at https://muhammadadil.cloud/projects/knowwhere/#gallery
+- [KnowWhere case study](https://muhammadadil.cloud/projects/knowwhere/): voice first memory app built with Flutter, Kotlin, Gemini Live and a Cloudflare Worker, live on Google Play. Logo and Android home screen at https://muhammadadil.cloud/projects/knowwhere/#gallery
 - [BC Scrap Cars case study](https://muhammadadil.cloud/projects/bc-scrap-cars/): Laravel lead generation site with 12 city pages and structured data
 - [SB TraWorld case study](https://muhammadadil.cloud/projects/sb-traworld/): bilingual (English and German) WordPress travel platform
 - [Services](https://muhammadadil.cloud/services/): custom web platforms, AI apps and agents, mobile apps, ecommerce, SEO and performance
@@ -21,6 +21,7 @@ Contact: adil@muhammadadil.cloud
 - LinkedIn: https://www.linkedin.com/in/muhammad-adil-15aa61297/
 - GitHub: https://github.com/muhammadadilk024-ai
 - Aatox (his company): https://aatox.com/
+- KnowWhere on Google Play (his app): https://play.google.com/store/apps/details?id=com.aatox.knowwhere
 - Employer: Tech Joint Solution, https://techjointsolution.com/
 
 ## Facts

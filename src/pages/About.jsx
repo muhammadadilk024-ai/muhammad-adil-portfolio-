@@ -119,7 +119,7 @@ function AboutPage() {
                 Since 2024 I have been a developer at Tech Joint Solution, a web agency in Calgary, Alberta, where I build client sites in Laravel and WordPress, as part of the team and as the only developer on projects such as BC Scrap Cars, Medaan and Beauty Supply Call.
               </p>
               <p>
-                In 2026 I founded Aatox and started its first product, KnowWhere, a private voice first memory app. That is where my AI and mobile work lives: Flutter, Kotlin, an encrypted local database, a Cloudflare Worker backend and real time voice with Gemini Live.
+                In 2026 I founded Aatox and launched its first product, KnowWhere, a private voice first memory app that is now on Google Play. That is where my AI and mobile work lives: Flutter, Kotlin, an encrypted local database, a Cloudflare Worker backend and real time voice with Gemini Live.
               </p>
             </div>
           </div>
@@ -185,6 +185,7 @@ function AboutPage() {
             <li><a href={site.linkedin} target="_blank" rel="noopener" className="btn btn-secondary"><Icon name="linkedin-logo" className="h-4 w-4" /> LinkedIn</a></li>
             <li><a href={site.github} target="_blank" rel="noopener" className="btn btn-secondary"><Icon name="github-logo" className="h-4 w-4" /> GitHub</a></li>
             <li><a href={site.aatox} target="_blank" rel="noopener" className="btn btn-secondary"><Icon name="globe" className="h-4 w-4" /> Aatox</a></li>
+            <li><a href={site.knowwherePlay} target="_blank" rel="noopener" className="btn btn-secondary"><Icon name="device-mobile" className="h-4 w-4" /> KnowWhere on Google Play</a></li>
             <li><a href={site.resume} download={site.resumeName} className="btn btn-secondary"><Icon name="download-simple" className="h-4 w-4" /> Resume (PDF)</a></li>
           </ul>
         </div>

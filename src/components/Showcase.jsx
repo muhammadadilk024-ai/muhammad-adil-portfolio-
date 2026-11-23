@@ -36,11 +36,11 @@ const knowwhere = {
   name: app.name,
   ...app.showcase,
   stack: app.stack.slice(0, 4),
-  live: false,
+  live: true,
   href: app.path,
   external: false,
-  url: app.url,
-  urlLabel: app.urlLabel,
+  url: app.storeUrl,
+  urlLabel: app.storeLabel,
   caseStudy: true,
   app: true,
 }
@@ -331,7 +331,7 @@ export function Showcase() {
     >
       <div className="show-head">
         <p className="eyebrow" data-reveal>
-          flick through them. every site is live.
+          flick through them. every one is live.
         </p>
         <h2 className="mt-2 text-4xl sm:text-5xl lg:text-[2.9rem]" data-reveal>
           {ProjectCount} client sites and one app, built end to end.

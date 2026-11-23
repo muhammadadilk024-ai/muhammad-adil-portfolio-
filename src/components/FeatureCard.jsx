@@ -40,9 +40,9 @@ export function FeatureCard({ study, index = 0, wide = false }) {
           <a href={study.path} className="link-arrow">
             Read the case study
           </a>
-          {study.url && (
-            <a href={study.url} target="_blank" rel="noopener" className="link-arrow text-mute">
-              {study.urlLabel} <Icon name="arrow-up-right" className="h-4 w-4" />
+          {(study.storeUrl || study.url) && (
+            <a href={study.storeUrl || study.url} target="_blank" rel="noopener" className="link-arrow text-mute">
+              {study.storeUrl ? study.storeLabel : study.urlLabel} <Icon name="arrow-up-right" className="h-4 w-4" />
             </a>
           )}
         </div>
