@@ -29,7 +29,7 @@ function PrivacyPage() {
           </div>
           <div data-reveal>
             <h2 className="text-2xl">The contact form</h2>
-            <p className="mt-3">When you send the form, your name, email address, topic and message are delivered to my inbox through FormSubmit, a form to email service. I use them only to reply to you. If you would rather not use a third party service, email me directly at <a href={`mailto:${site.email}`} className="link-inline">{site.email}</a>.</p>
+            <p className="mt-3">When you send the form, your name, email address, topic and message are emailed to my inbox by this site's own server at Hostinger. No outside form service is involved and the message is not saved on the website. I use it only to reply to you. To keep spam out, a scrambled record of your IP address is kept for ten minutes and then discarded. If you would rather skip the form, email me directly at <a href={`mailto:${site.email}`} className="link-inline">{site.email}</a>.</p>
           </div>
           <div data-reveal>
             <h2 className="text-2xl">Links to other sites</h2>
@@ -37,7 +37,7 @@ function PrivacyPage() {
           </div>
           <div data-reveal>
             <h2 className="text-2xl">Questions</h2>
-            <p className="mt-3">Write to <a href={`mailto:${site.email}`} className="link-inline">{site.email}</a> and I will answer. Last updated {site.updated}.</p>
+            <p className="mt-3">Write to <a href={`mailto:${site.email}`} className="link-inline">{site.email}</a> and I will answer. Last updated {site.pageUpdated[path] || site.updated}.</p>
           </div>
         </div>
       </section>

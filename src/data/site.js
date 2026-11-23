@@ -25,6 +25,7 @@ export const site = {
     '/projects/knowwhere/': '2026-11-23',
     '/projects/bc-scrap-cars/': '2026-11-23',
     '/projects/sb-traworld/': '2026-11-23',
+    '/privacy/': '2026-11-23',
   },
   linkedin: 'https://www.linkedin.com/in/muhammad-adil-15aa61297/',
   github: 'https://github.com/muhammadadilk024-ai',

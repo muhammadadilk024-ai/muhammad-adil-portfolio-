@@ -17,7 +17,7 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 | `/projects/knowwhere/`, `/projects/bc-scrap-cars/`, `/projects/sb-traworld/` | Case studies |
 | `/services/` | Five services with proof, process, pricing model, FAQ |
 | `/about/` | Entity page: facts, timeline, principles, stack, profiles |
-| `/contact/` | Direct lines and a validated contact form (FormSubmit) |
+| `/contact/` | Direct lines and a validated contact form, sent by `public/api/contact.php` on the site's own hosting |
 | `/privacy/` | Short privacy note (not indexed) |
 | `/404.html` | Branded not found page (served by `.htaccess`) |
 
