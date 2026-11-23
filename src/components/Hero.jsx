@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { site } from '../data/site.js'
 import { rollingWords, heroNotes, facts } from '../data/home.js'
+import { projectCount } from '../data/projects.js'
 import { DotField } from './DotField.jsx'
 import { CopyEmail } from './CopyEmail.jsx'
 import { Icon } from './Icons.jsx'
@@ -92,7 +93,7 @@ export function Hero() {
             </span>
           </h1>
           <p className="lead hero-rise mt-6 max-w-[36rem]" style={{ '--d': '200ms' }}>
-            Full stack and AI developer in Canada. Five years, 20+ projects shipped, and nine live client sites one scroll away.
+            Full stack and AI developer in Canada. Five years, 20+ projects shipped, and {projectCount} live client sites one scroll away.
             From the first call to launch and after, I'm the one person you talk to.
           </p>
           <div className="hero-rise mt-8 flex flex-wrap items-center gap-4" style={{ '--d': '320ms' }}>

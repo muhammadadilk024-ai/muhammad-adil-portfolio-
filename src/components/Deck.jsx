@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { projects } from '../data/projects.js'
+import { projects, ProjectCount } from '../data/projects.js'
 import { caseStudies } from '../data/caseStudies.js'
 import { useScrollProgress } from './hooks.js'
 
@@ -34,7 +34,7 @@ function Card({ project, index, geo }) {
   )
 }
 
-/** Nine project cards, stacked like a hand of cards, that fan out as the section scrolls. Swipeable strip on phones. */
+/** Every client project as a card, stacked like a hand of cards, that fan out as the section scrolls. Swipeable strip on phones. */
 export function Deck() {
   const stage = useRef(null)
   const [geo, setGeo] = useState({ w: 250, spread: 460, drop: 90 })
@@ -66,7 +66,7 @@ export function Deck() {
         <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
           <div className="container-x pt-24">
             <p className="eyebrow">go on, click one. they're all live.</p>
-            <h2 className="mt-2 max-w-2xl text-4xl sm:text-5xl">Nine client sites and one app, built end to end.</h2>
+            <h2 className="mt-2 max-w-2xl text-4xl sm:text-5xl">{ProjectCount} client sites and one app, built end to end.</h2>
           </div>
           <div className="relative flex-1">
             <div className="absolute inset-0 top-6">
@@ -94,7 +94,7 @@ export function Deck() {
       <div className="md:hidden">
         <div className="container-x">
           <p className="eyebrow">go on, tap one. they're all live.</p>
-          <h2 className="mt-2 text-4xl">Nine client sites and one app, built end to end.</h2>
+          <h2 className="mt-2 text-4xl">{ProjectCount} client sites and one app, built end to end.</h2>
         </div>
         <div className="strip mt-6">
           {projects.map((project) => (

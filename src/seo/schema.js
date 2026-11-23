@@ -79,7 +79,7 @@ export function webPage({ path, name, description, type = 'WebPage', extra = {} 
     description,
     isPartOf: { '@id': ids.website },
     about: { '@id': ids.person },
-    dateModified: site.updated,
+    dateModified: (site.pageUpdated && site.pageUpdated[path]) || site.updated,
     inLanguage: 'en',
     primaryImageOfPage: { '@type': 'ImageObject', url: U + site.ogImage, width: 1200, height: 630 },
     ...extra,

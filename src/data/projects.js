@@ -76,6 +76,24 @@ export const projects = [
     featured: true,
   },
   {
+    slug: 'property-movers',
+    name: 'Property Movers',
+    url: 'https://propertymoversuk.com/',
+    domain: 'propertymoversuk.com',
+    type: 'Lead generation site',
+    industry: 'Removals and clearance, Crawley, United Kingdom',
+    platform: 'Custom PHP and JavaScript',
+    image: '/images/projects/spotlight/property-movers.webp',
+    imageAlt: 'Homepage of propertymoversuk.com, a removals and clearance site built by Muhammad Adil',
+    width: 1280,
+    height: 800,
+    summary:
+      'A removals and clearance site built around a 60 second estimate: two postcodes in, a guide price out, then a WhatsApp chat opens with the details already typed. Every lead is saved to a private admin page.',
+    role: own,
+    delivered: ['Logo', 'UI and UX design', 'Estimate calculator', 'WhatsApp handoff', 'PHP backend and admin page', 'Structured data', 'Launch'],
+    stack: ['JavaScript', 'PHP', 'postcodes.io API', 'Local SEO'],
+  },
+  {
     slug: 'fusionfora',
     name: 'Fusion Fora',
     url: 'https://fusionfora.com/',
@@ -165,6 +183,11 @@ export const projects = [
     stack: ['WordPress', 'PHP'],
   },
 ]
+
+const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty']
+/** How many client projects there are, as a word ("ten") and capitalised ("Ten"). Page copy reads these, so it follows the list. */
+export const projectCount = words[projects.length] || String(projects.length)
+export const ProjectCount = projectCount.charAt(0).toUpperCase() + projectCount.slice(1)
 
 export const featuredProjects = projects.filter((p) => p.featured)
 export const bySlug = (slug) => projects.find((p) => p.slug === slug)

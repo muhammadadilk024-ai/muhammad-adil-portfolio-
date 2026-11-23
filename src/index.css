@@ -504,6 +504,9 @@
   .cursor-badge.is-on { opacity: 1; transform: scale(1); }
   @media (hover: none) { .cursor-badge { display: none; } }
 
+  /* A lone last card in the three column projects grid sits in the middle column, not stranded on the left */
+  @media (min-width: 1024px) { .project-grid > :last-child:nth-child(3n + 1) { grid-column-start: 2; } }
+
   /* KnowWhere case study: the real app in a phone shape, logo stuck to the corner */
   .app-hero {
     position: relative;

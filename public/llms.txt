@@ -8,7 +8,7 @@ Contact: adil@muhammadadil.cloud
 ## Pages
 
 - [Home](https://muhammadadil.cloud/): overview, selected work, services, how he works, FAQ
-- [Projects and case studies](https://muhammadadil.cloud/projects/): nine client projects with roles, plus three case studies
+- [Projects and case studies](https://muhammadadil.cloud/projects/): ten client projects with roles, plus three case studies
 - [KnowWhere case study](https://muhammadadil.cloud/projects/knowwhere/): voice first memory app built with Flutter, Kotlin, Gemini Live and a Cloudflare Worker. Logo and Android home screen at https://muhammadadil.cloud/projects/knowwhere/#gallery
 - [BC Scrap Cars case study](https://muhammadadil.cloud/projects/bc-scrap-cars/): Laravel lead generation site with 12 city pages and structured data
 - [SB TraWorld case study](https://muhammadadil.cloud/projects/sb-traworld/): bilingual (English and German) WordPress travel platform

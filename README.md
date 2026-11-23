@@ -12,8 +12,8 @@ hydrated with React, designed around one offer (web, mobile and AI products buil
 
 | URL | Purpose |
 |---|---|
-| `/` | Home: hero with the portrait and sticky note facts, the fan deck of nine live sites, the five offers picker, client messages as a chat thread, the timeline path, how a project goes, FAQ, closing call to action |
-| `/projects/` | Three case studies and nine live client projects with roles |
+| `/` | Home: hero with the portrait and sticky note facts, the fan deck of ten live sites, the five offers picker, client messages as a chat thread, the timeline path, how a project goes, FAQ, closing call to action |
+| `/projects/` | Three case studies and ten live client projects with roles |
 | `/projects/knowwhere/`, `/projects/bc-scrap-cars/`, `/projects/sb-traworld/` | Case studies |
 | `/services/` | Five services with proof, process, pricing model, FAQ |
 | `/about/` | Entity page: facts, timeline, principles, stack, profiles |
@@ -54,7 +54,9 @@ Requires Node.js 20.19 or newer.
 
 - **Identity, links, stats:** `src/data/site.js`
 - **Home page copy** (rolling words, sticky notes, facts, offers, steps, quotes): `src/data/home.js`
-- **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`)
+- **Client projects:** `src/data/projects.js` (screenshots in `public/images/projects/spotlight/`). A new project
+  needs a 1280x800 `<slug>.webp` and a 560x385 `<slug>-560.webp` thumbnail for the deck. The count in page copy
+  ("ten client sites") follows the length of the list; the social card and `public/llms.txt` say it in plain text
 - **Case studies:** `src/data/caseStudies.js`; a new case study also needs an HTML entry under `projects/<slug>/`,
   an entry in `vite.config.js`, `src/entries/<slug>.jsx` and a line in `public/sitemap.xml`
 - **KnowWhere images:** `public/images/projects/knowwhere/` (logo and Android home screen, two sizes each, and the

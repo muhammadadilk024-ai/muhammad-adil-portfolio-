@@ -1,5 +1,7 @@
 // Copy for the home page. Everything here is a claim you can check on this site or on a live client site.
 
+import { ProjectCount } from './projects.js'
+
 /** Words that roll through the headline. The first one is what crawlers and screen readers get. */
 export const rollingWords = ['websites', 'online stores', 'mobile apps', 'AI assistants', 'faster sites']
 
@@ -13,9 +15,10 @@ export const heroNotes = [
 
 /** Small true things, one at a time, under the hero. */
 export const facts = [
-  'Nine client sites on this page, and every one of them is live right now.',
+  `${ProjectCount} client sites on this page, and every one of them is live right now.`,
   'BC Scrap Cars has 12 city pages, each with its own structured data for local search.',
   'SB TraWorld runs in English and German, and the client can edit every section in both.',
+  'Property Movers turns two postcodes into a moving estimate in about a minute.',
   'KnowWhere understands English, Hindi and Urdu in the same conversation.',
   'This page is prerendered to plain HTML, so it loads before the JavaScript does.',
   'I use AI to write code faster, then check every change with builds, tests and my own eyes.',
@@ -33,6 +36,7 @@ export const offers = [
       { name: 'BC Scrap Cars', href: '/projects/bc-scrap-cars/' },
       { name: 'SB TraWorld', href: '/projects/sb-traworld/' },
       { name: 'Medaan', href: 'https://medaan.ca/' },
+      { name: 'Property Movers', href: 'https://propertymoversuk.com/' },
     ],
     tools: ['Laravel', 'PHP', 'WordPress', 'MySQL', 'JavaScript'],
   },

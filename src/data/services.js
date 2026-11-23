@@ -16,6 +16,7 @@ export const services = [
     proof: [
       { name: 'BC Scrap Cars', href: '/projects/bc-scrap-cars/' },
       { name: 'SB TraWorld', href: '/projects/sb-traworld/' },
+      { name: 'Property Movers', href: 'https://propertymoversuk.com/' },
     ],
     tools: ['Laravel', 'PHP', 'WordPress', 'MySQL', 'JavaScript'],
   },

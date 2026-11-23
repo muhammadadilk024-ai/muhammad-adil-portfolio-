@@ -16,6 +16,8 @@ export const site = {
   workMode: 'Remote',
   since: 2021,
   updated: '2026-10-29',
+  // Pages changed since then. Schema dateModified reads these; keep public/sitemap.xml lastmod in step.
+  pageUpdated: { '/': '2026-11-23', '/projects/': '2026-11-23', '/services/': '2026-11-23' },
   linkedin: 'https://www.linkedin.com/in/muhammad-adil-15aa61297/',
   github: 'https://github.com/muhammadadilk024-ai',
   aatox: 'https://aatox.com/',
@@ -45,6 +47,7 @@ export const site = {
   stats: [
     { value: '20+', label: 'client projects delivered' },
     { value: '5', label: 'years building, since 2021' },
-    { value: '9', label: 'live client sites you can open' },
+    // The number of entries in src/data/projects.js. Written out so this file stays free of imports and light on every page.
+    { value: '10', label: 'live client sites you can open' },
   ],
 }
